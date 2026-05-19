@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Resume — Karunya Muddana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,700;1,9..144,800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.min.js"></script>
+</head>
+<body>
+
+<!-- Paper texture stack -->
+<div class="paper-base"></div>
+<div class="paper-creases"></div>
+<div class="paper-folds"></div>
+<div class="paper-fibers"></div>
+<div class="paper-grain"></div>
+<div class="paper-vignette"></div>
+
+<div class="cursor-ring"></div>
+<div class="cursor-dot"></div>
+
+<nav class="about-nav" aria-label="Resume navigation">
+  <a href="index.html" class="back">← Back to portfolio</a>
+  <span class="who">Resume · Karunya Muddana</span>
+</nav>
+
+<main class="resume-page">
+
+  <!-- Doodle decorations in margins -->
+  <div class="doodle" style="top:80px; left:4%; width:140px; opacity:0.22; transform:rotate(-12deg);" aria-hidden="true">
+    <img src="assets/doodles/circles/circle-3.svg" alt="" />
+  </div>
+  <div class="doodle" style="top:480px; right:3%; width:110px; opacity:0.22; transform:rotate(18deg);" aria-hidden="true">
+    <img src="assets/doodles/arrows/arrow-22.svg" alt="" />
+  </div>
+  <div class="doodle" style="bottom:240px; left:3%; width:130px; opacity:0.20; transform:rotate(6deg);" aria-hidden="true">
+    <img src="assets/doodles/misc/misc-22.svg" alt="" />
+  </div>
+  <div class="doodle" style="bottom:80px; right:5%; width:120px; opacity:0.22; transform:rotate(-10deg);" aria-hidden="true">
+    <img src="assets/doodles/lines/line-5.svg" alt="" />
+  </div>
+
+  <div class="resume-stack">
+
+    <!-- Header card -->
+    <article class="resume-card resume-header">
+      <span class="corner-tape"></span>
+      <span class="corner-tape right"></span>
+      <h1>Karunya <em>Muddana</em></h1>
+      <p class="role">Agentic AI &middot; Full-Stack Engineering &middot; MLOps</p>
+      <div class="resume-meta-row">
+        <span>Hyderabad, India</span>
+        <a href="mailto:Karunya.muddana@outlook.com">Karunya.muddana@outlook.com</a>
+        <a href="#">github.com/Karunya-Muddana</a>
+        <a href="#">linkedin.com/in/karunya-muddana</a>
+      </div>
+      <button class="download" onclick="window.print()">Print / Save PDF →</button>
+    </article>
+
+    <!-- Education -->
+    <article class="resume-card resume-section">
+      <h2>Education <em>&mdash; what shaped this.</em></h2>
+      <span class="head-rule"></span>
+
+      <div class="resume-item">
+        <div class="row">
+          <h3>GITAM University, Hyderabad</h3>
+          <span class="meta">2024 – 2028</span>
+        </div>
+        <div class="sub">B.Tech, Computer Science &middot; CGPA 8.9 / 10</div>
+      </div>
+
+      <div class="resume-item">
+        <div class="row">
+          <h3>Deeksha Junior College</h3>
+          <span class="meta">2022 – 2024</span>
+        </div>
+        <div class="sub">Class 11 &amp; 12 &middot; MPC (Mathematics, Physics, Chemistry)</div>
+      </div>
+
+      <div class="resume-item">
+        <div class="row">
+          <h3>Kennedy High &mdash; The Global School</h3>
+          <span class="meta">Until 2022</span>
+        </div>
+        <div class="sub">CBSE &middot; Grade 10</div>
+      </div>
+    </article>
+
+    <!-- Experience -->
+    <article class="resume-card resume-section">
+      <span class="corner-tape"></span>
+      <h2>Experience <em>&mdash; where the code shipped.</em></h2>
+      <span class="head-rule"></span>
+
+      <div class="resume-item">
+        <div class="row">
+          <h3>Freelance Software Developer</h3>
+          <span class="meta">2024 – Present</span>
+        </div>
+        <div class="sub">Client: Warehouse / Manufacturing Firm, Hyderabad</div>
+        <ul>
+          <li>Designed and deployed <strong>K-ERP</strong> &mdash; a custom warehouse ERP with procurement workflows, QC pipelines, inventory tracking, and auto-generated PDF/Excel reports. Used daily in production.</li>
+          <li>Built backend REST APIs in FastAPI with PostgreSQL + Supabase; Next.js + TailwindCSS frontend with role-based access control and JWT auth.</li>
+          <li>Reduced manual reporting time for warehouse staff by automating multi-sheet Excel generation with openpyxl and Pandas.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Projects -->
+    <article class="resume-card resume-section">
+      <h2>Projects <em>&mdash; selected.</em></h2>
+      <span class="head-rule"></span>
+
+      <div class="resume-item">
+        <div class="row">
+          <h3>Project Smith &mdash; Zero-Trust Autonomous Agent Runtime</h3>
+          <span class="meta">github ↗</span>
+        </div>
+        <ul>
+          <li>Compiler-runtime architecture: natural language is compiled into a validated JSON DAG before any tool executes, making infinite loops mathematically impossible.</li>
+          <li>v4.0: voice mode (Whisper STT + MeloTTS), fabrication guard, long-term RAG memory, 15 plug-and-play tools (finance, SEC filings, Gmail, arXiv, code agent, crypto), and a Fleet Coordinator for parallel multi-agent execution.</li>
+        </ul>
+        <div class="tech">Python &middot; FastAPI &middot; LangChain &middot; RAG &middot; Ollama &middot; MongoDB &middot; OpenRouter (NVIDIA Nemotron) &middot; Whisper &middot; pytest &middot; ruff</div>
+      </div>
+
+      <div class="resume-item">
+        <div class="row">
+          <h3>K-ERP &mdash; Production Warehouse ERP <span style="font-family:var(--font-mono); font-size:11px; color:var(--pencil-soft); letter-spacing:0.1em;">(private)</span></h3>
+          <span class="meta">In production</span>
+        </div>
+        <ul>
+          <li>Full-featured ERP with procurement, quality control, inventory, and reporting modules deployed at a real client.</li>
+        </ul>
+        <div class="tech">Next.js &middot; FastAPI &middot; PostgreSQL &middot; Supabase &middot; TailwindCSS &middot; openpyxl</div>
+      </div>
+
+      <div class="resume-item">
+        <div class="row">
+          <h3>Embedding-Powered QA &mdash; RAG retrieval pipeline</h3>
+          <span class="meta">github ↗</span>
+        </div>
+        <ul>
+          <li>Retrieval-based QA system using sentence embeddings and similarity search; clean pipeline architecture designed for production extension.</li>
+        </ul>
+        <div class="tech">Python &middot; Transformers &middot; FAISS &middot; Sentence-Transformers</div>
+      </div>
+
+      <div class="resume-item">
+        <div class="row">
+          <h3>CBSE Gazette Analyzer &mdash; Data automation tool</h3>
+          <span class="meta">github ↗</span>
+        </div>
+        <ul>
+          <li>Converts official CBSE .txt gazette files into structured Excel analytics. Deployed across 2 schools covering 600+ students.</li>
+        </ul>
+        <div class="tech">Python &middot; Pandas &middot; Streamlit &middot; openpyxl</div>
+      </div>
+
+      <div class="resume-item">
+        <div class="row">
+          <h3>Gemini Multi-Tool Agent &mdash; Multi-agent pipeline</h3>
+          <span class="meta">github ↗</span>
+        </div>
+        <ul>
+          <li>Integrated agent pipeline combining Google Search, Gmail, and web scraping via Gemini API for autonomous research and summarisation.</li>
+        </ul>
+        <div class="tech">Python &middot; Gemini API &middot; Google Search API &middot; BeautifulSoup</div>
+      </div>
+
+      <div class="resume-item">
+        <div class="row">
+          <h3>License Plate Detector &mdash; Computer vision pipeline</h3>
+          <span class="meta">github ↗</span>
+        </div>
+        <ul>
+          <li>OpenCV pipeline using edge detection, contour approximation, and morphological transforms to localise and extract license plates; OCR-ready output.</li>
+        </ul>
+        <div class="tech">Python &middot; OpenCV &middot; NumPy</div>
+      </div>
+    </article>
+
+    <!-- Skills -->
+    <article class="resume-card resume-section resume-skills">
+      <span class="corner-tape right"></span>
+      <h2>Skills <em>&mdash; the toolkit.</em></h2>
+      <span class="head-rule"></span>
+      <div class="skills-cats">
+        <div class="skill-cat">
+          <h4>AI / ML</h4>
+          <span class="cat-rule"></span>
+          <div class="list">Python <span class="sep">·</span> PyTorch <span class="sep">·</span> Transformers <span class="sep">·</span> LangChain <span class="sep">·</span> LlamaIndex <span class="sep">·</span> RAG <span class="sep">·</span> Fine-tuning <span class="sep">·</span> scikit-learn <span class="sep">·</span> XGBoost <span class="sep">·</span> LightGBM <span class="sep">·</span> FAISS <span class="sep">·</span> Chroma <span class="sep">·</span> Whisper <span class="sep">·</span> Vertex AI <span class="sep">·</span> OpenCV <span class="sep">·</span> YOLO</div>
+        </div>
+        <div class="skill-cat">
+          <h4>Agentic &amp; LLM Ops</h4>
+          <span class="cat-rule"></span>
+          <div class="list">LangSmith <span class="sep">·</span> Langfuse <span class="sep">·</span> W&amp;B <span class="sep">·</span> MLflow <span class="sep">·</span> DSPy <span class="sep">·</span> CrewAI <span class="sep">·</span> OpenRouter <span class="sep">·</span> Ollama <span class="sep">·</span> Prompt Engineering <span class="sep">·</span> LLM Evals <span class="sep">·</span> DAG planning <span class="sep">·</span> Fabrication guard <span class="sep">·</span> Long-term memory</div>
+        </div>
+        <div class="skill-cat">
+          <h4>Backend</h4>
+          <span class="cat-rule"></span>
+          <div class="list">FastAPI <span class="sep">·</span> Flask <span class="sep">·</span> Node.js <span class="sep">·</span> PostgreSQL <span class="sep">·</span> MongoDB <span class="sep">·</span> Redis <span class="sep">·</span> Supabase <span class="sep">·</span> Firebase <span class="sep">·</span> REST APIs <span class="sep">·</span> WebSockets <span class="sep">·</span> Celery <span class="sep">·</span> GraphQL <span class="sep">·</span> JWT / OAuth2</div>
+        </div>
+        <div class="skill-cat">
+          <h4>Frontend</h4>
+          <span class="cat-rule"></span>
+          <div class="list">React <span class="sep">·</span> Next.js <span class="sep">·</span> TypeScript <span class="sep">·</span> TailwindCSS <span class="sep">·</span> Framer Motion <span class="sep">·</span> Streamlit <span class="sep">·</span> Three.js <span class="sep">·</span> Shadcn/ui</div>
+        </div>
+        <div class="skill-cat">
+          <h4>Cloud &amp; MLOps</h4>
+          <span class="cat-rule"></span>
+          <div class="list">Google Cloud <span class="sep">·</span> Vertex AI <span class="sep">·</span> Docker <span class="sep">·</span> Kubernetes <span class="sep">·</span> GitHub Actions <span class="sep">·</span> Vercel <span class="sep">·</span> Render <span class="sep">·</span> DVC <span class="sep">·</span> Airflow <span class="sep">·</span> Terraform</div>
+        </div>
+        <div class="skill-cat">
+          <h4>Tools &amp; Ops</h4>
+          <span class="cat-rule"></span>
+          <div class="list">Git <span class="sep">·</span> Pandas <span class="sep">·</span> NumPy <span class="sep">·</span> Ruff <span class="sep">·</span> Pytest <span class="sep">·</span> Pydantic <span class="sep">·</span> Postman <span class="sep">·</span> Linux <span class="sep">·</span> OpenTelemetry <span class="sep">·</span> openpyxl <span class="sep">·</span> Jupyter</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Certifications -->
+    <article class="resume-card resume-section">
+      <h2>Certifications <em>&mdash; deep dives.</em></h2>
+      <span class="head-rule"></span>
+
+      <div class="resume-item">
+        <div class="row">
+          <h3>CS50x &mdash; Introduction to Computer Science</h3>
+          <span class="meta">Harvard / edX &middot; Audited</span>
+        </div>
+        <div class="sub">Full audit of Harvard&rsquo;s flagship CS course: C, Python, SQL, data structures, algorithms, web development.</div>
+      </div>
+
+      <div class="resume-item">
+        <div class="row">
+          <h3>AWS AI Practitioner</h3>
+          <span class="meta">Amazon Web Services &middot; Audited</span>
+        </div>
+        <div class="sub">Foundational AI/ML concepts on AWS: SageMaker, Bedrock, Rekognition, and responsible AI practices.</div>
+      </div>
+    </article>
+
+    <!-- Footer / availability -->
+    <article class="resume-card resume-section" style="text-align:center; padding: 40px;">
+      <p style="font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 22px; color: var(--ink);">
+        &ldquo;Open to AI/ML, Full-Stack, and MLOps internships.&rdquo;
+      </p>
+      <p style="font-family: var(--font-mono); font-size: 12px; color: var(--pencil); margin-top: 10px; letter-spacing: 0.06em;">
+        Available immediately &middot; <a href="mailto:Karunya.muddana@outlook.com" style="border-bottom: 1px solid var(--ink); padding-bottom:1px;">Karunya.muddana@outlook.com</a>
+      </p>
+    </article>
+
+  </div>
+</main>
+
+<script src="rough-init.js"></script>
+<script src="portfolio.js"></script>
+</body>
+</html>

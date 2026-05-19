@@ -1,0 +1,323 @@
+/* ============================================================
+   CHAT — Notebook page, Tom Riddle diary effect
+   ============================================================ */
+
+.chat-page {
+  min-height: 100vh;
+  padding: 110px 24px 60px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  z-index: 10;
+}
+
+.notebook {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  background: #F5F1E6;
+  border-radius: 4px;
+  box-shadow:
+    0 30px 60px -30px rgba(40,30,15,0.45),
+    0 12px 24px -12px rgba(40,30,15,0.20);
+  overflow: hidden;
+}
+
+/* Decorative left binding — punched holes + faint shadow */
+.notebook::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 42px;
+  background:
+    linear-gradient(to right, rgba(40,30,15,0.10) 0, rgba(40,30,15,0.04) 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.notebook .holes {
+  position: absolute;
+  top: 60px; bottom: 60px; left: 18px;
+  width: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 3;
+}
+.notebook .holes::before,
+.notebook .holes::after,
+.notebook .holes .mid {
+  content: '';
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #2a2a2a 0%, #0a0a0a 60%, #050505 100%);
+  box-shadow:
+    inset 0 1.5px 2px rgba(0,0,0,0.5),
+    inset 0 -1px 1px rgba(255,255,255,0.04),
+    0 1px 2px rgba(0,0,0,0.35);
+}
+
+/* Inner page area — ruled paper */
+.notebook-page {
+  position: relative;
+  padding: 56px 60px 32px 80px;
+  /* Vertical red margin + horizontal ruled lines */
+  background-image:
+    /* red margin line at ~64px from left */
+    linear-gradient(
+      to right,
+      transparent 63px,
+      rgba(196,90,70,0.55) 64px,
+      rgba(196,90,70,0.55) 65px,
+      transparent 66px
+    ),
+    /* faint horizontal rules every 36px */
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 35px,
+      rgba(108,128,170,0.42) 35px,
+      rgba(108,128,170,0.42) 36px
+    );
+  background-position: 0 56px, 0 56px;
+  background-repeat: no-repeat, repeat;
+}
+
+/* Paper grain on the notebook */
+.notebook-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.10 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1;
+}
+.notebook-page > * { position: relative; z-index: 2; }
+
+/* Notebook head */
+.notebook-head {
+  margin-bottom: 24px;
+  /* sit above first ruled line */
+  padding-bottom: 8px;
+}
+.notebook-head .chapter {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(40,30,15,0.55);
+  margin-bottom: 14px;
+}
+.notebook-head h1 {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1;
+  color: #1a1a1a;
+  letter-spacing: -0.005em;
+  margin-bottom: 6px;
+}
+.notebook-head h1 em {
+  font-family: 'Fraunces', 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+}
+.notebook-head .subhead {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: rgba(40,30,15,0.6);
+  line-height: 1.3;
+}
+
+/* Messages */
+.messages {
+  font-family: 'Caveat', 'Patrick Hand', cursive;
+  font-size: 26px;
+  line-height: 36px;
+  color: #1a2240;
+  letter-spacing: 0.005em;
+  min-height: 280px;
+  padding-top: 8px;
+}
+
+.msg {
+  margin: 0 0 36px 0;
+  padding: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.msg .speaker {
+  display: inline;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-right: 10px;
+  vertical-align: 5px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+.msg-user .speaker {
+  color: rgba(40,30,15,0.65);
+  background: rgba(40,30,15,0.06);
+}
+.msg-ai .speaker {
+  color: rgba(20,25,55,0.65);
+  background: rgba(60,75,140,0.10);
+}
+.msg-user .content {
+  font-style: italic;
+  color: #4a4a4a;
+}
+.msg-ai .content {
+  color: #1a2240;
+  font-weight: 500;
+}
+.msg-error .content { color: #884330; }
+
+/* Character ink-appear animation (Tom Riddle effect) */
+.diary-char {
+  display: inline;
+  opacity: 0;
+  filter: blur(2.5px);
+  animation: inkAppear 360ms cubic-bezier(.2,.6,.4,1) forwards;
+}
+@keyframes inkAppear {
+  to { opacity: 1; filter: blur(0); }
+}
+
+/* Writing indicator */
+.msg-writing .content { color: rgba(40,30,15,0.55); font-style: italic; }
+.writing-dots span {
+  display: inline-block;
+  animation: dotPulse 1.4s infinite;
+}
+.writing-dots span:nth-child(2) { animation-delay: 0.18s; }
+.writing-dots span:nth-child(3) { animation-delay: 0.36s; }
+@keyframes dotPulse {
+  0%, 60%, 100% { opacity: 0.2; }
+  30% { opacity: 1; }
+}
+
+/* Suggested prompts (empty state) */
+.suggested {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 36px 0;
+  align-items: center;
+}
+.suggested .hint {
+  width: 100%;
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: rgba(40,30,15,0.55);
+  margin-bottom: 4px;
+}
+.suggest-btn {
+  font-family: 'Caveat', cursive;
+  font-size: 19px;
+  color: #1a2240;
+  background: rgba(255,250,235,0.5);
+  border: 1.5px solid rgba(40,30,15,0.18);
+  padding: 6px 16px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background 180ms, transform 80ms, border-color 180ms;
+}
+.suggest-btn:hover { background: rgba(60,75,140,0.10); border-color: rgba(40,30,15,0.35); }
+.suggest-btn:active { transform: scale(0.97); }
+
+/* Composer (input) */
+.composer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 12px;
+  position: relative;
+}
+.composer::before {
+  content: '✒';
+  position: absolute;
+  left: -28px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-30deg);
+  font-size: 22px;
+  color: rgba(40,30,15,0.45);
+  pointer-events: none;
+}
+.composer input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  line-height: 36px;
+  color: #1a2240;
+  padding: 0;
+  caret-color: #1a2240;
+}
+.composer input::placeholder {
+  color: rgba(40,30,15,0.35);
+  font-style: italic;
+}
+.composer input:disabled { opacity: 0.5; }
+
+.send-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  background: rgba(40,30,15,0.06);
+  border: 1.5px solid rgba(40,30,15,0.20);
+  color: #1a1a1a;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 180ms, transform 80ms;
+}
+.send-btn:hover { background: rgba(40,30,15,0.12); }
+.send-btn:active { transform: scale(0.94); }
+.send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Bottom hint */
+.composer-hint {
+  margin-top: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(40,30,15,0.45);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .chat-page { padding: 90px 12px 40px; }
+  .notebook-page { padding: 44px 24px 28px 56px; }
+  .notebook-page {
+    background-image:
+      linear-gradient(to right, transparent 43px, rgba(196,90,70,0.55) 44px, rgba(196,90,70,0.55) 45px, transparent 46px),
+      repeating-linear-gradient(to bottom, transparent 0, transparent 33px, rgba(108,128,170,0.42) 33px, rgba(108,128,170,0.42) 34px);
+    background-position: 0 44px, 0 44px;
+  }
+  .notebook .holes { left: 10px; top: 50px; bottom: 50px; }
+  .notebook::before { width: 28px; }
+  .notebook-head h1 { font-size: 38px; }
+  .notebook-head .subhead { font-size: 18px; }
+  .messages, .composer input { font-size: 22px; line-height: 34px; }
+  .composer::before { left: -22px; font-size: 18px; }
+  .suggest-btn { font-size: 17px; padding: 5px 12px; }
+}
+
+@media (max-width: 420px) {
+  .notebook-page { padding: 36px 16px 24px 46px; }
+  .notebook-head h1 { font-size: 32px; }
+  .messages, .composer input { font-size: 20px; }
+}

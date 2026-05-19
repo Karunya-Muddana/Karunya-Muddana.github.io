@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ask me anything — Karunya Muddana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,700;1,9..144,800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="chat.css" />
+</head>
+<body>
+
+<!-- Paper texture layers (page-level desk feel) -->
+<div class="paper-base"></div>
+<div class="paper-creases"></div>
+<div class="paper-folds"></div>
+<div class="paper-fibers"></div>
+<div class="paper-grain"></div>
+<div class="paper-vignette"></div>
+
+<div class="cursor-ring"></div>
+<div class="cursor-dot"></div>
+
+<!-- Mobile overlay nav -->
+<div class="mobile-overlay" aria-hidden="true">
+  <a href="index.html#work">Work</a>
+  <a href="about.html">About</a>
+  <a href="resume.html">Resume</a>
+  <a href="chat.html">Chat</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<!-- Top nav -->
+<nav class="nav" aria-label="Primary">
+  <a href="index.html" class="logo">Karunya Muddana</a>
+  <div class="nav-links">
+    <a href="index.html#work">Work</a>
+    <a href="about.html">About</a>
+    <a href="resume.html">Resume</a>
+    <a href="chat.html" class="active">Chat</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <a class="nav-email" href="mailto:Karunya.muddana@outlook.com">Say hello</a>
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main class="chat-page">
+  <article class="notebook">
+    <div class="holes"><span class="mid"></span></div>
+
+    <div class="notebook-page">
+      <header class="notebook-head">
+        <div class="chapter">— in Karunya&rsquo;s own hand —</div>
+        <h1>Ask me <em>anything</em>.</h1>
+        <p class="subhead">I&rsquo;ll write back. The page does the talking &mdash; ink fades in as I think.</p>
+      </header>
+
+      <div class="messages" id="messages">
+        <div class="suggested" id="suggested">
+          <p class="hint">— try asking —</p>
+          <button class="suggest-btn">Tell me about Project Smith</button>
+          <button class="suggest-btn">What&rsquo;s your tech stack?</button>
+          <button class="suggest-btn">What are you working on now?</button>
+          <button class="suggest-btn">Looking for an internship?</button>
+        </div>
+      </div>
+
+      <form class="composer" id="composer" autocomplete="off">
+        <input id="chat-input" placeholder="write your question here&hellip;" maxlength="1000" autocomplete="off" />
+        <button type="submit" class="send-btn" id="send-btn" aria-label="Send">↵</button>
+      </form>
+      <div class="composer-hint">press enter to send · this chat is private &amp; ephemeral</div>
+    </div>
+  </article>
+</main>
+
+<script src="portfolio.js"></script>
+<script src="chat.js"></script>
+</body>
+</html>

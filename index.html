@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Karunya Muddana — Builds things that ship.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,700;1,9..144,800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.min.js"></script>
+</head>
+<body>
+
+<!-- Crumpled paper texture stack -->
+<div class="paper-base"></div>
+<div class="paper-creases"></div>
+<div class="paper-folds"></div>
+<div class="paper-fibers"></div>
+<div class="paper-grain"></div>
+<div class="paper-vignette"></div>
+
+<div class="cursor-ring"></div>
+<div class="cursor-dot"></div>
+
+<!-- Mobile overlay nav -->
+<div class="mobile-overlay" aria-hidden="true">
+  <a href="#work">Work</a>
+  <a href="about.html">About</a>
+  <a href="resume.html">Resume</a>
+  <a href="chat.html">Chat</a>
+  <a href="#writing">Writing</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- Top nav -->
+<nav class="nav" aria-label="Primary">
+  <a href="#top" class="logo">Karunya Muddana</a>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="about.html">About</a>
+    <a href="resume.html">Resume</a>
+    <a href="chat.html">Chat</a>
+    <a href="#writing">Writing</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a class="nav-email" href="mailto:Karunya.muddana@outlook.com">Say hello</a>
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<a id="top"></a>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-inner">
+
+    <div class="hero-top-row">
+      <div class="status-pill" data-rough="pill" data-seed="11" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.6">
+        <span class="dot"></span>
+        Available for internships
+      </div>
+      <div class="hero-aside">
+        <span class="caveat">based in&nbsp;</span>
+        <span class="hero-location">Hyderabad · India</span>
+      </div>
+    </div>
+
+      <!-- doodle: floating squiggle in hero -->
+      <div class="doodle" style="top:14%; right:42%; width:80px; opacity:0.35; transform:rotate(8deg);" aria-hidden="true">
+        <img src="assets/doodles/misc/misc-29.svg" alt="" />
+      </div>
+      <!-- doodle: scribble bottom-left -->
+      <div class="doodle" style="bottom:8%; left:38%; width:60px; opacity:0.4; transform:rotate(-15deg);" aria-hidden="true">
+        <img src="assets/doodles/lines/line-3.svg" alt="" />
+      </div>
+
+      <div class="hero-grid">
+
+      <div class="hero-text">
+        <p class="hero-eyebrow">Karunya Muddana · CS @ GITAM</p>
+        <h1 class="hero-title">
+          <span class="ln">Builds</span>
+          <span class="ln">things <em>that</em></span>
+          <span class="ln">
+            <span class="rough-underline">
+              ship<svg viewBox="0 0 240 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 6 5 C 40 2, 80 9, 120 4 C 160 1, 200 9, 234 4" /><path class="thin" d="M 4 11 C 50 8, 100 12, 150 9 C 190 5, 220 11, 236 8" /></svg>
+            </span>.
+          </span>
+        </h1>
+        <p class="hero-sub">
+          Agent runtimes. ERP systems. Small tools that get used after they ship.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#work">See the work →</a>
+          <a class="btn btn-sketched" data-rough="pill" data-seed="33" data-roughness="2" href="about.html">My story</a>
+        </div>
+      </div>
+
+      <div class="hero-photo-col">
+
+        <!-- left annotation: arrow leads, points toward photo -->
+        <div class="annotation tag-1">
+          <svg class="arrow" viewBox="0 0 64 36" aria-hidden="true">
+            <path d="M 4 22 C 18 8, 36 4, 58 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M 50 9 L 58 16 L 50 23" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <span>that&rsquo;s me</span>
+        </div>
+
+        <!-- Polaroid -->
+        <div class="polaroid" data-tilt>
+          <span class="tape tape-tl"></span>
+          <span class="tape tape-br"></span>
+          <div class="polaroid-inner">
+            <img src="assets/karunya.png" alt="Karunya Muddana" loading="eager" />
+          </div>
+          <div class="polaroid-caption">Hyderabad &middot; &apos;26</div>
+        </div>
+
+        <!-- right annotation -->
+        <div class="annotation tag-2">
+          <span>maker of things ↓</span>
+        </div>
+
+        <!-- floating pencil plane -->
+        <img src="assets/plane.png" class="hero-floating-plane" alt="" aria-hidden="true" />
+      </div>
+
+    </div>
+
+    <div class="hero-bottom-strip">
+      <div class="hero-meta-row">
+        <span>First-year CS</span>
+        <span class="dot-sep"></span>
+        <span>GITAM</span>
+        <span class="dot-sep"></span>
+        <span>Builder · Researcher</span>
+      </div>
+      <div class="scroll-cue">
+        <span>Scroll</span>
+        <span class="line"></span>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- ============ MARQUEE STRIP ============ -->
+<div class="work-strip" aria-hidden="true">
+  <div class="work-strip-track">
+    <span>Agent runtimes</span>
+    <span>ERP systems</span>
+    <span>Computer vision</span>
+    <span>RAG &amp; memory</span>
+    <span>Multi-agent pipelines</span>
+    <span>Data tooling</span>
+    <span>Full-stack</span>
+    <span>Agent runtimes</span>
+    <span>ERP systems</span>
+    <span>Computer vision</span>
+    <span>RAG &amp; memory</span>
+    <span>Multi-agent pipelines</span>
+    <span>Data tooling</span>
+    <span>Full-stack</span>
+  </div>
+</div>
+
+<!-- ============ ABOUT SNAPSHOT ============ -->
+<section class="about-snap">
+  <div class="container reveal">
+    <div class="left">
+      <div class="eyebrow"><span class="bar"></span>About</div>
+      <h2>A short version,<br/>in case you don&rsquo;t<br/>have time for the long one.</h2>
+      <div class="hand-note">↳ ten seconds, promise.</div>
+    </div>
+    <div class="right">
+      <p>
+        I picked up Python the year my school exams ended &mdash; mostly out of curiosity, partly because nobody was telling me what to do next.
+      </p>
+      <p>
+        A year later, the small projects had turned into things real people use: a CBSE result analyzer running in two schools, an ERP system in production at a real client, and an open-source agent runtime now on its fourth version.
+      </p>
+      <a class="read-more" href="about.html">Read the longer story <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS STRIP ============ -->
+<section class="stats-strip">
+  <div class="container reveal">
+    <div class="label-row">
+      <h3>By the numbers, so far.</h3>
+      <span class="caveat">~ small wins ~</span>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="num">8.9<small>/10</small></div>
+        <div class="label">CGPA</div>
+        <div class="desc">BTech CS &middot; GITAM</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">200K<small>+</small></div>
+        <div class="label">Lines of code</div>
+        <div class="desc">across all repos</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">432<small>+</small></div>
+        <div class="label">Commits</div>
+        <div class="desc">one keystroke at a time</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">25<small>+</small></div>
+        <div class="label">Repositories</div>
+        <div class="desc">agents, ERPs, ML</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">15<small>+</small></div>
+        <div class="label">Agent tools shipped</div>
+        <div class="desc">in Smith v4.0</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">600<small>+</small></div>
+        <div class="label">Students helped</div>
+        <div class="desc">across 2 schools</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">1</div>
+        <div class="label">ERP in production</div>
+        <div class="desc">at a real client</div>
+      </div>
+      <div class="stat-card stat-tail">
+        <div class="tail-caveat">&hellip;and counting.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="work" class="section-pad">
+  <div class="container">
+    <div class="projects-head reveal">
+      <div>
+        <div class="eyebrow"><span class="bar"></span>Selected work</div>
+        <h2 class="section-title">Things that <em>shipped</em>.</h2>
+      </div>
+      <a class="btn btn-sketched" data-rough="pill" data-seed="91" data-roughness="2" href="#">View all →</a>
+    </div>
+
+    <!-- doodle near projects -->
+    <div class="doodle" style="top:-30px; left:42%; width:90px; opacity:0.45; transform:rotate(12deg);" aria-hidden="true">
+      <img src="assets/doodles/arrows/arrow-14.svg" alt="" />
+    </div>
+
+    <div class="bento reveal">
+
+      <article class="card span-3 row-2 tall featured" data-rough="box" data-seed="3" data-roughness="2" data-bowing="1.5" data-stroke-width="1.5">
+        <span class="card-tape"></span>
+        <div class="cat">Agent runtime · Open source</div>
+        <h3>Smith v4.0</h3>
+        <p>A runtime that compiles natural language into a deterministic execution graph. No improvisation, no hidden loops. Voice mode, fabrication guard, and long-term memory with RAG. Four versions in four months.</p>
+        <div class="impact"><span class="num">15</span> tools · 4 versions · 4 months</div>
+        <div class="pills">
+          <span class="pill">Python</span>
+          <span class="pill">FastAPI</span>
+          <span class="pill">LangChain</span>
+          <span class="pill">RAG</span>
+          <span class="pill">DAG runtime</span>
+          <span class="pill">Ollama</span>
+        </div>
+        <div class="links">
+          <a href="#" data-rough="circle" data-seed="71" data-roughness="2.2" aria-label="GitHub">↗</a>
+          <a href="#" data-rough="circle" data-seed="72" data-roughness="2.2" aria-label="Live">●</a>
+        </div>
+      </article>
+
+      <article class="card span-3 row-2 tall featured" data-rough="box" data-seed="9" data-roughness="2" data-bowing="1.5" data-stroke-width="1.5">
+        <span class="card-tape"></span>
+        <div class="cat">Production ERP · Real client</div>
+        <h3>K-ERP</h3>
+        <p>A full custom warehouse ERP &mdash; procurement, QC pipelines, inventory, reports &mdash; designed for and deployed at a real company. Used daily.</p>
+        <div class="impact"><span class="num">1</span> client &middot; in production</div>
+        <div class="pills">
+          <span class="pill">Next.js</span>
+          <span class="pill">FastAPI</span>
+          <span class="pill">PostgreSQL</span>
+          <span class="pill">Supabase</span>
+          <span class="pill">Tailwind</span>
+        </div>
+        <div class="links">
+          <a href="#" data-rough="circle" data-seed="73" data-roughness="2.2" aria-label="GitHub">↗</a>
+        </div>
+      </article>
+
+      <article class="card span-3 featured" data-rough="box" data-seed="15" data-roughness="2" data-bowing="1.5" data-stroke-width="1.5">
+        <span class="card-tape"></span>
+        <div class="cat">Data tool</div>
+        <h3>CBSE Gazette Analyzer</h3>
+        <p>Turns the board&rsquo;s messy text gazette files into clean Excel and PDF analytics for teachers.</p>
+        <div class="impact"><span class="num">600</span> students &middot; 2 schools</div>
+        <div class="pills">
+          <span class="pill">Python</span>
+          <span class="pill">Pandas</span>
+          <span class="pill">Streamlit</span>
+        </div>
+        <div class="links">
+          <a href="#" data-rough="circle" data-seed="74" data-roughness="2.2" aria-label="GitHub">↗</a>
+        </div>
+      </article>
+
+      <article class="card span-3 small" data-rough="box" data-seed="21" data-roughness="2.2" data-bowing="1.3" data-stroke-width="1.3">
+        <div class="cat">Multi-agent</div>
+        <h3>Researcher · Writer · Critic</h3>
+        <p>A three-agent pipeline that researches, drafts, and critiques its own output until it&rsquo;s good enough to ship.</p>
+        <div class="pills">
+          <span class="pill">Python</span>
+          <span class="pill">LangChain</span>
+          <span class="pill">LLMs</span>
+        </div>
+      </article>
+
+      <article class="card span-2 small" data-rough="box" data-seed="27" data-roughness="2.2" data-stroke-width="1.3">
+        <div class="cat">Side project</div>
+        <h3>Roastly</h3>
+        <p>An AI that roasts your GitHub profile. A weekend build.</p>
+        <div class="pills">
+          <span class="pill">Next.js</span>
+          <span class="pill">LLMs</span>
+        </div>
+      </article>
+
+      <article class="card span-2 small" data-rough="box" data-seed="34" data-roughness="2.2" data-stroke-width="1.3">
+        <div class="cat">Full-stack</div>
+        <h3>Library Management</h3>
+        <p>A small but complete library system with circulation, fines, and overdue reminders.</p>
+        <div class="pills">
+          <span class="pill">React</span>
+          <span class="pill">Firebase</span>
+        </div>
+      </article>
+
+      <article class="card span-2 small" data-rough="box" data-seed="44" data-roughness="2.2" data-stroke-width="1.3">
+        <div class="cat">Machine learning</div>
+        <h3>Ames Housing</h3>
+        <p>Gradient-boosted regression on the Ames dataset. Engineered features, cross-validated.</p>
+        <div class="pills">
+          <span class="pill">XGBoost</span>
+          <span class="pill">scikit-learn</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="skills-wrap-v2">
+  <!-- doodle decorations -->
+  <div class="doodle" style="top:18%; left:6%; width:120px; opacity:0.22; transform:rotate(-20deg);" aria-hidden="true">
+    <img src="assets/doodles/circles/circle-9.svg" alt="" />
+  </div>
+  <div class="doodle" style="bottom:14%; right:6%; width:140px; opacity:0.22; transform:rotate(18deg);" aria-hidden="true">
+    <img src="assets/doodles/misc/misc-22.svg" alt="" />
+  </div>
+  <div class="container">
+    <div class="skills-head reveal">
+      <div class="eyebrow"><span class="bar"></span>The toolkit</div>
+      <h2 class="section-title">How I build.</h2>
+      <div class="sub">~ a working list, not a brag list ~</div>
+    </div>
+    <div class="skills-cats">
+
+      <div class="skill-cat reveal">
+        <h4>AI / ML</h4>
+        <span class="cat-rule"></span>
+        <div class="list">
+          Python <span class="sep">·</span> PyTorch <span class="sep">·</span> Transformers <span class="sep">·</span> LangChain <span class="sep">·</span> LlamaIndex <span class="sep">·</span> RAG <span class="sep">·</span> Fine-tuning <span class="sep">·</span> scikit-learn <span class="sep">·</span> XGBoost <span class="sep">·</span> LightGBM <span class="sep">·</span> FAISS <span class="sep">·</span> Chroma <span class="sep">·</span> Whisper <span class="sep">·</span> Vertex AI <span class="sep">·</span> OpenCV <span class="sep">·</span> YOLO
+        </div>
+      </div>
+
+      <div class="skill-cat reveal">
+        <h4>Agentic &amp; LLM Ops</h4>
+        <span class="cat-rule"></span>
+        <div class="list">
+          LangSmith <span class="sep">·</span> Langfuse <span class="sep">·</span> W&amp;B <span class="sep">·</span> MLflow <span class="sep">·</span> DSPy <span class="sep">·</span> CrewAI <span class="sep">·</span> OpenRouter <span class="sep">·</span> Ollama <span class="sep">·</span> Prompt Engineering <span class="sep">·</span> LLM Evals <span class="sep">·</span> DAG planning <span class="sep">·</span> Fabrication guard <span class="sep">·</span> Long-term memory
+        </div>
+      </div>
+
+      <div class="skill-cat reveal">
+        <h4>Backend</h4>
+        <span class="cat-rule"></span>
+        <div class="list">
+          FastAPI <span class="sep">·</span> Flask <span class="sep">·</span> Node.js <span class="sep">·</span> PostgreSQL <span class="sep">·</span> MongoDB <span class="sep">·</span> Redis <span class="sep">·</span> Supabase <span class="sep">·</span> Firebase <span class="sep">·</span> REST APIs <span class="sep">·</span> WebSockets <span class="sep">·</span> Celery <span class="sep">·</span> GraphQL <span class="sep">·</span> JWT / OAuth2
+        </div>
+      </div>
+
+      <div class="skill-cat reveal">
+        <h4>Frontend</h4>
+        <span class="cat-rule"></span>
+        <div class="list">
+          React <span class="sep">·</span> Next.js <span class="sep">·</span> TypeScript <span class="sep">·</span> TailwindCSS <span class="sep">·</span> Framer Motion <span class="sep">·</span> Streamlit <span class="sep">·</span> Three.js <span class="sep">·</span> Shadcn/ui
+        </div>
+      </div>
+
+      <div class="skill-cat reveal">
+        <h4>Cloud &amp; MLOps</h4>
+        <span class="cat-rule"></span>
+        <div class="list">
+          Google Cloud <span class="sep">·</span> Vertex AI <span class="sep">·</span> Docker <span class="sep">·</span> Kubernetes <span class="sep">·</span> GitHub Actions <span class="sep">·</span> Vercel <span class="sep">·</span> Render <span class="sep">·</span> DVC <span class="sep">·</span> Airflow <span class="sep">·</span> Terraform
+        </div>
+      </div>
+
+      <div class="skill-cat reveal">
+        <h4>Tools &amp; Ops</h4>
+        <span class="cat-rule"></span>
+        <div class="list">
+          Git <span class="sep">·</span> Pandas <span class="sep">·</span> NumPy <span class="sep">·</span> Ruff <span class="sep">·</span> Pytest <span class="sep">·</span> Pydantic <span class="sep">·</span> Postman <span class="sep">·</span> Linux <span class="sep">·</span> OpenTelemetry <span class="sep">·</span> openpyxl <span class="sep">·</span> Jupyter
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ WRITING ============ -->
+<section id="writing" class="section-pad">
+  <div class="container">
+    <div class="writing-head reveal">
+      <div class="eyebrow"><span class="bar"></span>Field notes</div>
+      <h2 class="section-title">A few things I&rsquo;ve written.</h2>
+    </div>
+    <div class="writing-grid reveal">
+      <article class="post-card" data-rough="box" data-seed="51" data-roughness="2.2" data-stroke-width="1.3">
+        <div class="cat">Agents · May 2026</div>
+        <h3>&ldquo;An agent that refuses to lie.&rdquo;</h3>
+        <p>The fabrication guard inside Smith v4.0 &mdash; what it does, why it matters, and what it taught me about systems you can actually trust.</p>
+        <a class="read" href="#">Read on LinkedIn →</a>
+      </article>
+      <article class="post-card" data-rough="box" data-seed="52" data-roughness="2.2" data-stroke-width="1.3">
+        <div class="cat">Tooling · Mar 2026</div>
+        <h3>&ldquo;A weekend tool, 600 students.&rdquo;</h3>
+        <p>The CBSE gazette analyzer started as a one-weekend favour. Then teachers at two schools used it on the year&rsquo;s board results.</p>
+        <a class="read" href="#">Read on LinkedIn →</a>
+      </article>
+      <article class="post-card" data-rough="box" data-seed="53" data-roughness="2.2" data-stroke-width="1.3">
+        <div class="cat">Full-stack · Feb 2026</div>
+        <h3>&ldquo;A library system, end to end.&rdquo;</h3>
+        <p>Notes from building a small but complete app &mdash; schema, auth, circulation, fines, reminders.</p>
+        <a class="read" href="#">Read on LinkedIn →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <h2>Let&rsquo;s build <span class="underline-on-dark"><em>something</em></span>.</h2>
+        <p class="lede">Open to internships, collaborations, and interesting problems. Quickest replies over email.</p>
+        <div class="contact-links">
+          <a href="mailto:Karunya.muddana@outlook.com">Karunya.muddana@outlook.com</a>
+          <a href="#">linkedin.com/in/karunya-muddana</a>
+          <a href="#">github.com/Karunya-Muddana</a>
+        </div>
+      </div>
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="cf-email">Email</label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="cf-msg">Message</label>
+          <textarea id="cf-msg" name="message" rows="4" required></textarea>
+        </div>
+        <!-- Honeypot for bots -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        <button type="submit">Send message →</button>
+        <div class="form-status" id="form-status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  © 2026 Karunya Muddana &nbsp;·&nbsp; Hyderabad &nbsp;·&nbsp; Built by hand
+</footer>
+
+<script src="rough-init.js"></script>
+<script src="portfolio.js"></script>
+</body>
+</html>

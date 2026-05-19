@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(\\(Get-Content \"C:\\\\Users\\\\karun\\\\Downloads\\\\Portfolio Website\\\\styles.css\" | Measure-Object -Line\\).Lines)",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\"C:\\\\Users\\\\karun\\\\Downloads\\\\Portfolio Website\\\\assets\\\\plane.png\"\\); \"Width: $\\($img.Width\\)px, Height: $\\($img.Height\\)px\"; $img.Dispose\\(\\))",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\"C:\\\\Users\\\\karun\\\\Downloads\\\\Portfolio Website\\\\assets\\\\karunya.png\"\\); \"Width: $\\($img.Width\\)px, Height: $\\($img.Height\\)px\"; $img.Dispose\\(\\))"
+    ]
+  }
+}

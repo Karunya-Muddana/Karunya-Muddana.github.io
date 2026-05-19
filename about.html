@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Karunya Muddana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,700;1,9..144,800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.min.js"></script>
+</head>
+<body>
+
+<!-- Crumpled paper texture stack -->
+<div class="paper-base"></div>
+<div class="paper-creases"></div>
+<div class="paper-folds"></div>
+<div class="paper-fibers"></div>
+<div class="paper-grain"></div>
+<div class="paper-vignette"></div>
+
+<div class="cursor-ring"></div>
+<div class="cursor-dot"></div>
+
+<nav class="about-nav" aria-label="About navigation">
+  <a href="index.html" class="back">← Back to portfolio</a>
+  <a href="resume.html" class="back" style="border-bottom: 1px solid var(--ink); padding-bottom: 2px;">View resume →</a>
+</nav>
+
+<!-- Right edge: vertical paper plane track -->
+<div class="plane-track" aria-hidden="true">
+  <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path id="plane-path" d="" />
+  </svg>
+  <div class="plane-img">
+    <img src="assets/plane.png" alt="" />
+  </div>
+</div>
+
+<div class="about-progress" aria-hidden="true"></div>
+
+<main class="about-page">
+  <div class="about-col">
+
+    <section class="about-intro reveal">
+      <div class="eyebrow"><span class="bar"></span>About · A short story</div>
+      <h1 class="about-quote-hero">
+        &ldquo;I left school thinking marks
+        were everything I&rsquo;d need.&rdquo;
+      </h1>
+      <p>
+        Two years of cramming. Optimizing for grades. Doing what was expected. The system rewarded it, so I did it. Then the exams ended &mdash; and for the first time, nobody was telling me what to learn next.
+      </p>
+      <p>That gap is where this story starts.</p>
+    </section>
+
+    <div class="diamond-break">◆ ◆ ◆</div>
+
+    <section class="about-section reveal">
+      <div class="section-label"><span class="num">02</span> The paper that changed everything</div>
+      <p>
+        Python came first. Calculators, simple scripts &mdash; the satisfaction of understanding what was underneath rather than just using the surface. Then DBMS. Then data structures. The more I understood, the more I needed to understand.
+      </p>
+      <p>Then I found <em>Attention Is All You Need.</em></p>
+      <p>
+        I didn&rsquo;t fully understand it the first time. I read it again. The math confused me &mdash; how do matrices, the same ones from my textbook, produce something that feels like human thought? That question didn&rsquo;t have a clean answer. It still doesn&rsquo;t, really.
+      </p>
+      <p>But it quietly changed how I spent every hour after that.</p>
+    </section>
+
+    <div class="diamond-break">◆ ◆ ◆</div>
+
+    <section class="about-section reveal">
+      <div class="section-label"><span class="num">03</span> The first time it felt like engineering</div>
+      <p>
+        My first real project was a license plate detector built with OpenCV. Not because someone assigned it &mdash; because I wanted to see if I could. It wasn&rsquo;t polished. The edge cases were everywhere. But finishing it felt different from a good grade on an exam.
+      </p>
+      <p>Something had actually worked, in the world, because of decisions I made.</p>
+      <p class="about-beat">&ldquo;That feeling became the thing I started chasing.&rdquo;</p>
+    </section>
+
+    <div class="diamond-break">◆ ◆ ◆</div>
+
+    <section class="about-section reveal">
+      <div class="section-label"><span class="num">04</span> When code met real life</div>
+      <p>
+        Around this time, my mom started bringing me problems. Not academic ones. Real ones.
+      </p>
+      <p>
+        Could I build something that automates report card creation? Something a teacher could use with a click, without needing to understand how it worked?
+      </p>
+      <p>
+        Then: the CBSE gazette analyzer. Every exam season, the board releases results as raw text files &mdash; inconsistent, messy, full of subject-code variations that change year to year. The tool parsed all of it, ran the analytics, and produced clean Excel and PDF reports automatically.
+      </p>
+      <p>
+        What looked simple from the outside took real work to get right. When teachers at two schools used it during their Class X final exams &mdash; analyzing results for <span class="underline-soft">600 students combined</span> &mdash; and reached out to say it saved them hours, that landed differently than any mark ever had.
+      </p>
+    </section>
+
+    <div class="diamond-break">◆ ◆ ◆</div>
+
+    <section class="about-section reveal">
+      <div class="section-label"><span class="num">05</span> Agents, runtimes, and unsolved problems</div>
+      <p>
+        From there the projects kept coming &mdash; computer vision, full-stack systems, ML pipelines, frontend design, small physics simulations. Each domain left a question that the next project tried to answer.
+      </p>
+      <p>Agents were the question that stuck longest.</p>
+      <p>
+        At first they seemed like sorcery. Systems that figure things out on their own. After building five or six of them, the magic wore off and the engineering became visible &mdash; messy, fascinating, largely unsolved engineering.
+      </p>
+      <p>
+        The frustration of watching agents break every time a new tool was added became the motivation for Smith. A runtime that compiles natural language into a deterministic execution graph. No improvisation. No hidden loops. No guessing what the agent decided to do.
+      </p>
+      <p>
+        Four months. Four major versions. Voice mode, long-term memory, a fabrication guard that prevents the system from making things up. Fifteen tools. And an architecture that&rsquo;s still evolving.
+      </p>
+    </section>
+
+    <div class="diamond-break">◆ ◆ ◆</div>
+
+    <section class="about-close reveal">
+      <div class="close-peep-wrap">
+        <img src="assets/peep.png" alt="" aria-hidden="true" class="close-peep" />
+      </div>
+      <h2 class="about-quote-hero">
+        &ldquo;Somewhere along the way, the belief<br />
+        that marks were everything quietly dissolved.&rdquo;
+      </h2>
+      <p>
+        Not because grades stopped mattering. But because something replaced them &mdash; the specific satisfaction of building something that works for someone who needed it.
+      </p>
+      <p>That&rsquo;s what drives the next project. And the one after that.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="index.html#work">See selected work</a>
+        <a class="btn btn-sketched" data-rough="pill" data-seed="55" data-roughness="2" href="index.html#contact">Get in touch</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script src="rough-init.js"></script>
+<script src="portfolio.js"></script>
+</body>
+</html>

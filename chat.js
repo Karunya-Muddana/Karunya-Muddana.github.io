@@ -135,8 +135,12 @@
     block.appendChild(content);
     messagesEl.appendChild(block);
 
-    // Diary effect — characters appear one-by-one with ink-bleed.
-    // Words are wrapped in inline-block to prevent mid-word breaks (e.g. "ML-OPS").
+    // Diary effect — ink-on-paper, one character at a time.
+    // (charIndex replaces the old `total` variable)
+    // Words are wrapped in an inline-block container so the browser never
+    // breaks mid-word (e.g. "ML-OPS"). Each letter gets a tiny random
+    // rotation so it looks genuinely hand-written.
+    content.classList.add('writing');
     let charIndex = 0;
     const tokens = text.split(/(\n| +)/);
     tokens.forEach(token => {
@@ -158,8 +162,10 @@
         wordEl.style.cssText = 'display:inline-block;white-space:nowrap;';
         for (let i = 0; i < token.length; i++) {
           const ch = document.createElement('span');
-          ch.className = 'diary-char';
+          ch.className = 'diary-char word-char';
           ch.textContent = token[i];
+          // subtle random per-character tilt — looks hand-written, not typed
+          ch.style.setProperty('--r', (Math.random() * 4 - 2).toFixed(2) + 'deg');
           ch.style.animationDelay = (charIndex * CHAR_DELAY_MS) + 'ms';
           wordEl.appendChild(ch);
           charIndex++;
@@ -168,8 +174,11 @@
       }
     });
 
+    // Remove the quill cursor once the last character has finished animating
+    const totalMs = charIndex * CHAR_DELAY_MS;
+    setTimeout(() => content.classList.remove('writing'), totalMs + 560);
+
     // Scroll periodically as it fills
-    const totalMs = total * CHAR_DELAY_MS;
     let elapsed = 0;
     const scrollInterval = setInterval(() => {
       scrollToBottom();

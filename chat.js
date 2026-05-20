@@ -135,18 +135,38 @@
     block.appendChild(content);
     messagesEl.appendChild(block);
 
-    // Diary effect — characters appear one-by-one with ink-bleed
-    let total = text.length;
-    for (let i = 0; i < total; i++) {
-      const ch = document.createElement('span');
-      ch.className = 'diary-char';
-      // preserve whitespace correctly
-      if (text[i] === ' ') ch.innerHTML = '&nbsp;';
-      else if (text[i] === '\n') ch.innerHTML = '<br>';
-      else ch.textContent = text[i];
-      ch.style.animationDelay = (i * CHAR_DELAY_MS) + 'ms';
-      content.appendChild(ch);
-    }
+    // Diary effect — characters appear one-by-one with ink-bleed.
+    // Words are wrapped in inline-block to prevent mid-word breaks (e.g. "ML-OPS").
+    let charIndex = 0;
+    const tokens = text.split(/(\n| +)/);
+    tokens.forEach(token => {
+      if (!token) return;
+      if (token === '\n') {
+        content.appendChild(document.createElement('br'));
+        charIndex++;
+      } else if (/^ +$/.test(token)) {
+        for (let i = 0; i < token.length; i++) {
+          const sp = document.createElement('span');
+          sp.className = 'diary-char';
+          sp.textContent = ' ';
+          sp.style.animationDelay = (charIndex * CHAR_DELAY_MS) + 'ms';
+          content.appendChild(sp);
+          charIndex++;
+        }
+      } else {
+        const wordEl = document.createElement('span');
+        wordEl.style.cssText = 'display:inline-block;white-space:nowrap;';
+        for (let i = 0; i < token.length; i++) {
+          const ch = document.createElement('span');
+          ch.className = 'diary-char';
+          ch.textContent = token[i];
+          ch.style.animationDelay = (charIndex * CHAR_DELAY_MS) + 'ms';
+          wordEl.appendChild(ch);
+          charIndex++;
+        }
+        content.appendChild(wordEl);
+      }
+    });
 
     // Scroll periodically as it fills
     const totalMs = total * CHAR_DELAY_MS;

@@ -11,12 +11,12 @@
 
   <meta
     name="description"
-    content="Karunya Muddana is an AI/ML engineer and full-stack developer building agent runtimes, ERP systems, RAG pipelines, and production-grade software with Python, FastAPI, Next.js, and LangChain."
+    content="Karunya Muddana is an AI/ML engineer and full-stack developer building agent runtimes, ERP systems, MCP servers, and production-grade software with Python, FastAPI, and the Anthropic API."
   />
 
   <meta
     name="keywords"
-    content="Karunya Muddana, AI Engineer, MLOps, Full Stack Developer, LangChain, RAG, FastAPI, Python Developer, Next.js Developer, Hyderabad, AI Portfolio, Machine Learning Engineer"
+    content="Karunya Muddana, AI Engineer, MLOps, Full Stack Developer, MCP, RAG, FastAPI, Python Developer, Hyderabad, AI Portfolio, Machine Learning Engineer"
   />
 
   <meta name="author" content="Karunya Muddana" />
@@ -39,7 +39,7 @@
 
   <meta
     property="og:description"
-    content="Building agent runtimes, ERP systems, RAG pipelines, multi-agent systems, and production-grade AI applications."
+    content="Building agent runtimes, ERP systems, MCP servers, and production-grade AI applications."
   />
 
   <meta
@@ -60,7 +60,7 @@
 
   <meta
     name="twitter:description"
-    content="AI/ML, MLOps, agent runtimes, ERP systems, RAG pipelines, and full-stack engineering."
+    content="AI/ML, MLOps, agent runtimes, ERP systems, MCP servers, and full-stack engineering."
   />
 
   <meta
@@ -83,6 +83,118 @@
   <!-- MAIN CSS -->
   <link rel="stylesheet" href="styles.css" />
 
+  <!-- STACK SECTION (scoped styles for the new sticker stack) -->
+  <style>
+    .stack-wrap{
+      position:relative;
+      padding:110px 0 120px;
+      overflow:hidden;
+    }
+    .stack-head{
+      text-align:center;
+      margin-bottom:64px;
+    }
+    .stack-head .eyebrow{justify-content:center;}
+    .stack-head .sub{
+      font-family:'Caveat',cursive;
+      font-size:1.25rem;
+      color:#8a7f6b;
+      margin-top:10px;
+    }
+    .stack-grid{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:34px 30px;
+      max-width:860px;
+      margin:0 auto;
+    }
+    .stack-card{
+      --r:0deg;
+      position:relative;
+      width:152px;
+      padding:30px 16px 18px;
+      background:#fffdf7;
+      text-align:center;
+      transform:rotate(var(--r));
+      box-shadow:0 6px 18px rgba(43,38,32,.10);
+      transition:transform .18s ease-out, box-shadow .18s ease-out;
+    }
+    .stack-card:hover{
+      transform:rotate(0deg) translateY(-6px);
+      box-shadow:0 12px 26px rgba(43,38,32,.16);
+    }
+    .stack-card:nth-child(1){--r:-2.4deg;}
+    .stack-card:nth-child(2){--r:1.8deg;}
+    .stack-card:nth-child(3){--r:-1.2deg;}
+    .stack-card:nth-child(4){--r:2.2deg;}
+    .stack-card:nth-child(5){--r:-1.8deg;}
+    .stack-tape{
+      position:absolute;
+      top:-12px;
+      left:50%;
+      width:74px;
+      height:24px;
+      transform:translateX(-50%) rotate(-3deg);
+      background:rgba(233,222,196,.85);
+      box-shadow:0 1px 3px rgba(43,38,32,.12);
+      opacity:.9;
+    }
+    .stack-card:nth-child(even) .stack-tape{transform:translateX(-50%) rotate(4deg);}
+    .stack-card img{
+      width:58px;
+      height:58px;
+      display:block;
+      margin:0 auto;
+      filter:drop-shadow(0 2px 3px rgba(43,38,32,.12));
+    }
+    .stack-name{
+      font-family:'JetBrains Mono',monospace;
+      font-size:.92rem;
+      font-weight:500;
+      color:#2b2620;
+      margin-top:14px;
+      letter-spacing:.02em;
+    }
+    .stack-note{
+      font-family:'Caveat',cursive;
+      font-size:1.05rem;
+      color:#8a7f6b;
+      margin-top:2px;
+      line-height:1.1;
+    }
+    .stack-secondary{
+      max-width:720px;
+      margin:56px auto 0;
+      text-align:center;
+    }
+    .stack-secondary .lbl{
+      font-family:'Caveat',cursive;
+      font-size:1.3rem;
+      color:#8a7f6b;
+      display:block;
+      margin-bottom:12px;
+    }
+    .stack-secondary .items{
+      font-family:'JetBrains Mono',monospace;
+      font-size:.85rem;
+      line-height:2.1;
+      color:#4a4438;
+    }
+    .stack-secondary .items .sep{
+      color:#b7ab92;
+      margin:0 .45em;
+    }
+    @media (max-width:640px){
+      .stack-grid{gap:26px 18px;}
+      .stack-card{width:132px;padding:26px 12px 16px;}
+      .stack-card img{width:48px;height:48px;}
+    }
+    @media (prefers-reduced-motion:reduce){
+      .stack-card{transition:none;}
+    }
+  </style>
+
   <!-- STRUCTURED DATA -->
   <script type="application/ld+json">
   {
@@ -104,13 +216,15 @@
       "Artificial Intelligence",
       "Machine Learning",
       "MLOps",
-      "LangChain",
+      "Model Context Protocol",
       "RAG",
       "FastAPI",
-      "Next.js",
       "Python",
-      "Agentic AI",
-      "Computer Vision"
+      "Java",
+      "C",
+      "C++",
+      "SQL",
+      "Agentic AI"
     ],
     "address": {
       "@type": "PostalAddress",
@@ -222,7 +336,7 @@
           </span>
         </h1>
         <p class="hero-sub">
-          Agent runtimes. ERP systems. Small tools that get used after they ship.
+          Agent runtimes. ERP systems. MCP servers. Small tools that get used after they ship.
         </p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#work">See the work →</a>
@@ -284,14 +398,14 @@
   <div class="work-strip-track">
     <span>Agent runtimes</span>
     <span>ERP systems</span>
-    <span>Computer vision</span>
+    <span>MCP servers</span>
     <span>RAG &amp; memory</span>
     <span>Multi-agent pipelines</span>
     <span>Data tooling</span>
     <span>Full-stack</span>
     <span>Agent runtimes</span>
     <span>ERP systems</span>
-    <span>Computer vision</span>
+    <span>MCP servers</span>
     <span>RAG &amp; memory</span>
     <span>Multi-agent pipelines</span>
     <span>Data tooling</span>
@@ -312,7 +426,7 @@
         I picked up Python the year my school exams ended &mdash; mostly out of curiosity, partly because nobody was telling me what to do next.
       </p>
       <p>
-        A year later, the small projects had turned into things real people use: a CBSE result analyzer running in two schools, an ERP system in production at a real client, and an open-source agent runtime now on its fourth version.
+        A year later, the small projects had turned into things real people use: a CBSE result analyzer running in two schools, an ERP system in production at a real client, and open-source MCP servers published on PyPI.
       </p>
       <a class="read-more" href="about.html">Read the longer story <span>→</span></a>
     </div>
@@ -328,7 +442,7 @@
     </div>
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="num">9.2<small>/10</small></div>
+        <div class="num">9.4<small>/10</small></div>
         <div class="label">CGPA</div>
         <div class="desc">BTech CS &middot; GITAM</div>
       </div>
@@ -348,9 +462,9 @@
         <div class="desc">agents, ERPs, ML</div>
       </div>
       <div class="stat-card">
-        <div class="num">15<small>+</small></div>
-        <div class="label">Agent tools shipped</div>
-        <div class="desc">in Smith v4.0</div>
+        <div class="num">2</div>
+        <div class="label">MCP servers on PyPI</div>
+        <div class="desc">xlenz &amp; engram</div>
       </div>
       <div class="stat-card">
         <div class="num">600<small>+</small></div>
@@ -389,73 +503,101 @@
 
       <article class="card span-3 row-2 tall featured" data-rough="box" data-seed="3" data-roughness="2" data-bowing="1.5" data-stroke-width="1.5">
         <span class="card-tape"></span>
-        <div class="cat">Agent runtime · Open source</div>
-        <h3>Smith v4.0</h3>
-        <p>A runtime that compiles natural language into a deterministic execution graph. No improvisation, no hidden loops. Voice mode, fabrication guard, and long-term memory with RAG. Four versions in four months.</p>
-        <div class="impact"><span class="num">15</span> tools · 4 versions · 4 months</div>
-        <div class="pills">
-          <span class="pill">Python</span>
-          <span class="pill">FastAPI</span>
-          <span class="pill">LangChain</span>
-          <span class="pill">RAG</span>
-          <span class="pill">DAG runtime</span>
-          <span class="pill">Ollama</span>
-        </div>
-        <div class="links">
-          <a href="https://github.com/Karunya-Muddana/project-smith" target="_blank" rel="noopener" data-rough="circle" data-seed="71" data-roughness="2.2" aria-label="GitHub">↗</a>
-          <a href="#" data-rough="circle" data-seed="72" data-roughness="2.2" aria-label="Live">●</a>
-        </div>
-      </article>
-
-      <article class="card span-3 row-2 tall featured" data-rough="box" data-seed="9" data-roughness="2" data-bowing="1.5" data-stroke-width="1.5">
-        <span class="card-tape"></span>
         <div class="cat">Production ERP · Real client</div>
         <h3>K-ERP</h3>
-        <p>A full custom warehouse ERP &mdash; procurement, QC pipelines, inventory, reports &mdash; designed for and deployed at a real company. Used daily.</p>
-        <div class="impact"><span class="num">1</span> client &middot; in production</div>
+        <p>A full custom warehouse ERP &mdash; procurement, QC pipelines, inventory, six-role access control, reports &mdash; designed for and deployed at a chemical manufacturer. Used daily on real batches.</p>
+        <div class="impact"><span class="num">37</span> tables · 230 endpoints · in production</div>
         <div class="pills">
-          <span class="pill">Next.js</span>
           <span class="pill">FastAPI</span>
           <span class="pill">PostgreSQL</span>
           <span class="pill">Supabase</span>
-          <span class="pill">Tailwind</span>
+          <span class="pill">JWT / RBAC</span>
+          <span class="pill">Vanilla JS</span>
         </div>
         <div class="links">
           <a href="https://github.com/Karunya-Muddana?tab=repositories" target="_blank" rel="noopener" data-rough="circle" data-seed="73" data-roughness="2.2" aria-label="GitHub">↗</a>
         </div>
       </article>
 
-      <article class="card span-3 featured" data-rough="box" data-seed="15" data-roughness="2" data-bowing="1.5" data-stroke-width="1.5">
+      <article class="card span-3 row-2 tall featured" data-rough="box" data-seed="9" data-roughness="2" data-bowing="1.5" data-stroke-width="1.5">
         <span class="card-tape"></span>
-        <div class="cat">Data tool</div>
-        <h3>CBSE Gazette Analyzer</h3>
-        <p>Turns the board&rsquo;s messy text gazette files into clean Excel and PDF analytics for teachers.</p>
-        <div class="impact"><span class="num">600</span> students &middot; 2 schools</div>
+        <div class="cat">MCP server · Open source · PyPI</div>
+        <h3>xlenz</h3>
+        <p>A universal MCP server that lets AI agents query live, interlinked Excel workbooks on OneDrive through the Microsoft Graph API. Structure cached, data always live. Born from a real client engagement, published with a CLI setup wizard.</p>
+        <div class="impact">on <span class="num">PyPI</span> · built for a real client</div>
         <div class="pills">
           <span class="pill">Python</span>
-          <span class="pill">Pandas</span>
-          <span class="pill">Streamlit</span>
+          <span class="pill">FastMCP</span>
+          <span class="pill">MS Graph API</span>
+          <span class="pill">hnswlib</span>
+          <span class="pill">Vector search</span>
         </div>
         <div class="links">
-          <a href="https://github.com/Karunya-Muddana/CBSE-Result-Analyzer-with-Excel-Reports-Python-Pandas-" target="_blank" rel="noopener" data-rough="circle" data-seed="74" data-roughness="2.2" aria-label="GitHub">↗</a>
+          <a href="https://github.com/Karunya-Muddana" target="_blank" rel="noopener" data-rough="circle" data-seed="71" data-roughness="2.2" aria-label="GitHub">↗</a>
         </div>
       </article>
 
-      <article class="card span-3 small" data-rough="box" data-seed="21" data-roughness="2.2" data-bowing="1.3" data-stroke-width="1.3">
+      <article class="card span-3 featured" data-rough="box" data-seed="15" data-roughness="2" data-bowing="1.5" data-stroke-width="1.5">
+        <span class="card-tape"></span>
+        <div class="cat">Agent runtime · Open source</div>
+        <h3>Smith v4.0</h3>
+        <p>A runtime that compiles natural language into a deterministic execution graph. Voice mode, fabrication guard, long-term memory with RAG. Four versions in four months.</p>
+        <div class="impact"><span class="num">15</span> tools · 4 versions · 4 months</div>
+        <div class="pills">
+          <span class="pill">Python</span>
+          <span class="pill">DAG runtime</span>
+          <span class="pill">RAG</span>
+          <span class="pill">Ollama</span>
+        </div>
+        <div class="links">
+          <a href="https://github.com/Karunya-Muddana/project-smith" target="_blank" rel="noopener" data-rough="circle" data-seed="74" data-roughness="2.2" aria-label="GitHub">↗</a>
+        </div>
+      </article>
+
+      <article class="card span-3 featured" data-rough="box" data-seed="21" data-roughness="2" data-bowing="1.5" data-stroke-width="1.5">
+        <span class="card-tape"></span>
+        <div class="cat">Memory · MCP server</div>
+        <h3>engram</h3>
+        <p>Persistent graph memory for Claude Code. Sessions branch like git, five lifecycle hooks capture context automatically, and semantic search recalls it across sessions.</p>
+        <div class="impact"><span class="num">5</span> hooks · session-as-branch</div>
+        <div class="pills">
+          <span class="pill">Kuzu</span>
+          <span class="pill">FastMCP</span>
+          <span class="pill">Embeddings</span>
+          <span class="pill">Graph DB</span>
+        </div>
+        <div class="links">
+          <a href="https://github.com/Karunya-Muddana/engram" target="_blank" rel="noopener" data-rough="circle" data-seed="75" data-roughness="2.2" aria-label="GitHub">↗</a>
+        </div>
+      </article>
+
+      <article class="card span-2 small" data-rough="box" data-seed="27" data-roughness="2.2" data-stroke-width="1.3">
+        <div class="cat">Data tool</div>
+        <h3>CBSE Gazette Analyzer</h3>
+        <p>Turns the board&rsquo;s messy text gazette files into clean Excel and PDF analytics for teachers. 600 students, 2 schools.</p>
+        <div class="pills">
+          <span class="pill">Python</span>
+          <span class="pill">Pandas</span>
+        </div>
+        <div class="links">
+          <a href="https://github.com/Karunya-Muddana/CBSE-Result-Analyzer-with-Excel-Reports-Python-Pandas-" target="_blank" rel="noopener" data-rough="circle" data-seed="76" data-roughness="2.2" aria-label="GitHub">↗</a>
+        </div>
+      </article>
+
+      <article class="card span-2 small" data-rough="box" data-seed="34" data-roughness="2.2" data-stroke-width="1.3">
         <div class="cat">Multi-agent</div>
         <h3>Researcher · Writer · Critic</h3>
         <p>A three-agent pipeline that researches, drafts, and critiques its own output until it&rsquo;s good enough to ship.</p>
         <div class="pills">
           <span class="pill">Python</span>
-          <span class="pill">LangChain</span>
           <span class="pill">LLMs</span>
         </div>
         <div class="links">
-          <a href="https://github.com/Karunya-Muddana/Gemini-Multi-Tool-Agent-Integrating-Google-Search-Gmail-and-Web-Scraping" target="_blank" rel="noopener" data-rough="circle" data-seed="75" data-roughness="2.2" aria-label="GitHub">↗</a>
+          <a href="https://github.com/Karunya-Muddana/Gemini-Multi-Tool-Agent-Integrating-Google-Search-Gmail-and-Web-Scraping" target="_blank" rel="noopener" data-rough="circle" data-seed="77" data-roughness="2.2" aria-label="GitHub">↗</a>
         </div>
       </article>
 
-      <article class="card span-2 small" data-rough="box" data-seed="27" data-roughness="2.2" data-stroke-width="1.3">
+      <article class="card span-2 small" data-rough="box" data-seed="44" data-roughness="2.2" data-stroke-width="1.3">
         <div class="cat">Side project</div>
         <h3>Roastly</h3>
         <p>An AI that roasts your GitHub profile. A weekend build.</p>
@@ -464,33 +606,7 @@
           <span class="pill">LLMs</span>
         </div>
         <div class="links">
-          <a href="https://github.com/Karunya-Muddana/roastly_website" target="_blank" rel="noopener" data-rough="circle" data-seed="76" data-roughness="2.2" aria-label="GitHub">↗</a>
-        </div>
-      </article>
-
-      <article class="card span-2 small" data-rough="box" data-seed="34" data-roughness="2.2" data-stroke-width="1.3">
-        <div class="cat">Full-stack</div>
-        <h3>Library Management</h3>
-        <p>A small but complete library system with circulation, fines, and overdue reminders.</p>
-        <div class="pills">
-          <span class="pill">React</span>
-          <span class="pill">Firebase</span>
-        </div>
-        <div class="links">
-          <a href="https://github.com/Karunya-Muddana?tab=repositories" target="_blank" rel="noopener" data-rough="circle" data-seed="77" data-roughness="2.2" aria-label="GitHub">↗</a>
-        </div>
-      </article>
-
-      <article class="card span-2 small" data-rough="box" data-seed="44" data-roughness="2.2" data-stroke-width="1.3">
-        <div class="cat">Machine learning</div>
-        <h3>Ames Housing</h3>
-        <p>Gradient-boosted regression on the Ames dataset. Engineered features, cross-validated.</p>
-        <div class="pills">
-          <span class="pill">XGBoost</span>
-          <span class="pill">scikit-learn</span>
-        </div>
-        <div class="links">
-          <a href="https://github.com/Karunya-Muddana/linear-regression" target="_blank" rel="noopener" data-rough="circle" data-seed="78" data-roughness="2.2" aria-label="GitHub">↗</a>
+          <a href="https://github.com/Karunya-Muddana/roastly_website" target="_blank" rel="noopener" data-rough="circle" data-seed="78" data-roughness="2.2" aria-label="GitHub">↗</a>
         </div>
       </article>
 
@@ -498,71 +614,67 @@
   </div>
 </section>
 
-<!-- ============ SKILLS ============ -->
-<section class="skills-wrap-v2">
+<!-- ============ MAIN STACK ============ -->
+<section class="stack-wrap">
   <!-- doodle decorations -->
-  <div class="doodle" style="top:18%; left:6%; width:120px; opacity:0.22; transform:rotate(-20deg);" aria-hidden="true">
+  <div class="doodle" style="top:16%; left:6%; width:120px; opacity:0.22; transform:rotate(-20deg);" aria-hidden="true">
     <img src="assets/doodles/circles/circle-9.svg" alt="" />
   </div>
-  <div class="doodle" style="bottom:14%; right:6%; width:140px; opacity:0.22; transform:rotate(18deg);" aria-hidden="true">
+  <div class="doodle" style="bottom:12%; right:6%; width:140px; opacity:0.22; transform:rotate(18deg);" aria-hidden="true">
     <img src="assets/doodles/misc/misc-22.svg" alt="" />
   </div>
+
   <div class="container">
-    <div class="skills-head reveal">
-      <div class="eyebrow"><span class="bar"></span>The toolkit</div>
-      <h2 class="section-title">How I build.</h2>
-      <div class="sub">~ a working list, not a brag list ~</div>
+    <div class="stack-head reveal">
+      <div class="eyebrow"><span class="bar"></span>The stack</div>
+      <h2 class="section-title">What I actually <em>write</em>.</h2>
+      <div class="sub">~ five languages, no padding ~</div>
     </div>
-    <div class="skills-cats">
 
-      <div class="skill-cat reveal">
-        <h4>AI / ML</h4>
-        <span class="cat-rule"></span>
-        <div class="list">
-          Python <span class="sep">·</span> PyTorch <span class="sep">·</span> Transformers <span class="sep">·</span> LangChain <span class="sep">·</span> LlamaIndex <span class="sep">·</span> RAG <span class="sep">·</span> Fine-tuning <span class="sep">·</span> scikit-learn <span class="sep">·</span> XGBoost <span class="sep">·</span> LightGBM <span class="sep">·</span> FAISS <span class="sep">·</span> Chroma <span class="sep">·</span> Whisper <span class="sep">·</span> Vertex AI <span class="sep">·</span> OpenCV <span class="sep">·</span> YOLO
-        </div>
+    <div class="stack-grid reveal">
+
+      <div class="stack-card" data-rough="box" data-seed="61" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
+        <span class="stack-tape"></span>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" loading="lazy" />
+        <div class="stack-name">Python</div>
+        <div class="stack-note">the first love</div>
       </div>
 
-      <div class="skill-cat reveal">
-        <h4>Agentic &amp; LLM Ops</h4>
-        <span class="cat-rule"></span>
-        <div class="list">
-          LangSmith <span class="sep">·</span> Langfuse <span class="sep">·</span> W&amp;B <span class="sep">·</span> MLflow <span class="sep">·</span> DSPy <span class="sep">·</span> CrewAI <span class="sep">·</span> OpenRouter <span class="sep">·</span> Ollama <span class="sep">·</span> Prompt Engineering <span class="sep">·</span> LLM Evals <span class="sep">·</span> DAG planning <span class="sep">·</span> Fabrication guard <span class="sep">·</span> Long-term memory
-        </div>
+      <div class="stack-card" data-rough="box" data-seed="62" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
+        <span class="stack-tape"></span>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" loading="lazy" />
+        <div class="stack-name">Java</div>
+        <div class="stack-note">OOP, done properly</div>
       </div>
 
-      <div class="skill-cat reveal">
-        <h4>Backend</h4>
-        <span class="cat-rule"></span>
-        <div class="list">
-          FastAPI <span class="sep">·</span> Flask <span class="sep">·</span> Node.js <span class="sep">·</span> PostgreSQL <span class="sep">·</span> MongoDB <span class="sep">·</span> Redis <span class="sep">·</span> Supabase <span class="sep">·</span> Firebase <span class="sep">·</span> REST APIs <span class="sep">·</span> WebSockets <span class="sep">·</span> Celery <span class="sep">·</span> GraphQL <span class="sep">·</span> JWT / OAuth2
-        </div>
+      <div class="stack-card" data-rough="box" data-seed="63" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
+        <span class="stack-tape"></span>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C" loading="lazy" />
+        <div class="stack-name">C</div>
+        <div class="stack-note">pointers &amp; patience</div>
       </div>
 
-      <div class="skill-cat reveal">
-        <h4>Frontend</h4>
-        <span class="cat-rule"></span>
-        <div class="list">
-          React <span class="sep">·</span> Next.js <span class="sep">·</span> TypeScript <span class="sep">·</span> TailwindCSS <span class="sep">·</span> Framer Motion <span class="sep">·</span> Streamlit <span class="sep">·</span> Three.js <span class="sep">·</span> Shadcn/ui
-        </div>
+      <div class="stack-card" data-rough="box" data-seed="64" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
+        <span class="stack-tape"></span>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" loading="lazy" />
+        <div class="stack-name">C++</div>
+        <div class="stack-note">DSA territory</div>
       </div>
 
-      <div class="skill-cat reveal">
-        <h4>Cloud &amp; MLOps</h4>
-        <span class="cat-rule"></span>
-        <div class="list">
-          Google Cloud <span class="sep">·</span> Vertex AI <span class="sep">·</span> Docker <span class="sep">·</span> Kubernetes <span class="sep">·</span> GitHub Actions <span class="sep">·</span> Vercel <span class="sep">·</span> Render <span class="sep">·</span> DVC <span class="sep">·</span> Airflow <span class="sep">·</span> Terraform
-        </div>
+      <div class="stack-card" data-rough="box" data-seed="65" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
+        <span class="stack-tape"></span>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="SQL" loading="lazy" />
+        <div class="stack-name">SQL</div>
+        <div class="stack-note">37 tables deep</div>
       </div>
 
-      <div class="skill-cat reveal">
-        <h4>Tools &amp; Ops</h4>
-        <span class="cat-rule"></span>
-        <div class="list">
-          Git <span class="sep">·</span> Pandas <span class="sep">·</span> NumPy <span class="sep">·</span> Ruff <span class="sep">·</span> Pytest <span class="sep">·</span> Pydantic <span class="sep">·</span> Postman <span class="sep">·</span> Linux <span class="sep">·</span> OpenTelemetry <span class="sep">·</span> openpyxl <span class="sep">·</span> Jupyter
-        </div>
-      </div>
+    </div>
 
+    <div class="stack-secondary reveal">
+      <span class="lbl">also in daily rotation ↓</span>
+      <div class="items">
+        FastAPI <span class="sep">·</span> Supabase <span class="sep">·</span> PostgreSQL <span class="sep">·</span> FastMCP <span class="sep">·</span> Anthropic API <span class="sep">·</span> Ollama <span class="sep">·</span> Pandas <span class="sep">·</span> NumPy <span class="sep">·</span> Numba (CUDA) <span class="sep">·</span> Playwright <span class="sep">·</span> Git <span class="sep">·</span> Docker <span class="sep">·</span> Linux / WSL2
+      </div>
     </div>
   </div>
 </section>
@@ -588,9 +700,9 @@
         <a class="read" href="https://www.linkedin.com/in/karunya-muddana/" target="_blank" rel="noopener">Read on LinkedIn →</a>
       </article>
       <article class="post-card" data-rough="box" data-seed="53" data-roughness="2.2" data-stroke-width="1.3">
-        <div class="cat">Full-stack · Feb 2026</div>
-        <h3>&ldquo;A library system, end to end.&rdquo;</h3>
-        <p>Notes from building a small but complete app &mdash; schema, auth, circulation, fines, reminders.</p>
+        <div class="cat">MCP · Jun 2026</div>
+        <h3>&ldquo;Structure cached, data live.&rdquo;</h3>
+        <p>The one architectural rule behind xlenz &mdash; and why letting agents read stale spreadsheet data is worse than no access at all.</p>
         <a class="read" href="https://www.linkedin.com/in/karunya-muddana/" target="_blank" rel="noopener">Read on LinkedIn →</a>
       </article>
     </div>
@@ -607,7 +719,7 @@
         <div class="contact-links">
           <a href="mailto:Karunya.muddana@outlook.com">Karunya.muddana@outlook.com</a>
           <a href="https://www.linkedin.com/in/karunya-muddana/" target="_blank" rel="noopener">linkedin.com/in/karunya-muddana</a>
-          <a href="#">github.com/Karunya-Muddana</a>
+          <a href="https://github.com/Karunya-Muddana" target="_blank" rel="noopener">github.com/Karunya-Muddana</a>
         </div>
       </div>
       <form class="contact-form" id="contact-form" novalidate>

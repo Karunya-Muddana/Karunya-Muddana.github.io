@@ -213,10 +213,14 @@
 
   function scrollToBottom() {
     requestAnimationFrame(() => {
-      window.scrollTo({
-        top: document.documentElement.scrollHeight,
-        behavior: 'smooth'
-      });
+      const bottom = document.documentElement.scrollHeight;
+      // When the inertial scroller is running it owns the scroll position —
+      // a native smooth scroll would just be fought and snapped back.
+      if (window.__lenis) {
+        window.__lenis.scrollTo(bottom, { duration: 0.8 });
+        return;
+      }
+      window.scrollTo({ top: bottom, behavior: 'smooth' });
     });
   }
 })();

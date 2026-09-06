@@ -170,6 +170,19 @@
 
       <div class="resume-item">
         <div class="row">
+          <h3>Native &mdash; Local-First Multi-Provider Agent</h3>
+          <a class="meta" href="https://github.com/Karunya-Muddana/Native" target="_blank" rel="noopener">github ↗</a>
+        </div>
+        <ul>
+          <li>22-tool LangGraph agent that reads PDFs, scans (PP-OCRv4), spreadsheets and images, executes Python inside a network-disabled, memory-capped Docker container, and authors .docx / .xlsx / .pptx deliverables &mdash; each file reopened after writing so the summary is read back from disk, not from the code that wrote it.</li>
+          <li>Every model role is an ordered fallback chain (Groq → Gemini → OpenRouter → NVIDIA NIM → local Ollama): rate limits, retired models, auth failures and timeouts advance the chain instead of ending the run, so the agent stays usable all day on free tiers alone.</li>
+          <li>Knowledge base and conversation memory embedded locally, so documents never leave the machine regardless of which provider answers. Apache 2.0.</li>
+        </ul>
+        <div class="tech">Python &middot; LangGraph &middot; FastAPI &middot; Docker &middot; PP-OCRv4 (ONNX) &middot; RAG &middot; Ollama &middot; Groq / Gemini / OpenRouter / NVIDIA NIM &middot; python-docx &middot; openpyxl &middot; python-pptx</div>
+      </div>
+
+      <div class="resume-item">
+        <div class="row">
           <h3>Project Smith &mdash; Zero-Trust Autonomous Agent Runtime</h3>
           <a class="meta" href="https://github.com/Karunya-Muddana/project-smith" target="_blank" rel="noopener">github ↗</a>
         </div>
@@ -311,6 +324,7 @@
 </main>
 
 <script src="rough-init.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="portfolio.js"></script>
 </body>
 </html>

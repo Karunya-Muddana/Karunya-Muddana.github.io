@@ -4,6 +4,38 @@
 (function() {
   'use strict';
 
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer  = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // ---------- Inertial smooth scroll ----------
+  // Native scrolling stays the fallback: touch, coarse pointers and
+  // reduced-motion users never get the wheel interception.
+  if (window.Lenis && finePointer && !reduceMotion) {
+    const lenis = new window.Lenis({
+      duration: 1.05,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.6,
+      smoothWheel: true
+    });
+    document.documentElement.classList.add('lenis-on');
+    (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })();
+
+    // In-page anchors go through Lenis so they ease rather than jump.
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (!id || id === '#') return;
+        const target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        lenis.scrollTo(target, { offset: -90, duration: 1.25 });
+        document.body.classList.remove('menu-open');
+      });
+    });
+    window.__lenis = lenis;
+  }
+
   // ---------- Custom cursor ----------
   const dot = document.querySelector('.cursor-dot');
   const ring = document.querySelector('.cursor-ring');
@@ -37,6 +69,16 @@
   }
 
   // ---------- Reveal on scroll ----------
+  // Grid children get an index so they cascade in instead of arriving
+  // as one block. The index lives on the child, the trigger on the parent.
+  const STAGGER_GRIDS = '.bento, .stats-grid, .stack-grid, .writing-grid, .contact-grid, .skills-grid';
+  document.querySelectorAll(STAGGER_GRIDS).forEach(grid => {
+    const kids = Array.from(grid.children);
+    if (kids.length < 2) return;
+    grid.classList.add('stagger');
+    kids.forEach((kid, i) => kid.style.setProperty('--i', i));
+  });
+
   const revealObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -46,6 +88,142 @@
     });
   }, { threshold: 0.16 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // A grid that is itself the .reveal element needs no separate trigger;
+  // one that sits inside a taller section gets its own, so long sections
+  // don't fire everything at once.
+  document.querySelectorAll('.stagger:not(.reveal)').forEach(el => {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      });
+    }, { threshold: 0.1 });
+    obs.observe(el);
+  });
+
+  // ---------- Section titles: word-by-word rise ----------
+  if (!reduceMotion) {
+    document.querySelectorAll('.section-title').forEach(splitIntoWords);
+
+    const titleObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('words-in');
+        titleObs.unobserve(e.target);
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.section-title.split').forEach(el => titleObs.observe(el));
+  }
+
+  function splitIntoWords(title) {
+    if (title.dataset.split) return;
+    const out = document.createDocumentFragment();
+    let n = 0;
+
+    // Walk top-level nodes so inline markup (<em>, <br>) survives intact.
+    Array.from(title.childNodes).forEach(node => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        node.nodeValue.split(/(\s+)/).forEach(chunk => {
+          if (!chunk) return;
+          if (/^\s+$/.test(chunk)) { out.appendChild(document.createTextNode(chunk)); return; }
+          out.appendChild(wrapWord(document.createTextNode(chunk), n++));
+        });
+      } else if (node.nodeName === 'BR') {
+        out.appendChild(node.cloneNode(true));
+      } else {
+        out.appendChild(wrapWord(node.cloneNode(true), n++));
+      }
+    });
+
+    if (!n) return;
+    title.innerHTML = '';
+    title.appendChild(out);
+    title.dataset.split = 'true';
+    title.classList.add('split');
+  }
+
+  function wrapWord(inner, i) {
+    const mask = document.createElement('span');
+    mask.className = 'w';
+    const lift = document.createElement('span');
+    lift.className = 'w-i';
+    lift.style.setProperty('--wi', i);
+    lift.appendChild(inner);
+    mask.appendChild(lift);
+    return mask;
+  }
+
+  // ---------- Magnetic buttons ----------
+  // Small pull toward the pointer — enough to feel alive, not enough
+  // to make the sketched outline look like it came unstuck.
+  if (finePointer && !reduceMotion) {
+    document.querySelectorAll('.btn, .nav-email, .card .links a').forEach(el => {
+      let raf = null, cx = 0, cy = 0, tx = 0, ty = 0;
+      const strength = el.classList.contains('btn') ? 0.28 : 0.4;
+
+      function loop() {
+        cx += (tx - cx) * 0.14;
+        cy += (ty - cy) * 0.14;
+        el.style.setProperty('--mx', cx.toFixed(2) + 'px');
+        el.style.setProperty('--my', cy.toFixed(2) + 'px');
+        if (Math.abs(tx - cx) > 0.1 || Math.abs(ty - cy) > 0.1) {
+          raf = requestAnimationFrame(loop);
+        } else { raf = null; }
+      }
+      function kick() { if (!raf) raf = requestAnimationFrame(loop); }
+
+      el.addEventListener('mousemove', (e) => {
+        const r = el.getBoundingClientRect();
+        tx = (e.clientX - (r.left + r.width / 2)) * strength;
+        ty = (e.clientY - (r.top + r.height / 2)) * strength;
+        kick();
+      });
+      el.addEventListener('mouseleave', () => { tx = 0; ty = 0; kick(); });
+      el.classList.add('magnetic');
+    });
+  }
+
+  // ---------- Nav: condense on scroll, retreat on the way down ----------
+  const nav = document.querySelector('.nav');
+  if (nav) {
+    let lastY = window.scrollY;
+    let ticking = false;
+    function navUpdate() {
+      const y = window.scrollY;
+      nav.classList.toggle('nav-condensed', y > 60);
+      // Only hide well past the hero, and never while the menu is open.
+      if (y > 420 && y > lastY + 6 && !document.body.classList.contains('menu-open')) {
+        nav.classList.add('nav-away');
+      } else if (y < lastY - 6 || y < 200) {
+        nav.classList.remove('nav-away');
+      }
+      lastY = y;
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(navUpdate); }
+    }, { passive: true });
+    navUpdate();
+  }
+
+  // ---------- Reading progress ----------
+  const progress = document.querySelector('.scroll-progress');
+  if (progress) {
+    let pTicking = false;
+    function progUpdate() {
+      const doc = document.documentElement;
+      const total = doc.scrollHeight - window.innerHeight;
+      const p = total > 0 ? Math.min(1, Math.max(0, window.scrollY / total)) : 0;
+      progress.style.transform = `scaleX(${p.toFixed(4)})`;
+      pTicking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!pTicking) { pTicking = true; requestAnimationFrame(progUpdate); }
+    }, { passive: true });
+    progUpdate();
+  }
 
   // ---------- Pill cascade ----------
   const pillObs = new IntersectionObserver((entries) => {
@@ -146,16 +324,55 @@
   // ---------- Parallax scroll ----------
   const heroPhoto = document.querySelector('.hero-photo-col');
   const planeFloat = document.querySelector('.hero-floating-plane');
+
+  // Margin doodles drift at their own rates, so the page reads as a few
+  // sheets of tracing paper rather than one flat surface. The doodles are
+  // decorative and already rotated inline, so `translate` is used to avoid
+  // clobbering that transform.
+  // Base positions are measured once (with any drift cleared first), so the
+  // offset we apply never feeds back into the next frame's measurement.
+  const doodles = [];
+  function measureDoodles() {
+    doodles.length = 0;
+    if (reduceMotion) return;
+    document.querySelectorAll('.doodle').forEach((el, i) => {
+      el.style.translate = '';
+      const r = el.getBoundingClientRect();
+      doodles.push({
+        el,
+        base: r.top + window.scrollY + r.height / 2,
+        rate:  0.055 + ((i * 37) % 11) * 0.013,  // 0.055 – 0.185, deterministic
+        drift: ((i % 3) - 1) * 0.035             // slight sideways lean
+      });
+    });
+  }
+
+  let parallaxTicking = false;
   function onScrollParallax() {
     const y = window.scrollY;
-    if (heroPhoto && y < window.innerHeight) {
+    const vh = window.innerHeight;
+    if (heroPhoto && y < vh) {
       heroPhoto.style.translate = `0 ${y * 0.10}px`;
     }
-    if (planeFloat && y < window.innerHeight) {
+    if (planeFloat && y < vh) {
       planeFloat.style.translate = `${y * 0.3}px ${-y * 0.2}px`;
     }
+    const viewMid = y + vh / 2;
+    for (const d of doodles) {
+      const off = d.base - viewMid;
+      if (off < -vh - 300 || off > vh + 300) continue;   // well offscreen: skip
+      d.el.style.translate =
+        `${(off * d.drift).toFixed(1)}px ${(-off * d.rate).toFixed(1)}px`;
+    }
+    parallaxTicking = false;
   }
-  window.addEventListener('scroll', onScrollParallax, { passive: true });
+
+  measureDoodles();
+  window.addEventListener('scroll', () => {
+    if (!parallaxTicking) { parallaxTicking = true; requestAnimationFrame(onScrollParallax); }
+  }, { passive: true });
+  window.addEventListener('resize', () => { measureDoodles(); onScrollParallax(); }, { passive: true });
+  window.addEventListener('load', () => { measureDoodles(); onScrollParallax(); });
   onScrollParallax();
 
   // ---------- Contact form ----------

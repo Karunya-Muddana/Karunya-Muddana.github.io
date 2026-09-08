@@ -86,7 +86,7 @@
         revealObs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.16 });
+  }, { threshold: 0.04, rootMargin: '0px 0px 12% 0px' });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
   // A grid that is itself the .reveal element needs no separate trigger;
@@ -99,7 +99,7 @@
         e.target.classList.add('in');
         obs.unobserve(e.target);
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.04, rootMargin: '0px 0px 12% 0px' });
     obs.observe(el);
   });
 
@@ -113,7 +113,7 @@
         e.target.classList.add('words-in');
         titleObs.unobserve(e.target);
       });
-    }, { threshold: 0.4 });
+    }, { threshold: 0.25 });
     document.querySelectorAll('.section-title.split').forEach(el => titleObs.observe(el));
   }
 

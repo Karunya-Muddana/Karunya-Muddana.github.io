@@ -375,9 +375,6 @@ section { position: relative; }
 .section-title em { font-style: italic; font-weight: 700; }
 
 /* Reveal */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 700ms ease-out, transform 700ms ease-out; }
-.reveal.in { opacity: 1; transform: translateY(0); }
-
 /* ====================================================
    BUTTONS (sketched look)
    ==================================================== */
@@ -516,7 +513,9 @@ section { position: relative; }
   line-height: 0.92;
   letter-spacing: -0.04em;
   color: var(--ink);
-  margin-bottom: 24px;
+  /* The last line carries .rough-underline, whose SVG hangs ~0.66em below
+     the text box. Clear it, or the stroke lands on .hero-sub. */
+  margin-bottom: clamp(40px, 5vw, 64px);
   text-wrap: balance;
 }
 .hero-title .ln {
@@ -575,7 +574,7 @@ section { position: relative; }
   pointer-events: none;
 }
 .annotation.tag-1 { top: 4%; left: 2%; transform: rotate(-6deg); }
-.annotation.tag-2 { bottom: 6%; right: -4%; transform: rotate(5deg); }
+.annotation.tag-2 { bottom: 0%; right: -9%; transform: rotate(5deg); }
 .annotation .arrow {
   width: 64px; height: 36px;
   flex: none;
@@ -896,9 +895,9 @@ section { position: relative; }
   margin-top: 12px;
   padding-bottom: 3px;
   border-bottom: 1.4px solid var(--ink);
-  transition: gap 220ms ease;
+  transition: padding-bottom 220ms ease, border-bottom-color 220ms ease;
 }
-.about-snap .read-more:hover { gap: 14px; }
+.about-snap .read-more:hover { padding-bottom: 7px; border-bottom-color: var(--pencil-soft); }
 @media (max-width: 900px) {
   .about-snap .container { grid-template-columns: 1fr; gap: 32px; }
 }
@@ -1051,6 +1050,16 @@ section { position: relative; }
 .card.span-2 { grid-column: span 2; }
 .card.span-4 { grid-column: span 4; }
 .card.span-6 { grid-column: span 6; }
+
+/* Inline identifiers inside project copy */
+.card code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: rgba(26,25,22,0.06);
+  border-radius: 3px;
+  padding: 1px 5px;
+  white-space: nowrap;
+}
 .card.row-2  { grid-row: span 2; }
 .card.tall   { min-height: 380px; }
 @media (max-width: 900px) {
@@ -1286,9 +1295,9 @@ section { position: relative; }
   align-self: flex-start;
   padding-bottom: 2px;
   border-bottom: 1.4px solid var(--ink);
-  transition: gap 200ms ease;
+  transition: padding-bottom 200ms ease, border-bottom-color 200ms ease;
 }
-.post-card .read:hover { gap: 10px; }
+.post-card .read:hover { padding-bottom: 6px; border-bottom-color: var(--pencil-soft); }
 
 /* ====================================================
    CONTACT
@@ -1889,6 +1898,33 @@ section { position: relative; }
   font-size: 20px;
   color: var(--pencil);
 }
+
+/* Positioning line under the name. Reads before anything else on the page,
+   so it carries the claim the rest of the resume has to back up. */
+.resume-summary {
+  max-width: 62ch;
+  margin: 14px auto 0;
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: var(--pencil);
+}
+.resume-summary strong { color: var(--ink); font-weight: 600; }
+
+/* Inline identifiers inside resume bullets */
+.resume-item code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: rgba(26,25,22,0.055);
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+@media (max-width: 900px) {
+  .resume-summary { font-size: 13.5px; margin-top: 12px; }
+}
+@media print {
+  .resume-summary { font-size: 10.5pt; margin-top: 8pt; color: #000; }
+  .resume-item code { background: none; padding: 0; }
+}
 .resume-header .contact {
   margin-top: 18px;
   font-family: var(--font-mono);
@@ -2339,10 +2375,10 @@ html.lenis-on, html.lenis-on body { height: auto; }
 /* ---- Reveal: softer arrival ---- */
 .reveal {
   opacity: 0;
-  transform: translateY(30px) scale(0.995);
+  transform: translateY(16px) scale(0.997);
   transition:
-    opacity 820ms cubic-bezier(.16,.84,.4,1),
-    transform 820ms cubic-bezier(.16,.84,.4,1);
+    opacity 420ms cubic-bezier(.16,.84,.4,1),
+    transform 420ms cubic-bezier(.16,.84,.4,1);
   will-change: transform, opacity;
 }
 .reveal.in { opacity: 1; transform: none; will-change: auto; }
@@ -2352,10 +2388,10 @@ html.lenis-on, html.lenis-on body { height: auto; }
    the cards' own pinned-paper rotation and hover lift stay untouched. */
 .stagger > * {
   opacity: 0;
-  translate: 0 26px;
+  translate: 0 14px;
   transition:
-    opacity 720ms cubic-bezier(.16,.84,.4,1) calc(var(--i, 0) * 72ms),
-    translate 720ms cubic-bezier(.16,.84,.4,1) calc(var(--i, 0) * 72ms),
+    opacity 400ms cubic-bezier(.16,.84,.4,1) calc(var(--i, 0) * 38ms),
+    translate 400ms cubic-bezier(.16,.84,.4,1) calc(var(--i, 0) * 38ms),
     transform 420ms cubic-bezier(.2,.7,.2,1),
     box-shadow 420ms ease;
 }
@@ -2376,9 +2412,9 @@ html.lenis-on, html.lenis-on body { height: auto; }
   transform: translateY(102%) rotate(3deg);
   opacity: 0;
   transition:
-    transform 900ms cubic-bezier(.16,.84,.4,1),
-    opacity 620ms ease-out;
-  transition-delay: calc(var(--wi, 0) * 68ms);
+    transform 520ms cubic-bezier(.16,.84,.4,1),
+    opacity 360ms ease-out;
+  transition-delay: calc(var(--wi, 0) * 34ms);
 }
 .section-title.words-in .w-i { transform: none; opacity: 1; }
 

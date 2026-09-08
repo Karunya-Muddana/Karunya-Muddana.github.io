@@ -16,7 +16,22 @@
 
   const history = [];
   let busy = false;
-  const CHAR_DELAY_MS = 22;
+
+  // Hand-writing rhythm. A real pen doesn't move at one speed: it runs on
+  // through a word, hesitates at a comma, and stops properly at a full stop.
+  const PACE = {
+    base:       17,   // ms per character mid-word
+    jitter:     7,    // random 0..n added per character
+    space:      34,   // between words
+    comma:      130,  // , ; :
+    sentence:   290,  // . ! ?
+    dash:       90,   // - and en/em dashes
+  };
+
+  // Literal characters, no escapes: em dash, en dash, hyphen.
+  const SENTENCE_END = /[.!?]/;
+  const CLAUSE_END   = /[,;:]/;
+  const DASHES       = /[—–-]/;
 
   // Submit handler
   formEl.addEventListener('submit', (e) => {
@@ -73,11 +88,11 @@
       if (!res.ok) {
         indicator.remove();
         if (res.status === 429) {
-          appendAIMessage('going a bit fast — try again in a moment.', true);
+          appendAIMessage('that’s a few too many at once — give it about a minute and ask again.', true);
         } else if (res.status >= 500) {
-          appendAIMessage("hmm, something's off on my end. try again?", true);
+          appendAIMessage('my end fell over answering that one. worth another go; if it keeps happening, email me instead.', true);
         } else {
-          appendAIMessage('that request did not go through.', true);
+          appendAIMessage('that one didn’t get through. try rephrasing it?', true);
         }
         return;
       }
@@ -94,13 +109,20 @@
 
     } catch (err) {
       indicator.remove();
-      appendAIMessage("looks like I can't reach the page right now. check your connection?", true);
+      appendAIMessage('can’t reach my end from here — either your connection dropped or the server is waking up. it sleeps when nobody’s around, so give it a moment and try again.', true);
     } finally {
       busy = false;
       inputEl.disabled = false;
       if (sendBtn) sendBtn.disabled = false;
       setTimeout(() => inputEl.focus(), 200);
     }
+  }
+
+  function stamp() {
+    const el = document.createElement('span');
+    el.className = 'stamp';
+    el.textContent = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+    return el;
   }
 
   function appendUserMessage(text) {
@@ -116,6 +138,7 @@
     content.className = 'content';
     content.textContent = text;
     block.appendChild(content);
+    block.appendChild(stamp());
 
     messagesEl.appendChild(block);
     scrollToBottom();
@@ -141,19 +164,35 @@
     // breaks mid-word (e.g. "ML-OPS"). Each letter gets a tiny random
     // rotation so it looks genuinely hand-written.
     content.classList.add('writing');
+    // elapsedMs accumulates a real duration instead of counting
+    // characters, so punctuation can buy a pause without shifting
+    // everything after it by the same fixed amount.
+    let elapsedMs = 0;
     let charIndex = 0;
     const tokens = text.split(/(\n| +)/);
+
+    function advance(ch) {
+      const before = elapsedMs;
+      elapsedMs += PACE.base + Math.random() * PACE.jitter;
+      if (SENTENCE_END.test(ch)) elapsedMs += PACE.sentence;
+      else if (CLAUSE_END.test(ch)) elapsedMs += PACE.comma;
+      else if (DASHES.test(ch)) elapsedMs += PACE.dash;
+      return before;
+    }
+
     tokens.forEach(token => {
       if (!token) return;
       if (token === '\n') {
         content.appendChild(document.createElement('br'));
+        elapsedMs += PACE.sentence;
         charIndex++;
       } else if (/^ +$/.test(token)) {
         for (let i = 0; i < token.length; i++) {
           const sp = document.createElement('span');
           sp.className = 'diary-char';
           sp.textContent = ' ';
-          sp.style.animationDelay = (charIndex * CHAR_DELAY_MS) + 'ms';
+          sp.style.animationDelay = elapsedMs.toFixed(0) + 'ms';
+          elapsedMs += PACE.space;
           content.appendChild(sp);
           charIndex++;
         }
@@ -166,7 +205,7 @@
           ch.textContent = token[i];
           // subtle random per-character tilt — looks hand-written, not typed
           ch.style.setProperty('--r', (Math.random() * 4 - 2).toFixed(2) + 'deg');
-          ch.style.animationDelay = (charIndex * CHAR_DELAY_MS) + 'ms';
+          ch.style.animationDelay = advance(token[i]).toFixed(0) + 'ms';
           wordEl.appendChild(ch);
           charIndex++;
         }
@@ -175,8 +214,11 @@
     });
 
     // Remove the quill cursor once the last character has finished animating
-    const totalMs = charIndex * CHAR_DELAY_MS;
-    setTimeout(() => content.classList.remove('writing'), totalMs + 560);
+    const totalMs = elapsedMs;
+    setTimeout(() => {
+      content.classList.remove('writing');
+      block.appendChild(stamp());
+    }, totalMs + 560);
 
     // Scroll periodically as it fills
     let elapsed = 0;

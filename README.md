@@ -1,6 +1,6 @@
 # Karunya Muddana — Portfolio
 
-A handcrafted portfolio site for Karunya Muddana — first-year CS student at GITAM, Hyderabad.
+A handcrafted portfolio site for Karunya Muddana — second-year CS student at GITAM, Hyderabad.
 
 Built as a paper-and-ink scrapbook: rough.js sketched borders, crumpled paper textures, polaroid hero photo, a stacked-card printable resume, and an interactive AI chat that writes back like the Tom Riddle diary.
 
@@ -53,7 +53,7 @@ For real serverless email delivery (no mail client required, messages land direc
 3. Open `portfolio.js`, find `FORMSPREE_ENDPOINT`, and paste the endpoint there.
 4. Optionally update `CONTACT_EMAIL` on the next line if you change addresses.
 
-If Formspree is unset or fails for any reason, the form gracefully falls back to `mailto:`, so the contact path is never broken.
+If Formspree is unset or fails for any reason, the form falls back to `mailto:`, so the contact path is never broken.
 
 ## Customising
 

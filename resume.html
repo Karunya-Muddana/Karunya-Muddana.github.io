@@ -6,8 +6,8 @@
 
 <!-- PRIMARY SEO -->
 <title>Resume — Karunya Muddana | AI/ML Engineer & Full-Stack Developer</title>
-<meta name="description" content="Karunya Muddana's resume. CS student at GITAM University with hands-on experience in agent runtimes, production ERP systems, RAG pipelines, and full-stack engineering. Open to internships." />
-<meta name="keywords" content="Karunya Muddana Resume, AI Engineer, ML Engineer, Full Stack Developer, GITAM, Python, FastAPI, LangChain, Next.js, MLOps, Internship" />
+<meta name="description" content="Karunya Muddana's resume. CS student at GITAM University with hands-on experience in agent runtimes, MCP servers, RAG pipelines, and full-stack engineering. Open to internships." />
+<meta name="keywords" content="Karunya Muddana Resume, AI Engineer, ML Engineer, MLOps, Agentic AI, GITAM, Python, FastAPI, LangChain, MCP, RAG, Internship" />
 <meta name="author" content="Karunya Muddana" />
 <meta name="robots" content="index, follow" />
 <meta name="theme-color" content="#e9e2d0" />
@@ -103,44 +103,15 @@
       <span class="corner-tape"></span>
       <span class="corner-tape right"></span>
       <h1>Karunya <em>Muddana</em></h1>
-      <p class="role">Agentic AI &middot; Full-Stack Engineering &middot; MLOps</p>
+      <p class="role">Agentic AI &middot; MCP &amp; Retrieval Systems &middot; MLOps</p>
+      <p class="resume-summary">I build agents that hold up in production. ExcelMCP &mdash; an 11-tool MCP server that answers spreadsheet questions against live Microsoft Graph data instead of a stale vector copy &mdash; runs the assistant a Hyderabad manufacturer uses daily. Native (22 tools) and Smith (4 versions in 4 months) are the open-source runtimes the same work produced.</p>
       <div class="resume-meta-row">
         <span>Hyderabad, India</span>
         <a href="mailto:Karunya.muddana@outlook.com">Karunya.muddana@outlook.com</a>
-        <a href="#">github.com/Karunya-Muddana</a>
+        <a href="https://github.com/Karunya-Muddana" target="_blank" rel="noopener">github.com/Karunya-Muddana</a>
         <a href="https://www.linkedin.com/in/karunya-muddana/" target="_blank" rel="noopener">linkedin.com/in/karunya-muddana</a>
       </div>
-      <button class="download" onclick="window.print()">Print / Save PDF →</button>
-    </article>
-
-    <!-- Education -->
-    <article class="resume-card resume-section">
-      <h2>Education <em>&mdash; what shaped this.</em></h2>
-      <span class="head-rule"></span>
-
-      <div class="resume-item">
-        <div class="row">
-          <h3>GITAM University, Hyderabad</h3>
-          <span class="meta">2024 – 2028</span>
-        </div>
-        <div class="sub">B.Tech, Computer Science &middot; CGPA 9.2 / 10</div>
-      </div>
-
-      <div class="resume-item">
-        <div class="row">
-          <h3>Deeksha Junior College</h3>
-          <span class="meta">2022 – 2024</span>
-        </div>
-        <div class="sub">Class 11 &amp; 12 &middot; MPC (Mathematics, Physics, Chemistry)</div>
-      </div>
-
-      <div class="resume-item">
-        <div class="row">
-          <h3>Kennedy High &mdash; The Global School</h3>
-          <span class="meta">Until 2022</span>
-        </div>
-        <div class="sub">CBSE &middot; Grade 10</div>
-      </div>
+      <button class="download" onclick="window.print()">Print / Save PDF</button>
     </article>
 
     <!-- Experience -->
@@ -151,103 +122,106 @@
 
       <div class="resume-item">
         <div class="row">
-          <h3>Freelance Software Developer</h3>
-          <span class="meta">2024 – Present</span>
+          <h3>Freelance AI/ML Engineer</h3>
+          <span class="meta">2024 &ndash; Present</span>
         </div>
-        <div class="sub">Client: Warehouse / Manufacturing Firm, Hyderabad</div>
+        <div class="sub">Chemical manufacturer &middot; Hyderabad</div>
         <ul>
-          <li>Designed and deployed <strong>K-ERP</strong> &mdash; a custom warehouse ERP with procurement workflows, QC pipelines, inventory tracking, and auto-generated PDF/Excel reports. Used daily in production.</li>
-          <li>Built backend REST APIs in FastAPI with PostgreSQL + Supabase; Next.js + TailwindCSS frontend with role-based access control and JWT auth.</li>
-          <li>Reduced manual reporting time for warehouse staff by automating multi-sheet Excel generation with openpyxl and Pandas.</li>
+          <li>Designed the spreadsheet system the client&rsquo;s day-to-day operation runs on, then built <strong>ExcelMCP</strong> against it so agents could read those workbooks live rather than answer from a stale copy.</li>
+          <!-- NAME GOES HERE: replace "an agentic assistant" with the product name once you send it. -->
+          <li>Shipped <strong>an agentic assistant</strong> on top of that server, in production and used daily &mdash; staff ask operational questions in plain English and get answers traced back to a named file, sheet and cell.</li>
+          <li>Chose live Microsoft Graph fetches over a cached vector copy specifically so a sheet edited at 9am cannot be answered with Tuesday&rsquo;s number &mdash; the failure mode that makes an assistant worse than no assistant.</li>
         </ul>
+        <div class="tech">Python &middot; FastMCP &middot; Microsoft Graph API &middot; FastEmbed &middot; Pandas &middot; MSAL device flow</div>
       </div>
     </article>
 
-    <!-- Projects -->
+    <!-- Open source -->
     <article class="resume-card resume-section">
-      <h2>Projects <em>&mdash; selected.</em></h2>
+      <h2>Open source <em>&mdash; shipped and public.</em></h2>
       <span class="head-rule"></span>
 
       <div class="resume-item">
         <div class="row">
-          <h3>Native &mdash; Local-First Multi-Provider Agent</h3>
-          <a class="meta" href="https://github.com/Karunya-Muddana/Native" target="_blank" rel="noopener">github ↗</a>
+          <h3>ExcelMCP &mdash; live Excel intelligence layer for agents</h3>
+          <a class="meta" href="https://github.com/Karunya-Muddana/ExcelMCP" target="_blank" rel="noopener">github &#8599;</a>
         </div>
         <ul>
-          <li>22-tool LangGraph agent that reads PDFs, scans (PP-OCRv4), spreadsheets and images, executes Python inside a network-disabled, memory-capped Docker container, and authors .docx / .xlsx / .pptx deliverables &mdash; each file reopened after writing so the summary is read back from disk, not from the code that wrote it.</li>
-          <li>Every model role is an ordered fallback chain (Groq → Gemini → OpenRouter → NVIDIA NIM → local Ollama): rate limits, retired models, auth failures and timeouts advance the chain instead of ending the run, so the agent stays usable all day on free tiers alone.</li>
-          <li>Knowledge base and conversation memory embedded locally, so documents never leave the machine regardless of which provider answers. Apache 2.0.</li>
+          <li><strong>11 MCP tools</strong> over a OneDrive workspace. Structure is cached; no value ever is. Every response carries <code>fetched_at</code> and <code>is_cached: false</code> so the model can see in-band that the number is fresh.</li>
+          <li>Questions route by embedding similarity reranked on lexical overlap with column names and sampled values &mdash; which is what keeps routing meaningful when twenty workbooks share one schema.</li>
+          <li><code>lookup</code> never returns a bare number: it returns provenance, and surfaces <em>ambiguous</em> and <em>conflict</em> outcomes instead of silently picking one. Zero-match queries return diagnostics rather than an empty set.</li>
+          <li>Setup wizard detects and configures 12 agent hosts (Claude Code, Cursor, Windsurf, Codex, Zed and others), backing up existing configs first. MIT, v0.3.0, listed on Glama.</li>
         </ul>
-        <div class="tech">Python &middot; LangGraph &middot; FastAPI &middot; Docker &middot; PP-OCRv4 (ONNX) &middot; RAG &middot; Ollama &middot; Groq / Gemini / OpenRouter / NVIDIA NIM &middot; python-docx &middot; openpyxl &middot; python-pptx</div>
+        <div class="tech">Python &middot; FastMCP &middot; MS Graph API &middot; FastEmbed &middot; NumPy cosine search &middot; Pandas &middot; MSAL &middot; pytest</div>
       </div>
 
       <div class="resume-item">
         <div class="row">
-          <h3>Project Smith &mdash; Zero-Trust Autonomous Agent Runtime</h3>
-          <a class="meta" href="https://github.com/Karunya-Muddana/project-smith" target="_blank" rel="noopener">github ↗</a>
+          <h3>Native &mdash; local-first multi-provider agent</h3>
+          <a class="meta" href="https://github.com/Karunya-Muddana/Native" target="_blank" rel="noopener">github &#8599;</a>
         </div>
         <ul>
-          <li>Compiler-runtime architecture: natural language is compiled into a validated JSON DAG before any tool executes, making infinite loops mathematically impossible.</li>
-          <li>v4.0: voice mode (Whisper STT + MeloTTS), fabrication guard, long-term RAG memory, 15 plug-and-play tools (finance, SEC filings, Gmail, arXiv, code agent, crypto), and a Fleet Coordinator for parallel multi-agent execution.</li>
+          <li><strong>22-tool LangGraph agent.</strong> Reads PDFs, scans, spreadsheets and images; runs Python in a network-disabled, memory-capped Docker container; authors .docx / .xlsx / .pptx.</li>
+          <li>Every written file is reopened and summarised from disk, not from the code that wrote it &mdash; so the report describes what actually landed.</li>
+          <li>Each model role is an ordered chain (Groq &rarr; Gemini &rarr; OpenRouter &rarr; NVIDIA NIM &rarr; local Ollama). Rate limits, retired models and timeouts advance the chain instead of ending the run.</li>
+          <li>Knowledge base and memory embedded locally, so documents never leave the machine whichever provider answers. Apache 2.0.</li>
         </ul>
-        <div class="tech">Python &middot; FastAPI &middot; LangChain &middot; RAG &middot; Ollama &middot; MongoDB &middot; OpenRouter (NVIDIA Nemotron) &middot; Whisper &middot; pytest &middot; ruff</div>
+        <div class="tech">Python &middot; LangGraph &middot; FastAPI &middot; Docker &middot; PP-OCRv4 (ONNX) &middot; RAG &middot; Ollama &middot; python-docx &middot; openpyxl &middot; python-pptx</div>
       </div>
 
       <div class="resume-item">
         <div class="row">
-          <h3>K-ERP &mdash; Production Warehouse ERP <span style="font-family:var(--font-mono); font-size:11px; color:var(--pencil-soft); letter-spacing:0.1em;">(private)</span></h3>
-          <span class="meta">In production</span>
+          <h3>Project Smith &mdash; zero-trust agent runtime</h3>
+          <a class="meta" href="https://github.com/Karunya-Muddana/project-smith" target="_blank" rel="noopener">github &#8599;</a>
         </div>
         <ul>
-          <li>Full-featured ERP with procurement, quality control, inventory, and reporting modules deployed at a real client.</li>
+          <li>Compiler-runtime split: natural language is compiled to a validated JSON DAG before any tool executes, which makes infinite loops structurally impossible rather than merely unlikely.</li>
+          <li><strong>4 versions in 4 months.</strong> v4.0 adds voice (Whisper + MeloTTS), a fabrication guard, long-term RAG memory, 15 tools, and a coordinator for parallel multi-agent runs. Native grew out of this.</li>
         </ul>
-        <div class="tech">Next.js &middot; FastAPI &middot; PostgreSQL &middot; Supabase &middot; TailwindCSS &middot; openpyxl</div>
+        <div class="tech">Python &middot; FastAPI &middot; LangChain &middot; RAG &middot; Ollama &middot; MongoDB &middot; Whisper &middot; pytest &middot; ruff</div>
       </div>
+    </article>
+
+    <!-- Other work -->
+    <article class="resume-card resume-section">
+      <span class="corner-tape right"></span>
+      <h2>Other work <em>&mdash; earlier.</em></h2>
+      <span class="head-rule"></span>
 
       <div class="resume-item">
         <div class="row">
-          <h3>Embedding-Powered QA &mdash; RAG retrieval pipeline</h3>
-          <a class="meta" href="https://github.com/Karunya-Muddana/embedding-powered-qa" target="_blank" rel="noopener">github ↗</a>
+          <h3>CBSE Gazette Analyzer</h3>
+          <a class="meta" href="https://github.com/Karunya-Muddana/CBSE-Result-Analyzer-with-Excel-Reports-Python-Pandas-" target="_blank" rel="noopener">github &#8599;</a>
         </div>
         <ul>
-          <li>Retrieval-based QA system using sentence embeddings and similarity search; clean pipeline architecture designed for production extension.</li>
-        </ul>
-        <div class="tech">Python &middot; Transformers &middot; FAISS &middot; Sentence-Transformers</div>
-      </div>
-
-      <div class="resume-item">
-        <div class="row">
-          <h3>CBSE Gazette Analyzer &mdash; Data automation tool</h3>
-          <a class="meta" href="https://github.com/Karunya-Muddana/CBSE-Result-Analyzer-with-Excel-Reports-Python-Pandas-" target="_blank" rel="noopener">github ↗</a>
-        </div>
-        <ul>
-          <li>Converts official CBSE .txt gazette files into structured Excel analytics. Deployed across 2 schools covering 600+ students.</li>
+          <li>Parses the board&rsquo;s inconsistent .txt gazette files into Excel analytics. Used by teachers at <strong>2 schools</strong> across <strong>600+ students</strong>&rsquo; Class X results.</li>
         </ul>
         <div class="tech">Python &middot; Pandas &middot; Streamlit &middot; openpyxl</div>
       </div>
 
       <div class="resume-item">
         <div class="row">
-          <h3>Gemini Multi-Tool Agent &mdash; Multi-agent pipeline</h3>
-          <a class="meta" href="https://github.com/Karunya-Muddana/Gemini-Multi-Tool-Agent-Integrating-Google-Search-Gmail-and-Web-Scraping" target="_blank" rel="noopener">github ↗</a>
+          <h3>Embedding-Powered QA</h3>
+          <a class="meta" href="https://github.com/Karunya-Muddana/embedding-powered-qa" target="_blank" rel="noopener">github &#8599;</a>
         </div>
         <ul>
-          <li>Integrated agent pipeline combining Google Search, Gmail, and web scraping via Gemini API for autonomous research and summarisation.</li>
+          <li>Retrieval QA over sentence embeddings and similarity search; pipeline structured for production extension.</li>
         </ul>
-        <div class="tech">Python &middot; Gemini API &middot; Google Search API &middot; BeautifulSoup</div>
+        <div class="tech">Python &middot; Transformers &middot; FAISS &middot; Sentence-Transformers</div>
       </div>
 
       <div class="resume-item">
         <div class="row">
-          <h3>License Plate Detector &mdash; Computer vision pipeline</h3>
-          <a class="meta" href="https://github.com/Karunya-Muddana/Lisence-Plate-Detector" target="_blank" rel="noopener">github ↗</a>
+          <h3>Gemini Multi-Tool Agent &middot; License Plate Detector</h3>
+          <a class="meta" href="https://github.com/Karunya-Muddana" target="_blank" rel="noopener">github &#8599;</a>
         </div>
         <ul>
-          <li>OpenCV pipeline using edge detection, contour approximation, and morphological transforms to localise and extract license plates; OCR-ready output.</li>
+          <li>A research-and-summarise pipeline over Google Search, Gmail and scraping; and an OpenCV localisation pipeline using edge detection, contour approximation and morphological transforms.</li>
         </ul>
-        <div class="tech">Python &middot; OpenCV &middot; NumPy</div>
+        <div class="tech">Python &middot; Gemini API &middot; BeautifulSoup &middot; OpenCV &middot; NumPy</div>
       </div>
     </article>
+
 
     <!-- Skills -->
     <article class="resume-card resume-section resume-skills">
@@ -268,37 +242,45 @@
         <div class="skill-cat">
           <h4>Backend</h4>
           <span class="cat-rule"></span>
-          <div class="list">FastAPI <span class="sep">·</span> Flask <span class="sep">·</span> Node.js <span class="sep">·</span> PostgreSQL <span class="sep">·</span> MongoDB <span class="sep">·</span> Redis <span class="sep">·</span> Supabase <span class="sep">·</span> Firebase <span class="sep">·</span> REST APIs <span class="sep">·</span> WebSockets <span class="sep">·</span> Celery <span class="sep">·</span> GraphQL <span class="sep">·</span> JWT / OAuth2</div>
+          <div class="list">FastAPI <span class="sep">·</span> Flask <span class="sep">·</span> Node.js <span class="sep">·</span> PostgreSQL <span class="sep">·</span> MongoDB <span class="sep">·</span> Redis <span class="sep">·</span> Supabase <span class="sep">·</span> Firebase <span class="sep">·</span> REST APIs <span class="sep">·</span> WebSockets <span class="sep">·</span> JWT / OAuth2</div>
         </div>
         <div class="skill-cat">
-          <h4>Frontend</h4>
+          <h4>Foundations</h4>
           <span class="cat-rule"></span>
-          <div class="list">React <span class="sep">·</span> Next.js <span class="sep">·</span> TypeScript <span class="sep">·</span> TailwindCSS <span class="sep">·</span> Framer Motion <span class="sep">·</span> Streamlit <span class="sep">·</span> Three.js <span class="sep">·</span> Shadcn/ui</div>
+          <div class="list">Linear Algebra &amp; Calculus <span class="sep">·</span> Probability &amp; Statistics <span class="sep">·</span> AI Ethics &amp; Governance</div>
         </div>
         <div class="skill-cat">
           <h4>Cloud &amp; MLOps</h4>
           <span class="cat-rule"></span>
-          <div class="list">Google Cloud <span class="sep">·</span> Vertex AI <span class="sep">·</span> Docker <span class="sep">·</span> Kubernetes <span class="sep">·</span> GitHub Actions <span class="sep">·</span> Vercel <span class="sep">·</span> Render <span class="sep">·</span> DVC <span class="sep">·</span> Airflow <span class="sep">·</span> Terraform</div>
+          <div class="list">Google Cloud <span class="sep">·</span> Vertex AI <span class="sep">·</span> Microsoft Azure AI <span class="sep">·</span> Docker <span class="sep">·</span> Kubernetes <span class="sep">·</span> GitHub Actions <span class="sep">·</span> Vercel <span class="sep">·</span> Render <span class="sep">·</span> DVC <span class="sep">·</span> Airflow <span class="sep">·</span> Terraform</div>
         </div>
         <div class="skill-cat">
           <h4>Tools &amp; Ops</h4>
           <span class="cat-rule"></span>
-          <div class="list">Git <span class="sep">·</span> Pandas <span class="sep">·</span> NumPy <span class="sep">·</span> Ruff <span class="sep">·</span> Pytest <span class="sep">·</span> Pydantic <span class="sep">·</span> Postman <span class="sep">·</span> Linux <span class="sep">·</span> OpenTelemetry <span class="sep">·</span> openpyxl <span class="sep">·</span> Jupyter</div>
+          <div class="list">Git <span class="sep">·</span> Pandas <span class="sep">·</span> NumPy <span class="sep">·</span> Ruff <span class="sep">·</span> Pytest <span class="sep">·</span> Pydantic <span class="sep">·</span> Postman <span class="sep">·</span> Figma <span class="sep">·</span> Linux <span class="sep">·</span> OpenTelemetry <span class="sep">·</span> openpyxl <span class="sep">·</span> Jupyter</div>
         </div>
       </div>
     </article>
 
-    <!-- Certifications -->
+    <!-- Education -->
     <article class="resume-card resume-section">
-      <h2>Certifications <em>&mdash; deep dives.</em></h2>
+      <h2>Education <em>&amp; certifications.</em></h2>
       <span class="head-rule"></span>
+
+      <div class="resume-item">
+        <div class="row">
+          <h3>GITAM University, Hyderabad</h3>
+          <span class="meta">2024 &ndash; 2028</span>
+        </div>
+        <div class="sub">B.Tech, Computer Science &middot; CGPA 9.2 / 10</div>
+      </div>
 
       <div class="resume-item">
         <div class="row">
           <h3>CS50x &mdash; Introduction to Computer Science</h3>
           <span class="meta">Harvard / edX &middot; Audited</span>
         </div>
-        <div class="sub">Full audit of Harvard&rsquo;s flagship CS course: C, Python, SQL, data structures, algorithms, web development.</div>
+        <div class="sub">C, Python, SQL, data structures, algorithms, web development.</div>
       </div>
 
       <div class="resume-item">
@@ -306,7 +288,15 @@
           <h3>AWS AI Practitioner</h3>
           <span class="meta">Amazon Web Services &middot; Audited</span>
         </div>
-        <div class="sub">Foundational AI/ML concepts on AWS: SageMaker, Bedrock, Rekognition, and responsible AI practices.</div>
+        <div class="sub">SageMaker, Bedrock, Rekognition, and responsible AI practice.</div>
+      </div>
+
+      <div class="resume-item">
+        <div class="row">
+          <h3>Deeksha Junior College &middot; Kennedy High</h3>
+          <span class="meta">2022 &ndash; 2024 &middot; until 2022</span>
+        </div>
+        <div class="sub">Class 11 &amp; 12, MPC &middot; CBSE Grade 10</div>
       </div>
     </article>
 

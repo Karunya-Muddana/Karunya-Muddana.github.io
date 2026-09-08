@@ -179,6 +179,25 @@
 }
 .msg-error .content { color: #884330; }
 
+/* Time of writing — pencilled in the margin after the ink dries. */
+.msg .stamp {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: rgba(40, 30, 15, 0.34);
+  margin-left: 10px;
+  vertical-align: 3px;
+  white-space: nowrap;
+  animation: stampIn 420ms ease-out both;
+}
+@keyframes stampIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .msg .stamp { animation: none; }
+}
+
 /* Character ink-on-paper animation */
 .diary-char {
   display: inline;

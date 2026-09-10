@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
 <!-- PRIMARY SEO -->
 <title>About — Karunya Muddana | AI/ML Engineer & CS Student at GITAM</title>
@@ -21,7 +21,7 @@
 <meta property="og:site_name" content="Karunya Muddana Portfolio" />
 <meta property="og:title" content="About — Karunya Muddana | AI/ML Engineer" />
 <meta property="og:description" content="CS student at GITAM. Self-taught AI/ML engineer. Builder of agent runtimes, ERPs, and tools that get used." />
-<meta property="og:image" content="https://karunya-muddana.github.io/assets/og-image.png" />
+<meta property="og:image" content="https://karunya-muddana.github.io/assets/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 
@@ -29,10 +29,11 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="About — Karunya Muddana | AI/ML Engineer" />
 <meta name="twitter:description" content="CS student at GITAM. Builder of agents, ERPs, and things that ship." />
-<meta name="twitter:image" content="https://karunya-muddana.github.io/assets/og-image.png" />
+<meta name="twitter:image" content="https://karunya-muddana.github.io/assets/og-image.jpg" />
 
 <!-- FAVICON -->
-<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="icon" type="image/png" href="assets/favicon-64.png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 
 <!-- STRUCTURED DATA -->
 <script type="application/ld+json">
@@ -60,7 +61,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,700;1,9..144,800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
-<script src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.min.js"></script>
 </head>
 <body>
 
@@ -86,7 +87,7 @@
     <path id="plane-path" d="" />
   </svg>
   <div class="plane-img">
-    <img src="assets/plane.png" alt="" />
+    <img src="assets/plane.webp" alt="" />
   </div>
 </div>
 
@@ -162,7 +163,7 @@
         At first they seemed like sorcery. Systems that figure things out on their own. After building five or six, the magic wore off and I could see the engineering underneath. Messy, and mostly unsolved.
       </p>
       <p>
-        The frustration of watching agents break every time a new tool was added became the motivation for Smith. A runtime that compiles natural language into a deterministic execution graph. No improvisation. No hidden loops. No guessing what the agent decided to do.
+        The frustration of watching agents break every time a new tool was added became the motivation for Native. An agent whose every run shows its working: what it planned, which tool it called, what came back. No hidden loops. No guessing what the agent decided to do.
       </p>
       <p>
         Four months. Four major versions. Voice mode, long-term memory, a fabrication guard that prevents the system from making things up. Fifteen tools. And an architecture that&rsquo;s still evolving.
@@ -195,8 +196,10 @@
   </div>
 </main>
 
-<script src="rough-init.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-<script src="portfolio.js"></script>
+<script defer src="rough-init.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script defer src="portfolio.js"></script>
+<script src="mascot.js" defer></script>
+<script src="resume-sheet.js" defer></script>
 </body>
 </html>

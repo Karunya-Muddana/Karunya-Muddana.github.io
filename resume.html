@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
 <!-- PRIMARY SEO -->
 <title>Resume — Karunya Muddana | AI/ML Engineer & Full-Stack Developer</title>
@@ -21,7 +21,7 @@
 <meta property="og:site_name" content="Karunya Muddana Portfolio" />
 <meta property="og:title" content="Resume — Karunya Muddana | AI/ML & Full-Stack Engineer" />
 <meta property="og:description" content="AI/ML engineer and full-stack developer. Agent runtimes, production ERPs, RAG pipelines. Open to internships." />
-<meta property="og:image" content="https://karunya-muddana.github.io/assets/og-image.png" />
+<meta property="og:image" content="https://karunya-muddana.github.io/assets/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 
@@ -29,10 +29,11 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Resume — Karunya Muddana" />
 <meta name="twitter:description" content="AI/ML engineer and full-stack developer. Open to AI/ML, MLOps, and full-stack internships." />
-<meta name="twitter:image" content="https://karunya-muddana.github.io/assets/og-image.png" />
+<meta name="twitter:image" content="https://karunya-muddana.github.io/assets/og-image.jpg" />
 
 <!-- FAVICON -->
-<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="icon" type="image/png" href="assets/favicon-64.png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 
 <!-- STRUCTURED DATA -->
 <script type="application/ld+json">
@@ -60,7 +61,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,700;1,9..144,800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
-<script src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.min.js"></script>
+<script>if (/[?&]embed=1/.test(location.search)) document.documentElement.classList.add('embed');</script>
+<script defer src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.min.js"></script>
 </head>
 <body>
 
@@ -104,7 +106,7 @@
       <span class="corner-tape right"></span>
       <h1>Karunya <em>Muddana</em></h1>
       <p class="role">Agentic AI &middot; MCP &amp; Retrieval Systems &middot; MLOps</p>
-      <p class="resume-summary">I build agents that hold up in production. ExcelMCP &mdash; an 11-tool MCP server that answers spreadsheet questions against live Microsoft Graph data instead of a stale vector copy &mdash; runs the assistant a Hyderabad manufacturer uses daily. Native (22 tools) and Smith (4 versions in 4 months) are the open-source runtimes the same work produced.</p>
+      <p class="resume-summary">I build agents that hold up in production. ExcelMCP &mdash; an 11-tool MCP server that answers spreadsheet questions against live Microsoft Graph data instead of a stale vector copy &mdash; runs the assistant a Hyderabad manufacturer uses daily. Native, a 22-tool local-first agent, is the open-source runtime the same work produced.</p>
       <div class="resume-meta-row">
         <span>Hyderabad, India</span>
         <a href="mailto:Karunya.muddana@outlook.com">Karunya.muddana@outlook.com</a>
@@ -169,17 +171,6 @@
         <div class="tech">Python &middot; LangGraph &middot; FastAPI &middot; Docker &middot; PP-OCRv4 (ONNX) &middot; RAG &middot; Ollama &middot; python-docx &middot; openpyxl &middot; python-pptx</div>
       </div>
 
-      <div class="resume-item">
-        <div class="row">
-          <h3>Project Smith &mdash; zero-trust agent runtime</h3>
-          <a class="meta" href="https://github.com/Karunya-Muddana/project-smith" target="_blank" rel="noopener">github &#8599;</a>
-        </div>
-        <ul>
-          <li>Compiler-runtime split: natural language is compiled to a validated JSON DAG before any tool executes, which makes infinite loops structurally impossible rather than merely unlikely.</li>
-          <li><strong>4 versions in 4 months.</strong> v4.0 adds voice (Whisper + MeloTTS), a fabrication guard, long-term RAG memory, 15 tools, and a coordinator for parallel multi-agent runs. Native grew out of this.</li>
-        </ul>
-        <div class="tech">Python &middot; FastAPI &middot; LangChain &middot; RAG &middot; Ollama &middot; MongoDB &middot; Whisper &middot; pytest &middot; ruff</div>
-      </div>
     </article>
 
     <!-- Other work -->
@@ -313,8 +304,9 @@
   </div>
 </main>
 
-<script src="rough-init.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-<script src="portfolio.js"></script>
+<script defer src="rough-init.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script defer src="portfolio.js"></script>
+<script src="mascot.js" defer></script>
 </body>
 </html>

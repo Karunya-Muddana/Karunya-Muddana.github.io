@@ -4,7 +4,7 @@
 
   <!-- BASIC -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
   <!-- PRIMARY SEO -->
   <title>Karunya Muddana | AI/ML Engineer, Full-Stack Developer & MLOps</title>
@@ -44,9 +44,10 @@
 
   <meta
     property="og:image"
-    content="https://karunya-muddana.github.io/assets/og-image.png"
+    content="https://karunya-muddana.github.io/assets/og-image.jpg"
   />
 
+  <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
@@ -65,11 +66,12 @@
 
   <meta
     name="twitter:image"
-    content="https://karunya-muddana.github.io/assets/og-image.png"
+    content="https://karunya-muddana.github.io/assets/og-image.jpg"
   />
 
   <!-- FAVICON -->
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="icon" type="image/png" href="assets/favicon-64.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 
   <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -251,7 +253,15 @@
   </script>
 
   <!-- ROUGH JS -->
-  <script src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.min.js"></script>
+
+  <!-- Hold the headline hidden until motion.js splits it (max 2.5s) -->
+  <script>
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('split-pending');
+      setTimeout(function(){ document.documentElement.classList.remove('split-pending'); }, 2500);
+    }
+  </script>
 
   <meta name="google-site-verification" content="tUjOs4BtMSGVpH8Qx0v7RRfWOUCpEkzKWL2EkQKNdYI" />
 
@@ -302,6 +312,7 @@
 
 <!-- ============ HERO ============ -->
 <header class="hero">
+  <svg class="hero-guides" aria-hidden="true"></svg>
   <div class="hero-inner">
 
     <div class="hero-top-row">
@@ -329,13 +340,9 @@
       <div class="hero-text">
         <p class="hero-eyebrow">Karunya Muddana · CS @ GITAM</p>
         <h1 class="hero-title">
-          <span class="ln">Builds</span>
-          <span class="ln">things <em>that</em></span>
-          <span class="ln">
-            <span class="rough-underline">
-              ship<svg viewBox="0 0 240 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 6 5 C 40 2, 80 9, 120 4 C 160 1, 200 9, 234 4" /><path class="thin" d="M 4 11 C 50 8, 100 12, 150 9 C 190 5, 220 11, 236 8" /></svg>
-            </span>.
-          </span>
+          <span class="ln"><span class="sp">Builds</span></span>
+          <span class="ln"><span class="sp">things</span> <em class="sp">that</em></span>
+          <span class="ln"><span class="rough-underline"><span class="sp">ship</span><svg viewBox="0 0 240 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 6 5 C 40 2, 80 9, 120 4 C 160 1, 200 9, 234 4" /><path class="thin" d="M 4 11 C 50 8, 100 12, 150 9 C 190 5, 220 11, 236 8" /></svg></span><span class="sp">.</span><span class="hero-cuts" aria-hidden="true"><img class="cut cut-square" src="assets/paper/cut-square-peach.webp" alt="" /><img class="cut cut-circle" src="assets/paper/cut-circle-sage.webp" alt="" /><img class="cut cut-rect" src="assets/paper/cut-rect-lilac.webp" alt="" /><img class="cut cut-tape" src="assets/paper/tape-short-3.webp" alt="" /></span></span>
         </h1>
         <p class="hero-sub">
           Agent runtimes. MCP servers. Small tools that get used after they ship.
@@ -343,6 +350,10 @@
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#work">See the work</a>
           <a class="btn btn-sketched" data-rough="pill" data-seed="33" data-roughness="2" href="about.html">My story</a>
+        </div>
+        <div class="hero-hand">
+          <span>freelancing for a Hyderabad manufacturer</span>
+          <svg class="hero-hand-arrow" viewBox="0 0 100 64" aria-hidden="true"><path d="M4 58C20 58 34 50 36 40C38 30 28 26 24 33C20 41 34 46 48 40C64 33 78 20 88 8"/><path d="M76 9 88 8 86 20"/></svg>
         </div>
       </div>
 
@@ -358,11 +369,11 @@
         </div>
 
         <!-- Polaroid -->
-        <div class="polaroid" data-tilt>
+        <div class="polaroid" data-tilt data-perch="0.72" data-say="hero">
           <span class="tape tape-tl"></span>
           <span class="tape tape-br"></span>
           <div class="polaroid-inner">
-            <img src="assets/karunya.png" alt="Karunya Muddana" loading="eager" />
+            <img src="assets/karunya.webp" alt="Karunya Muddana" width="900" height="900" loading="eager" fetchpriority="high" />
           </div>
           <div class="polaroid-caption">Hyderabad &middot; &apos;26</div>
         </div>
@@ -373,7 +384,7 @@
         </div>
 
         <!-- floating pencil plane -->
-        <img src="assets/plane.png" class="hero-floating-plane" alt="" aria-hidden="true" />
+        <img src="assets/plane.webp" class="hero-floating-plane" alt="" aria-hidden="true" />
       </div>
 
     </div>
@@ -419,7 +430,7 @@
     <div class="left">
       <div class="eyebrow"><span class="bar"></span>About</div>
       <h2>A short version,<br/>in case you don&rsquo;t<br/>have time for the long one.</h2>
-      <div class="hand-note">↳ ten seconds, promise.</div>
+      <div class="hand-note" data-perch="0.8" data-say="about">↳ ten seconds, promise.</div>
     </div>
     <div class="right">
       <p>
@@ -437,7 +448,7 @@
 <section class="stats-strip">
   <div class="container reveal">
     <div class="label-row">
-      <h3>By the numbers, so far.</h3>
+      <h3 data-perch="0.9" data-say="stats">By the numbers, so far.</h3>
       <span class="caveat">~ small wins ~</span>
     </div>
     <div class="stats-grid">
@@ -496,7 +507,7 @@
 
     <div class="bento reveal">
 
-      <article class="card span-6 hero-project featured" data-rough="box" data-seed="2" data-roughness="2" data-bowing="1.5" data-stroke-width="1.6">
+      <article class="card span-6 hero-project featured" data-perch="0.9" data-say="native" data-rough="box" data-seed="2" data-roughness="2" data-bowing="1.5" data-stroke-width="1.6">
         <span class="card-tape"></span>
         <div class="hero-project-grid">
           <div class="hero-project-copy">
@@ -526,8 +537,9 @@
             </div>
           </div>
 
-          <figure class="hero-project-shot" data-rough="box" data-seed="5" data-roughness="2.4" data-stroke-width="1.3">
-            <img src="assets/projects/native-run-trace.jpg" alt="Native running a query: the plan, the tool call with its arguments and duration, and the answer" loading="lazy" />
+          <figure class="hero-project-shot has-sticky" data-rough="box" data-seed="5" data-roughness="2.4" data-stroke-width="1.3">
+            <img src="assets/projects/native-run-trace.jpg" width="1568" height="773" alt="Native running a query: the plan, the tool call with its arguments and duration, and the answer" loading="lazy" />
+            <p class="sticky " style="--r:5deg"><img class="sticky-pin" src="assets/paper/pin.webp" alt="" />works with the wifi off</p>
             <figcaption>Every run shows its working &mdash; what it planned, which tool it called with which arguments, how long it took, and what came back.</figcaption>
           </figure>
         </div>
@@ -536,8 +548,11 @@
         </div>
       </article>
 
-      <article class="card span-6 featured" data-rough="box" data-seed="9" data-roughness="2" data-bowing="1.5" data-stroke-width="1.6">
+      <article class="card span-6 hero-project featured excel-card" data-perch="0.88" data-say="excel" data-rough="box" data-seed="9" data-roughness="2" data-bowing="1.5" data-stroke-width="1.6">
         <span class="card-tape"></span>
+        <div class="hero-project-grid">
+          <div class="hero-project-copy">
+        
         <div class="cat">MCP server &middot; Open source &middot; MIT</div>
         <h3>ExcelMCP</h3>
         <p>A live Excel intelligence layer for AI agents. Point it at a OneDrive folder and an agent can ask questions about those spreadsheets in plain English &mdash; against the numbers that are in them right now, not a copy taken last Tuesday.</p>
@@ -559,29 +574,34 @@
           <span class="pill">Pandas</span>
           <span class="pill">MSAL</span>
         </div>
+          </div>
+          <figure class="printout" aria-label="Sample ExcelMCP response">
+            <img class="printout-tape" src="assets/paper/tape-short-2.webp" alt="" />
+            <div class="printout-paper">
+              <div class="printout-head">&rarr; lookup(&quot;raw material stock, plant 2&quot;)</div>
+<pre><code>{
+  "value": 18450,
+  "unit": "kg",
+  "file": "Stock_Register.xlsx",
+  "sheet": "Plant 2",
+  "cell": "D27",
+  <span class="circled">"is_cached": false,<svg viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true"><path d="M7 17C9 5 88 2 95 13C100 23 22 30 8 21C2 16 13 7 32 5"/></svg></span>
+  "fetched_at": "2026-09-10T09:02:41Z"
+}</code></pre>
+              <div class="printout-foot">sample response &middot; numbers made up</div>
+            </div>
+            <p class="sticky " style="--r:-5deg"><img class="sticky-pin" src="assets/paper/pin.webp" alt="" />never answers from a stale copy</p>
+          </figure>
+        </div>
         <div class="links">
           <a href="https://github.com/Karunya-Muddana/ExcelMCP" target="_blank" rel="noopener" data-rough="circle" data-seed="71" data-roughness="2.2" aria-label="ExcelMCP on GitHub">&#8599;</a>
         </div>
       </article>
 
-      <article class="card span-6 featured" data-rough="box" data-seed="15" data-roughness="2" data-bowing="1.5" data-stroke-width="1.5">
-        <span class="card-tape"></span>
-        <div class="cat">Agent runtime · Open source · Native grew out of this</div>
-        <h3>Smith v4.0</h3>
-        <p>The runtime Native was built on top of: natural language compiled into a deterministic execution graph, so there are no hidden loops and no guessing what the agent decided to do. Voice mode, fabrication guard, long-term memory with RAG. Four versions in four months, and the ideas that survived went into Native.</p>
-        <div class="impact"><span class="num">15</span> tools · 4 versions · 4 months</div>
-        <div class="pills">
-          <span class="pill">Python</span>
-          <span class="pill">DAG runtime</span>
-          <span class="pill">RAG</span>
-          <span class="pill">Ollama</span>
-        </div>
-        <div class="links">
-          <a href="https://github.com/Karunya-Muddana/project-smith" target="_blank" rel="noopener" data-rough="circle" data-seed="74" data-roughness="2.2" aria-label="GitHub">↗</a>
-        </div>
-      </article>
 
-      <article class="card span-2 small" data-rough="box" data-seed="27" data-roughness="2.2" data-stroke-width="1.3">
+      <article class="card span-2 small" data-perch="0.78" data-say="side" data-rough="box" data-seed="27" data-roughness="2.2" data-stroke-width="1.3">
+        <p class="sticky sm" style="--r:4deg"><img class="sticky-pin" src="assets/paper/pin.webp" alt="" />a weekend favour</p>
+        <img class="card-art" src="assets/play/cbse.webp" alt="A tall stack of messy printouts turning into a neat bar chart and spreadsheet" loading="lazy" />
         <div class="cat">Data tool</div>
         <h3>CBSE Gazette Analyzer</h3>
         <p>Turns the board&rsquo;s messy text gazette files into clean Excel and PDF analytics for teachers. 600 students, 2 schools.</p>
@@ -595,6 +615,8 @@
       </article>
 
       <article class="card span-2 small" data-rough="box" data-seed="34" data-roughness="2.2" data-stroke-width="1.3">
+        <p class="sticky sm" style="--r:-5deg"><img class="sticky-pin" src="assets/paper/pin.webp" alt="" />argues with itself</p>
+        <img class="card-art" src="assets/play/rwc.webp" alt="Three little blob characters around a table: one researching, one writing, one critiquing" loading="lazy" />
         <div class="cat">Multi-agent</div>
         <h3>Researcher · Writer · Critic</h3>
         <p>A three-agent pipeline that researches, drafts, and critiques its own output until it&rsquo;s good enough to ship.</p>
@@ -608,12 +630,14 @@
       </article>
 
       <article class="card span-2 small" data-rough="box" data-seed="44" data-roughness="2.2" data-stroke-width="1.3">
-        <div class="cat">Side project</div>
+        <p class="sticky sm" style="--r:3deg"><img class="sticky-pin" src="assets/paper/pin.webp" alt="" />smells like coffee</p>
+        <img class="card-thumb" src="assets/projects/roastly.webp" alt="Roastly's homepage: a latte-art cup under a big serif Roastly wordmark" width="900" height="486" loading="lazy" />
+        <div class="cat">Website</div>
         <h3>Roastly</h3>
-        <p>An AI that roasts your GitHub profile. A weekend build.</p>
+        <p>A website for a coffee shop: a latte-art hero, a full menu you can order ahead from, and reviews from the neighbourhood.</p>
         <div class="pills">
           <span class="pill">Next.js</span>
-          <span class="pill">LLMs</span>
+          <span class="pill">Frontend</span>
         </div>
         <div class="links">
           <a href="https://github.com/Karunya-Muddana/roastly_website" target="_blank" rel="noopener" data-rough="circle" data-seed="78" data-roughness="2.2" aria-label="GitHub">↗</a>
@@ -657,7 +681,7 @@
         <div class="stack-note">OOP, done properly</div>
       </div>
 
-      <div class="stack-card" data-rough="box" data-seed="63" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
+      <div class="stack-card" data-perch="0.5" data-say="stack" data-rough="box" data-seed="63" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
         <span class="stack-tape"></span>
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C" loading="lazy" />
         <div class="stack-name">C</div>
@@ -697,13 +721,7 @@
       <h2 class="section-title">A few things I&rsquo;ve written.</h2>
     </div>
     <div class="writing-grid reveal">
-      <article class="post-card" data-rough="box" data-seed="51" data-roughness="2.2" data-stroke-width="1.3">
-        <div class="cat">Agents · May 2026</div>
-        <h3>&ldquo;An agent that refuses to lie.&rdquo;</h3>
-        <p>The fabrication guard inside Smith v4.0: what it does, and what it taught me about building systems you can actually trust.</p>
-        <a class="read" href="https://www.linkedin.com/in/karunya-muddana/" target="_blank" rel="noopener">Read on LinkedIn</a>
-      </article>
-      <article class="post-card" data-rough="box" data-seed="52" data-roughness="2.2" data-stroke-width="1.3">
+      <article class="post-card" data-perch="0.82" data-say="writing" data-rough="box" data-seed="52" data-roughness="2.2" data-stroke-width="1.3">
         <div class="cat">Tooling · Mar 2026</div>
         <h3>&ldquo;A weekend tool, 600 students.&rdquo;</h3>
         <p>The CBSE gazette analyzer started as a one-weekend favour. Then teachers at two schools used it on the year&rsquo;s board results.</p>
@@ -720,6 +738,13 @@
 </section>
 
 <!-- ============ CONTACT ============ -->
+<!-- ============ GRASS (grows up from the contact section) ============ -->
+<div class="grass-edge" aria-hidden="true">
+  <canvas class="grass-back"></canvas>
+  <canvas class="grass-front"></canvas>
+  <span class="grass-perch" data-perch="0.72" data-say="grass"></span>
+</div>
+
 <section id="contact" class="contact">
   <div class="container">
     <div class="contact-grid">
@@ -727,12 +752,12 @@
         <h2>Let&rsquo;s build <span class="underline-on-dark"><em>something</em></span>.</h2>
         <p class="lede">Open to internships, collaborations, and interesting problems. Quickest replies over email.</p>
         <div class="contact-links">
-          <a href="mailto:Karunya.muddana@outlook.com">Karunya.muddana@outlook.com</a>
+          <span class="email-row"><a href="mailto:Karunya.muddana@outlook.com">Karunya.muddana@outlook.com</a><button class="copy-chip" type="button" data-copy="Karunya.muddana@outlook.com" aria-label="Copy email address">copy</button></span>
           <a href="https://www.linkedin.com/in/karunya-muddana/" target="_blank" rel="noopener">linkedin.com/in/karunya-muddana</a>
           <a href="https://github.com/Karunya-Muddana" target="_blank" rel="noopener">github.com/Karunya-Muddana</a>
         </div>
       </div>
-      <form class="contact-form" id="contact-form" novalidate>
+      <form class="contact-form" id="contact-form" novalidate data-perch="0.84" data-say="contact">
         <div class="field">
           <label for="cf-name">Name</label>
           <input id="cf-name" name="name" type="text" autocomplete="name" required />
@@ -755,11 +780,21 @@
 </section>
 
 <footer class="footer">
-  © 2026 Karunya Muddana &nbsp;·&nbsp; Hyderabad &nbsp;·&nbsp; Built by hand
+  <p class="footer-signoff">Built over a few weeks with overthinking, a vision, coffee and Claude ☕</p>
+  <p class="footer-legal">&copy; 2026 Karunya Muddana &nbsp;&middot;&nbsp; Hyderabad</p>
+  <button class="dogear" type="button" aria-label="A loose corner of paper. Peel it back."><span class="dogear-flap" aria-hidden="true"></span></button>
 </footer>
 
-<script src="rough-init.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-<script src="portfolio.js"></script>
+<script defer src="rough-init.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script defer src="motion.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script defer src="portfolio.js"></script>
+<script src="mascot.js" defer></script>
+<script src="resume-sheet.js" defer></script>
+<script src="grass.js" defer></script>
+<script type="module" src="grass3d.js"></script>
+<script src="game.js" defer></script>
 </body>
 </html>

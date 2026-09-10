@@ -471,6 +471,13 @@
       statusEl.classList.remove('success', 'error', 'mailto', 'pending');
       if (type) statusEl.classList.add(type);
       statusEl.textContent = msg;
+      // The mascot reacts to how the message went
+      const say = {
+        success: 'sent! karunya will write back soon.',
+        mailto:  'your mail app should pop up. hit send there!',
+        error:   'hmm. that email looks a bit off.'
+      }[type];
+      if (say) window.dispatchEvent(new CustomEvent('mascot:say', { detail: { text: say, mood: type === 'error' ? 'surprised' : 'excited' } }));
     }
   }
 
@@ -537,4 +544,25 @@
     window.addEventListener('scroll', update, { passive: true });
     (function loop() { update(); requestAnimationFrame(loop); })();
   }
+
+  // ---------- Copy email ----------
+  document.querySelectorAll('.copy-chip').forEach((chip) => {
+    chip.addEventListener('click', async () => {
+      const text = chip.dataset.copy;
+      let ok = false;
+      try { await navigator.clipboard.writeText(text); ok = true; }
+      catch (_) {
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { ok = document.execCommand('copy'); } catch (_) {}
+        ta.remove();
+      }
+      chip.textContent = ok ? 'copied ✓' : 'press ctrl+c';
+      chip.classList.toggle('done', ok);
+      if (ok) window.dispatchEvent(new CustomEvent('mascot:say', { detail: { text: 'copied! go on, paste it somewhere nice.', mood: 'excited' } }));
+      clearTimeout(chip._t);
+      chip._t = setTimeout(() => { chip.textContent = 'copy'; chip.classList.remove('done'); }, 1800);
+    });
+  });
 })();

@@ -44,8 +44,57 @@
     shy:    '<path d="M110 22C100 15 102 4 110 9C118 4 120 15 110 22Z" fill="#EB8A98" stroke="#2B3140" stroke-width="1.6" stroke-linejoin="round"/>',
     zz:     tick('M14 14h9l-9 10h9', '#5B8FD6') + tick('M29 4h6l-6 7h6', '#5B8FD6'),
     anger:  tick('M22 18q5 0 5-5M33 13q0 5 5 5M38 27q-5 0-5 5M27 32q0-5-5-5', '#D9503F'),
-    motion: tick('M8 92 1 101', '#8A857A') + tick('M17 98 11 107', '#8A857A')
+    motion: tick('M8 92 1 101', '#8A857A') + tick('M17 98 11 107', '#8A857A'),
+    question: tick('M106 16c0-9 13-9 13-1 0 6-7 6-7 11', '#5B8FD6') +
+              '<circle cx="112" cy="33" r="2.6" fill="#5B8FD6" stroke="#2B3140" stroke-width="1.4"/>',
+    dots:   [100, 111, 122].map((x, i) => `<circle class="km-dot" style="animation-delay:${i * 0.18}s" cx="${x}" cy="${20 - i * 4}" r="3.2" fill="#8A857A" stroke="#2B3140" stroke-width="1.4"/>`).join(''),
+    note:   '<g class="km-note-a">' + tick('M112 26V8l10-3v17', '#8A6FD1') + '<ellipse cx="109" cy="27" rx="4.2" ry="3.3" fill="#8A6FD1" stroke="#2B3140" stroke-width="1.4"/><ellipse cx="119" cy="23" rx="4.2" ry="3.3" fill="#8A6FD1" stroke="#2B3140" stroke-width="1.4"/></g>' +
+            '<g class="km-note-b">' + tick('M28 22V10', '#8A6FD1') + '<ellipse cx="25" cy="23" rx="3.8" ry="3" fill="#8A6FD1" stroke="#2B3140" stroke-width="1.4"/></g>',
+    sweat:  '<path d="M119 16c-6 8-7 13-2.5 15.5s9.5-2 7-7c-1-2.5-2.5-5-4.5-8.5z" fill="#DDF0FC" stroke="#2B3140" stroke-width="1.8" stroke-linejoin="round"/>',
+    bulb:   '<circle cx="112" cy="14" r="7.5" fill="#F7D35B" stroke="#2B3140" stroke-width="1.6"/><path d="M109 22h6v4h-6z" fill="#B9B2A4" stroke="#2B3140" stroke-width="1.4"/>' +
+            tick('M112 2v-3M122 8l3-2M102 8l-3-2', '#F2C443')
   };
+
+  // Eyes that aren't ellipses: joy arcs, laughing chevrons, hearts, spirals.
+  const heart = (x, y) => `<path d="M${x} ${y + 7}C${x - 13} ${y - 2} ${x - 7} ${y - 13} ${x} ${y - 5}C${x + 7} ${y - 13} ${x + 13} ${y - 2} ${x} ${y + 7}Z"/>`;
+  const spiral = (x, y) => `<path d="M${x} ${y}m-1 0a1 1 0 1 1 2 0a3 3 0 1 1-6 0a5 5 0 1 1 10 0a7 7 0 1 1-14 0"/>`;
+  const ALT_EYES =
+    `<g class="km-alt km-joy">${EYES_X.map(x => `<path d="M${x - 8} 71Q${x} 59 ${x + 8} 71"/>`).join('')}</g>` +
+    `<g class="km-alt km-laugh"><path d="M51 61 63 67 51 73"/><path d="M91 61 79 67 91 73"/></g>` +
+    `<g class="km-alt km-love">${EYES_X.map(x => heart(x, 68)).join('')}</g>` +
+    `<g class="km-alt km-dizzy">${EYES_X.map(x => `<g class="km-spin">${spiral(x, 67)}</g>`).join('')}</g>`;
+
+  // Props. Worn ones are drawn here in the same pencil line; held ones
+  // are the paper stickers from assets/stickers, so they match the site.
+  const S = 'assets/stickers/';
+  const PROPS =
+    `<g class="km-prop km-glasses"><path d="M46 62 29 57M96 62l17-5" stroke="#2B3140" stroke-width="2.4" stroke-linecap="round"/>` +
+      `<rect x="45" y="53" width="26" height="27" rx="10"/><rect x="71" y="53" width="26" height="27" rx="10"/>` +
+      `<path d="M67 60q4-3 8 0" fill="none" stroke="#2B3140" stroke-width="2.4"/></g>` +
+    `<g class="km-prop km-cap"><g transform="rotate(-9 71 12)">` +
+      `<path d="M54 12q17 8 34 0v10q-17 8-34 0z" fill="#2B3140"/>` +
+      `<path d="M71-3 105 8 71 19 37 8z" fill="#343C4F" stroke="#2B3140" stroke-width="2.2" stroke-linejoin="round"/>` +
+      `<path d="M71 8l27 4v15" fill="none" stroke="#F2C443" stroke-width="2.2" stroke-linecap="round"/>` +
+      `<path d="M95 26h6l-1 9h-4z" fill="#F2C443" stroke="#2B3140" stroke-width="1.2"/></g></g>` +
+    `<g class="km-prop km-party"><g transform="rotate(16 80 16)">` +
+      `<path d="M63 22 80-18 97 22q-17 6-34 0z" fill="#F4A7B9" stroke="#2B3140" stroke-width="2.4" stroke-linejoin="round"/>` +
+      `<circle cx="79" cy="0" r="2.6" fill="#5B8FD6"/><circle cx="74" cy="13" r="2.6" fill="#F2C443"/><circle cx="87" cy="14" r="2.6" fill="#5B8FD6"/>` +
+      `<circle cx="80" cy="-19" r="5" fill="#F2C443" stroke="#2B3140" stroke-width="2"/></g></g>` +
+    `<g class="km-prop km-magnifier"><path d="M97 81 113 101" stroke="#2B3140" stroke-width="9.5" stroke-linecap="round"/>` +
+      `<path d="M97 81 113 101" stroke="#9A6A3F" stroke-width="5.5" stroke-linecap="round"/>` +
+      `<circle cx="85" cy="68" r="17" fill="rgba(205,228,247,0.32)" stroke="#2B3140" stroke-width="5.4"/>` +
+      `<circle cx="85" cy="68" r="17" fill="none" stroke="#D2AA52" stroke-width="2.4"/>` +
+      `<path d="M75 61q4-6 11-6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" opacity=".85"/></g>` +
+    `<g class="km-prop km-headphones">` +
+      `<path d="M26 60C24 4 118 4 116 60" fill="none" stroke="#2B3140" stroke-width="8" stroke-linecap="round"/>` +
+      `<path d="M26 60C24 4 118 4 116 60" fill="none" stroke="#8FB0D6" stroke-width="4" stroke-linecap="round"/>` +
+      `<rect x="13" y="48" width="18" height="30" rx="8" fill="#8FB0D6" stroke="#2B3140" stroke-width="2.6"/>` +
+      `<rect x="111" y="48" width="18" height="30" rx="8" fill="#8FB0D6" stroke="#2B3140" stroke-width="2.6"/>` +
+      `<rect x="25" y="52" width="7" height="22" rx="3.5" fill="#3A3F4A"/><rect x="110" y="52" width="7" height="22" rx="3.5" fill="#3A3F4A"/></g>` +
+    `<image class="km-prop km-chai" href="${S}chai.webp" x="-8" y="60" width="30" height="50"/>` +
+    `<image class="km-prop km-book" href="${S}book.webp" x="38" y="80" width="66" height="50"/>` +
+    `<image class="km-prop km-camera" href="${S}camera.webp" x="42" y="79" width="58" height="43"/>` +
+    `<g class="km-prop km-bat"><image href="${S}cricket.webp" x="104" y="30" width="42" height="59" transform="rotate(22 118 86)"/></g>`;
 
   // Eye shapes per expression. rx/ry = eye white, prx/pry = pupil,
   // dy = vertical shift, look = how far the pupils may wander (0–1),
@@ -56,8 +105,53 @@
     surprised: { rx: 11.2, ry: 14.6, prx: 3.1, pry: 3.6, dy: -1, look: .5,  blush: 0 },
     sleepy:    { rx: 10.6, ry: 1.4,  prx: 0,   pry: 0,   dy: 3,  look: 0,   blush: 0 },
     shy:       { rx: 9.2,  ry: 12.2, prx: 4.8, pry: 7.2, dy: 6,  look: .35, blush: 1 },
-    angry:     { rx: 10.2, ry: 13.8, prx: 5.2, pry: 7.8, dy: 0,  look: 0,   blush: 0 }
+    angry:     { rx: 10.2, ry: 13.8, prx: 5.2, pry: 7.8, dy: 0,  look: 0,   blush: 0 },
+    smug:      { rx: 10.6, ry: 7.2,  prx: 5,   pry: 5.2, dy: 4,  look: .5,  blush: .35 },
+    think:     { rx: 10,   ry: 13.2, prx: 4.6, pry: 6.6, dy: 0,  look: 1,   blush: 0 },
+    sad:       { rx: 10,   ry: 12.4, prx: 5.8, pry: 8.4, dy: 3,  look: .45, blush: 0 },
+    wink:      { rx: 10.8, ry: 14.6, prx: 5.4, pry: 8,   dy: 0,  look: .6,  blush: .5 },
+    // These swap the eyes for another shape (ALT_EYES); the numbers just
+    // keep the ellipses sensible underneath while they cross-fade.
+    joy:       { rx: 10.2, ry: 13.8, prx: 5.2, pry: 7.8, dy: 0,  look: 0,   blush: .8 },
+    laugh:     { rx: 10.2, ry: 13.8, prx: 5.2, pry: 7.8, dy: 0,  look: 0,   blush: 1 },
+    love:      { rx: 10.2, ry: 13.8, prx: 5.2, pry: 7.8, dy: 0,  look: 0,   blush: 1 },
+    dizzy:     { rx: 10.2, ry: 13.8, prx: 5.2, pry: 7.8, dy: 0,  look: 0,   blush: 0 }
   };
+
+  // What it wears, holds and looks like on each perch (by data-say).
+  // A perch can also set data-prop / data-expr in the HTML.
+  const PERCH = {
+    hero:    { prop: 'camera',          expr: 'joy' },
+    about:   { prop: 'chai',            expr: 'smug' },
+    stats:   { prop: 'cap glasses',     expr: 'smug' },
+    native:  { prop: 'headphones',      expr: 'joy' },
+    excel:   { prop: 'magnifier',       expr: 'think' },
+    side:    { prop: 'bat',             expr: 'excited' },
+    stack:   { prop: 'glasses',         expr: 'smug' },
+    writing: { prop: 'book glasses',    expr: 'think' },
+    contact: { prop: 'party',           expr: 'joy' },
+    story:   { prop: 'chai',            expr: 'joy' },
+    paper:   { prop: 'book glasses',    expr: 'think' },
+    plates:  { prop: 'magnifier',       expr: 'think' },
+    beat:    { prop: '',                expr: 'love' },
+    mom:     { prop: 'cap',             expr: 'joy' },
+    agents:  { prop: 'headphones',      expr: 'smug' },
+    theend:  { prop: 'party',           expr: 'laugh' },
+    chat:    { prop: 'party',           expr: 'joy' },
+    composer:{ prop: '',                expr: 'wink' }
+  };
+
+  // Little bits of business while it sits around.
+  const IDLE_BITS = [
+    { prop: 'chai',          expr: 'joy',     say: 'chai break.' },
+    { prop: 'book glasses',  expr: 'think',   say: 'just one more chapter.' },
+    { prop: 'headphones',    expr: 'joy',     say: 'this one slaps.' },
+    { prop: 'bat',           expr: 'excited', say: 'howzat!' },
+    { prop: 'magnifier',     expr: 'think',   say: 'investigating...' },
+    { prop: 'camera',        expr: 'wink',    say: 'say cheese!' },
+    { prop: 'glasses',       expr: 'smug',    say: 'i look smart now. right?' },
+    { prop: '',              expr: 'think',   mark: 'bulb', say: 'i just had an idea. it left.' }
+  ];
 
   // ---------- DOM ----------
   const root = document.createElement('div');
@@ -67,7 +161,7 @@
   root.style.height = H + 'px';
   root.innerHTML = `
     <div class="km-squash" style="transform-origin:50% ${FEET_PX}px">
-      <svg viewBox="0 0 ${VB_W} ${VB_H}" width="${W}" height="${H}">
+      <svg viewBox="0 0 ${VB_W} ${VB_H}" width="${W}" height="${H}" overflow="visible">
         <defs>
           <pattern id="km-hatch" width="3.6" height="3.6" patternUnits="userSpaceOnUse" patternTransform="rotate(38)">
             <line x1="0" y1="0" x2="0" y2="3.6" stroke="#1E2A44" stroke-opacity=".12" stroke-width="1.2"/>
@@ -107,8 +201,15 @@
             <circle class="km-shine km-shine-a" cx="${x}" cy="${EYE_Y}" r="2.1"/>
             <circle class="km-shine km-shine-b" cx="${x}" cy="${EYE_Y}" r="1"/>`).join('')}
         </g>
+        ${ALT_EYES}
         <path class="km-mouth km-smile" d="M66.5 83Q71 87.5 75.5 83"/>
         <ellipse class="km-mouth km-o" cx="71" cy="85" rx="2.5" ry="3"/>
+        <path class="km-mouth km-grin" d="M64.5 82.5Q71 83.5 77.5 82.5Q76 91 71 91Q66 91 64.5 82.5Z"/>
+        <path class="km-mouth km-frown" d="M66.5 87Q71 82.5 75.5 87"/>
+        <path class="km-mouth km-flat" d="M67.5 85.5Q71 84.6 75 85.8"/>
+        <path class="km-mouth km-smirk" d="M66 85Q71 86.5 76 82"/>
+        <path class="km-mouth km-wavy" d="M64 85q2-3 4 0t4 0 4 0 4 0"/>
+        ${PROPS}
         <g class="km-angry">
           <path d="M46 59 68 66 54 76Z"/><path d="M96 59 74 66 88 76Z"/>
         </g>
@@ -215,9 +316,13 @@
   let flash = null;                 // { expr, mark, until }
   let lastInput = performance.now();
   let wasSleepy = false;
-  let shownExpr = '', shownMark = '';
+  let shownExpr = '', shownMark = '', shownProp = null;
   let nextIdle = performance.now() + rand(6000, 10000);
   let idleLook = null;              // { until, x, y }
+  let bit = null;                   // idle business: { prop, expr, mark, until }
+  let pageState = {};               // set by other scripts: { expr, mark, prop }
+  let dizzyUntil = 0;
+  let winkAmt = 0, magAmt = 0;      // eased 0..1
 
 
   // ---------- Speech ----------
@@ -235,6 +340,21 @@
     writing: ["karunya writes too. mostly about things that broke, and why."],
     grass:   ["this is my grass. please don't mow it.", "psst... the footer has a loose corner. just saying."],
     contact: ["say hi! karunya replies faster than i do.", "internships, collabs, weird problems. all welcome."],
+    // about.html
+    story:   ["this is the long version. get comfy.", "grab a chai. this one's a story."],
+    paper:   ["karunya read that paper twice. i read the title. twice.", "attention is all you need. also snacks."],
+    plates:  ["a license plate detector. i have neither a license nor plates.", "first real project. i was there. (i wasn't.)"],
+    beat:    ["i get that feeling every time i land a hop.", "chasing that feeling. same, honestly."],
+    mom:     ["mom brought the problems. karunya brought python.", "600 students. that's a lot of report cards."],
+    agents:  ["agents looked like magic. then karunya built six of them.", "native is the one that runs with the wifi off. my favourite."],
+    theend:  ["the end! well, the end so far.", "okay, go see the work. i'll wait here."],
+    // chat.html
+    chat:    ["ask anything! karunya writes back in ink.", "go on, ask something. i won't read over your shoulder. much."],
+    composer:["i'll sit here while you type.", "no wrong questions. some weird ones. those are fine too."],
+    asked:   ["ooh, good one.", "karunya's going to like that.", "writing it down..."],
+    waking:  ["the server's waking up. it naps when nobody's around. like me.", "cold start! give it a few seconds. it's stretching."],
+    replied: ["ink's still wet. don't smudge it.", "look at that handwriting.", "told you they'd write back."],
+    oops:    ["hmm. that didn't go through.", "the ink ran out. try again?"],
     joke: [
       "why did the agent break up with the API? too many dependencies.",
       "i tried to tell a recursion joke. i tried to tell a recursion joke.",
@@ -259,6 +379,7 @@
     lineIdx[key] = i;
     return arr[i];
   }
+  const hasGame = !!document.querySelector('.dogear');
   const found = () => { try { return localStorage.getItem('cloudstack-found') === '1'; } catch (_) { return false; } };
 
   const bubble = document.createElement('div');
@@ -283,7 +404,18 @@
     return true;
   }
 
+  function perchConf(el) {
+    if (!el || el === DOCK || !el.dataset) return null;
+    const base = PERCH[el.dataset.say] || {};
+    return {
+      prop: el.dataset.prop != null ? el.dataset.prop : (base.prop || ''),
+      expr: el.dataset.expr || base.expr || ''
+    };
+  }
+
   function onLand(el) {
+    const conf = perchConf(el);
+    if (conf && conf.expr) flash = { expr: conf.expr, mark: '', until: performance.now() + 2200 };
     const key = el.dataset && el.dataset.say;
     if (!key || spokenPerch.has(el)) return;
     spokenPerch.add(el);
@@ -295,8 +427,15 @@
     if (now - lastInput > 20000) return;
     const deep = (scrollY + innerHeight) / document.documentElement.scrollHeight > 0.6;
     let key = 'joke';
-    if (Math.random() < (deep ? 0.55 : 0.22)) key = found() ? 'hintFound' : 'hint';
-    say(line(key), { hold: 4000 });
+    // Game hints point at the footer corner, so only where it exists.
+    if (hasGame && Math.random() < (deep ? 0.55 : 0.22)) key = found() ? 'hintFound' : 'hint';
+    const text = line(key);
+    if (!say(text, { hold: 4000 })) return;
+    // Laughs at its own jokes. Winks when it's dropping a hint.
+    const hold = 4000 + text.length * 32;
+    flash = key === 'joke'
+      ? { expr: 'laugh', mark: 'excite', until: now + Math.min(hold, 3200) }
+      : { expr: 'wink', mark: '', until: now + 2400 };
   }
 
   function paintBubble(now) {
@@ -320,14 +459,42 @@
   }
 
   // Other scripts can make it talk: dispatch 'mascot:say' { text, mood }.
+  // `key` picks a line from LINES instead of passing text; `soft` lets a
+  // bubble that's already up finish instead of cutting it off.
   addEventListener('mascot:say', (e) => {
     const d = e.detail || {};
-    if (!d.text) return;
-    say(d.text, { force: true, hold: 2600 });
-    const mood = d.mood === 'surprised' ? ['surprised', 'alarm'] : ['excited', 'excite'];
-    flash = { expr: mood[0], mark: mood[1], until: performance.now() + 1600 };
-    if (mode === 'sit') startHop(home, { h: 22, dur: 0.34, wait: 0.06 });
+    const text = d.text || line(d.key);
+    if (!text) return;
+    noteInput();   // wake first, or the "i wasn't sleeping" line talks over this one
+    if (!say(text, { force: !d.soft, hold: d.hold || 2600 })) return;
+    react(d.mood);
   });
+
+  // A reaction without words: 'mascot:mood' { mood }.
+  addEventListener('mascot:mood', (e) => react((e.detail || {}).mood));
+
+  // Watch something for a while: 'mascot:look' { el, ms }.
+  let lookAt = null;
+  addEventListener('mascot:look', (e) => {
+    const d = e.detail || {};
+    if (d.el) lookAt = { el: d.el, until: performance.now() + (d.ms || 1500) };
+  });
+
+  // A standing look until told otherwise: 'mascot:state' { expr, mark, prop }.
+  // Dispatch with no detail to clear it.
+  addEventListener('mascot:state', (e) => { pageState = e.detail || {}; });
+
+  const MOODS = {
+    surprised: ['surprised', 'alarm'], shy: ['shy', 'shy'], love: ['love', 'shy'],
+    joy: ['joy', 'excite'], laugh: ['laugh', 'excite'], sad: ['sad', 'sweat'],
+    think: ['think', 'question'], smug: ['smug', ''], wink: ['wink', ''], excited: ['excited', 'excite']
+  };
+  function react(moodName) {
+    const mood = MOODS[moodName] || MOODS.excited;
+    flash = { expr: mood[0], mark: mood[1], until: performance.now() + 1600 };
+    noteInput();
+    if (mode === 'sit' && moodName !== 'sad') startHop(home, { h: 22, dur: 0.34, wait: 0.06 });
+  }
 
   // Switch tabs and the tab title asks you to come back.
   const pageTitle = document.title;
@@ -429,19 +596,41 @@
   function currentFace(now) {
     if (red) return ['angry', 'anger'];
     if (mode === 'drag' && drag && drag.moved > 6) return ['surprised', 'alarm'];
+    if (now < dizzyUntil) return ['dizzy', ''];
     if (flash && now < flash.until) return [flash.expr, flash.mark];
-    if (hovering) return now - hoverStart > 2400 ? ['shy', 'shy'] : ['excited', 'excite'];
+    if (hovering) {
+      const h = now - hoverStart;
+      return h > 5200 ? ['love', 'shy'] : h > 2400 ? ['shy', 'shy'] : ['excited', 'excite'];
+    }
+    if (bit && now < bit.until) return [bit.expr, bit.mark || ''];
+    if (pageState.expr) return [pageState.expr, pageState.mark || ''];
     if (now - lastInput > 20000) return ['sleepy', 'zz'];
     if (mode === 'hop' && hop && hop.launched && !hop.drop && hop.h > 40) return ['excited', 'motion'];
     return ['neutral', ''];
   }
 
+  // Temporary business first, then whatever the page asked for, then
+  // whatever goes with the perch it's sitting on.
+  function currentProp(now) {
+    if (red) return '';
+    if (bit && now < bit.until) return bit.prop;
+    if (pageState.prop != null && pageState.prop !== '') return pageState.prop;
+    if (mode === 'sit') { const c = perchConf(home); return c ? c.prop : ''; }
+    return shownProp || '';   // keep holding it mid-hop
+  }
+
   // Little things it does on its own while sitting.
   function idleAction(now) {
     const pick = Math.random();
-    if (pick < 0.4) {
+    if (pick < 0.35) {
+      // Pull a prop out for a few seconds, and sometimes say so.
+      const b = IDLE_BITS[Math.floor(Math.random() * IDLE_BITS.length)];
+      bit = { ...b, until: now + 5000 };
+      squash(0.9, 1.1);
+      if (Math.random() < 0.6) say(b.say, { hold: 1800 });
+    } else if (pick < 0.6) {
       startHop(home, { h: 16, dur: 0.32, wait: 0.1 });            // tiny hop
-    } else if (pick < 0.75) {
+    } else if (pick < 0.85) {
       const side = Math.random() < 0.5 ? -1 : 1;                 // look around
       idleLook = { until: now + 1500, x: side, y: -0.2, flip: now + 750 };
     } else {
@@ -538,6 +727,8 @@
     vel.x = clamp(d.vx, -2200, 2200);
     vel.y = clamp(d.vy, -2200, 2200);
     awayUntil = performance.now() + 5000;
+    // Thrown hard enough, it sees stars for a bit.
+    if (Math.hypot(vel.x, vel.y) > 900) dizzyUntil = performance.now() + 2600;
     squash(1.2, 0.82);
     say(line('drop'), { force: true, hold: 1800 });
   }
@@ -648,13 +839,19 @@
     const sway = sitting && !asleep ? Math.sin(now / 1000 * 1.1) * 1.4 : 0;
 
     // ----- Face -----
-    const [exprName, mark] = currentFace(now);
+    const [exprName, faceMark] = currentFace(now);
+    const prop = currentProp(now);
+    // Headphones on and nothing else to say: little music notes.
+    const mark = faceMark || (/headphones/.test(prop) && exprName !== 'sleepy' ? 'note' : '');
     if (exprName !== shownExpr) { root.dataset.expr = exprName; shownExpr = exprName; }
     if (mark !== shownMark) { root.dataset.mark = mark; shownMark = mark; }
-    const tgt = EXPR[exprName];
+    if (prop !== shownProp) { root.dataset.prop = prop; shownProp = prop; }
+    const tgt = EXPR[exprName] || EXPR.neutral;
     const ek = damp(15, dt);
     for (const key in tgt) eye[key] = lerp(eye[key], tgt[key], ek);
     cheeks.style.opacity = eye.blush.toFixed(3);
+    winkAmt = lerp(winkAmt, exprName === 'wink' ? 1 : 0, damp(18, dt));
+    magAmt = lerp(magAmt, /magnifier/.test(prop) ? 1 : 0, damp(10, dt));
 
     // Gaze: travel direction, the cursor, an idle look-around, or a drift.
     const eyeCx = pos.x, eyeCy = pos.y - FEET_PX + EYE_Y * U;
@@ -662,6 +859,11 @@
       const tp = homePoint(hop.to);
       const d = Math.hypot(tp.x - pos.x, tp.y - pos.y) || 1;
       gaze.tx = (tp.x - pos.x) / d; gaze.ty = (tp.y - pos.y) / d;
+    } else if (lookAt && now < lookAt.until && lookAt.el.isConnected) {
+      const r = lookAt.el.getBoundingClientRect();
+      const dx = r.left + r.width / 2 - eyeCx, dy = r.top + r.height / 2 - eyeCy;
+      const d = Math.hypot(dx, dy) || 1;
+      gaze.tx = dx / d; gaze.ty = dy / d;
     } else if (idleLook && now < idleLook.until) {
       if (now > idleLook.flip) { idleLook.x *= -1; idleLook.flip = Infinity; }
       gaze.tx = idleLook.x; gaze.ty = idleLook.y;
@@ -675,6 +877,9 @@
       nextDrift = now + rand(1200, 3200);
     }
     if (exprName === 'shy') { gaze.tx *= 0.4; gaze.ty = 0.85; }
+    if (exprName === 'think') { gaze.tx = 0.7; gaze.ty = -0.85; }          // eyes up and away
+    if (exprName === 'sad') { gaze.tx *= 0.3; gaze.ty = 0.9; }
+    if (/book/.test(prop)) { gaze.tx = Math.sin(now / 700) * 0.7; gaze.ty = 0.8; }   // reading along
     const gk = damp(mode === 'drag' ? 18 : 8, dt);
     gaze.x = lerp(gaze.x, gaze.tx, gk);
     gaze.y = lerp(gaze.y, gaze.ty, gk);
@@ -694,23 +899,27 @@
 
     for (let i = 0; i < 2; i++) {
       const cx = EYES_X[i], cy = EYE_Y + eye.dy;
-      const ry = Math.max(0.8, eye.ry * lid);
-      whites[i].setAttribute('rx', eye.rx.toFixed(2));
+      // Right eye: shuts for a wink, swells behind the magnifying glass.
+      const lidI = i === 1 ? lid * (1 - winkAmt * 0.94) : lid;
+      const mag = i === 1 ? 1 + magAmt * 0.45 : 1;
+      const erx = eye.rx * mag, ery = eye.ry * mag, eprx = eye.prx * mag, epry = eye.pry * mag;
+      const ry = Math.max(0.8, ery * lidI);
+      whites[i].setAttribute('rx', erx.toFixed(2));
       whites[i].setAttribute('ry', ry.toFixed(2));
       whites[i].setAttribute('cy', cy.toFixed(2));
-      const limX = Math.max(0, eye.rx - eye.prx - 1.2) * eye.look;
-      const limY = Math.max(0, eye.ry - eye.pry - 1.2) * eye.look * lid;
+      const limX = Math.max(0, erx - eprx - 1.2) * eye.look;
+      const limY = Math.max(0, ery - epry - 1.2) * eye.look * lidI;
       const px = cx + gaze.x * limX, py = cy + gaze.y * limY;
-      const pry = Math.max(0, eye.pry * lid);
+      const pry = Math.max(0, epry * lidI);
       pupils[i].setAttribute('cx', px.toFixed(2));
       pupils[i].setAttribute('cy', py.toFixed(2));
-      pupils[i].setAttribute('rx', eye.prx.toFixed(2));
+      pupils[i].setAttribute('rx', eprx.toFixed(2));
       pupils[i].setAttribute('ry', pry.toFixed(2));
       // Sparkles ride on the pupil and vanish when it's small or shut.
-      const shine = eye.prx > 3 && lid > 0.5 ? 1 : 0;
-      shinesA[i].setAttribute('cx', (px - eye.prx * 0.32).toFixed(2));
+      const shine = eprx > 3 && lidI > 0.5 ? 1 : 0;
+      shinesA[i].setAttribute('cx', (px - eprx * 0.32).toFixed(2));
       shinesA[i].setAttribute('cy', (py - pry * 0.38).toFixed(2));
-      shinesB[i].setAttribute('cx', (px + eye.prx * 0.36).toFixed(2));
+      shinesB[i].setAttribute('cx', (px + eprx * 0.36).toFixed(2));
       shinesB[i].setAttribute('cy', (py + pry * 0.3).toFixed(2));
       shinesA[i].style.opacity = shinesB[i].style.opacity = shine;
     }

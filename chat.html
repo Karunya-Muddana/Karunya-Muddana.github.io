@@ -85,25 +85,34 @@
     <div class="notebook-page">
       <header class="notebook-head">
         <div class="chapter">— in Karunya&rsquo;s own hand —</div>
-        <h1>Ask me <em>anything</em>.</h1>
+        <h1 data-perch="0.9" data-say="chat">Ask me <em>anything</em>.</h1>
         <p class="subhead">I&rsquo;ll write back. The page does the talking &mdash; ink fades in as I think.</p>
       </header>
 
-      <div class="messages" id="messages">
-        <div class="suggested" id="suggested">
-          <p class="hint">— try asking —</p>
-          <button class="suggest-btn">Tell me about Native</button>
-          <button class="suggest-btn">What&rsquo;s your tech stack?</button>
-          <button class="suggest-btn">What are you working on now?</button>
-          <button class="suggest-btn">Looking for an internship?</button>
+      <div class="lined">
+        <div class="messages" id="messages" role="log" aria-live="polite" aria-label="Conversation">
+          <div class="suggested" id="suggested">
+            <p class="hint">— try asking —</p>
+            <button class="suggest-btn" type="button">Tell me about Native</button>
+            <button class="suggest-btn" type="button">What&rsquo;s ExcelMCP?</button>
+            <button class="suggest-btn" type="button">What&rsquo;s your tech stack?</button>
+            <button class="suggest-btn" type="button">What are you working on now?</button>
+            <button class="suggest-btn" type="button">Looking for an internship?</button>
+          </div>
         </div>
       </div>
 
-      <form class="composer" id="composer" autocomplete="off">
-        <input id="chat-input" placeholder="write your question here&hellip;" maxlength="1000" autocomplete="off" />
-        <button type="submit" class="send-btn" id="send-btn" aria-label="Send">↵</button>
-      </form>
-      <div class="composer-hint">press enter to send · this chat is private &amp; ephemeral</div>
+      <div class="composer-wrap">
+        <form class="composer" id="composer" autocomplete="off" data-perch="0.92" data-say="composer">
+          <label class="chat-sr" for="chat-input">Your question</label>
+          <input id="chat-input" placeholder="write your question here&hellip;" maxlength="1000" autocomplete="off" enterkeyhint="send" />
+          <button type="submit" class="send-btn" id="send-btn" aria-label="Send">↵</button>
+        </form>
+        <div class="composer-hint">
+          <span>press enter to send · this chat is private &amp; ephemeral</span>
+          <button type="button" class="fresh-btn" id="fresh-btn" hidden>tear out this page</button>
+        </div>
+      </div>
     </div>
   </article>
 </main>
@@ -111,5 +120,6 @@
 <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
 <script defer src="portfolio.js"></script>
 <script defer src="chat.js"></script>
+<script defer src="mascot.js"></script>
 </body>
 </html>

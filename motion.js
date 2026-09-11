@@ -53,7 +53,11 @@
       clearProps: 'opacity'
     }, '-=0.15');
 
-    return new Promise((res) => tl.eventCallback('onComplete', res));
+    // Once the letters have landed they don't need their own GPU layers.
+    return new Promise((res) => tl.eventCallback('onComplete', () => {
+      root.classList.add('split-done');
+      res();
+    }));
   }
 
   // ---------- Pencil guides ----------

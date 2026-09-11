@@ -1,0 +1,14 @@
+{
+  "name": "karunya-chat",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node test/run.mjs",
+    "context": "node test/context.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}

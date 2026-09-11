@@ -144,9 +144,12 @@ const rgb = (hex, THREE) => new THREE.Vector3(
   ((hex >> 16) & 255) / 255, ((hex >> 8) & 255) / 255, (hex & 255) / 255);
 
 function start(THREE) {
+  // Phones: no MSAA and 1x pixels. The blades are thin and stippled, so
+  // the difference is hard to see, but the fragment work drops by half+.
+  const coarse = window.matchMedia('(pointer: coarse)').matches;
   let renderer;
   try {
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
+    renderer = new THREE.WebGLRenderer({ antialias: !coarse, alpha: true, powerPreference: 'low-power' });
   } catch (_) { return; }
   if (!renderer.getContext()) return;
 
@@ -154,7 +157,7 @@ function start(THREE) {
   canvas.className = 'grass-3d';
   canvas.setAttribute('aria-hidden', 'true');
   renderer.setClearColor(0x000000, 0);
-  renderer.setPixelRatio(Math.min(1.5, window.devicePixelRatio || 1));
+  renderer.setPixelRatio(coarse ? 1 : Math.min(1.5, window.devicePixelRatio || 1));
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 60);
@@ -163,7 +166,6 @@ function start(THREE) {
   camera.lookAt(0, 0.5, -3);
 
   const FAR_Z = -17, NEAR_Z = 5.4;
-  const coarse = window.matchMedia('(pointer: coarse)').matches;
 
   // ---------- Blade geometry: a tapered strip, 5 segments + a tip ----------
   const SEG = 5;
@@ -207,7 +209,7 @@ function start(THREE) {
   // then an x inside the frustum's width at that depth.
   function scatter(aspect) {
     if (mesh) { scene.remove(mesh); mesh.geometry.dispose(); }
-    const n = Math.round((coarse ? 16000 : 42000) * Math.min(1.6, Math.max(0.6, aspect / 4)));
+    const n = Math.round((coarse ? 11000 : 42000) * Math.min(1.6, Math.max(0.6, aspect / 4)));
     const geo = base.clone();
     geo.instanceCount = n;
     const off = new Float32Array(n * 3), prm = new Float32Array(n * 4), tint = new Float32Array(n);

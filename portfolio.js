@@ -367,13 +367,17 @@
     parallaxTicking = false;
   }
 
-  measureDoodles();
-  window.addEventListener('scroll', () => {
-    if (!parallaxTicking) { parallaxTicking = true; requestAnimationFrame(onScrollParallax); }
-  }, { passive: true });
-  window.addEventListener('resize', () => { measureDoodles(); onScrollParallax(); }, { passive: true });
-  window.addEventListener('load', () => { measureDoodles(); onScrollParallax(); });
-  onScrollParallax();
+  // Touch screens scroll on the compositor, so a JS-driven offset always
+  // trails a frame behind and reads as judder. Keep parallax for mice.
+  if (finePointer) {
+    measureDoodles();
+    window.addEventListener('scroll', () => {
+      if (!parallaxTicking) { parallaxTicking = true; requestAnimationFrame(onScrollParallax); }
+    }, { passive: true });
+    window.addEventListener('resize', () => { measureDoodles(); onScrollParallax(); }, { passive: true });
+    window.addEventListener('load', () => { measureDoodles(); onScrollParallax(); });
+    onScrollParallax();
+  }
 
   // ---------- Contact form ----------
   // To enable real form submission via Formspree:

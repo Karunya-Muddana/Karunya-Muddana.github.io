@@ -2603,6 +2603,88 @@ html.lenis-on, html.lenis-on body { height: auto; }
 }
 @media print { .kmascot, .km-ghost { display: none; } }
 
+/* ---- Mascot: more faces ---- */
+.kmascot[data-expr="joy"] .km-smile,
+.kmascot[data-expr="wink"] .km-smile,
+.kmascot[data-expr="love"] .km-smile,
+.kmascot[data-expr="laugh"] .km-grin,
+.kmascot[data-expr="sad"] .km-frown,
+.kmascot[data-expr="think"] .km-flat,
+.kmascot[data-expr="smug"] .km-smirk,
+.kmascot[data-expr="dizzy"] .km-wavy { opacity: 1; }
+.kmascot .km-grin { fill: #2B3140; stroke: #2B3140; stroke-width: 1.4; stroke-linejoin: round; }
+.kmascot .km-frown, .kmascot .km-flat, .kmascot .km-smirk, .kmascot .km-wavy {
+  fill: none; stroke: #2B3140; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* Eyes that swap shape: arcs, chevrons, hearts, spirals */
+.kmascot .km-alt { opacity: 0; transition: opacity 90ms; }
+.kmascot .km-joy path, .kmascot .km-laugh path {
+  fill: none; stroke: #2B3140; stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round;
+}
+.kmascot .km-love path { fill: #E0594D; stroke: #2B3140; stroke-width: 1.8; stroke-linejoin: round; }
+.kmascot .km-dizzy path { fill: none; stroke: #2B3140; stroke-width: 2.2; stroke-linecap: round; }
+.kmascot .km-spin { transform-box: fill-box; transform-origin: center; animation: kmSpin 900ms linear infinite; }
+.kmascot[data-expr="joy"] .km-eyes, .kmascot[data-expr="laugh"] .km-eyes,
+.kmascot[data-expr="love"] .km-eyes, .kmascot[data-expr="dizzy"] .km-eyes { opacity: 0; }
+.kmascot[data-expr="joy"] .km-joy, .kmascot[data-expr="laugh"] .km-laugh,
+.kmascot[data-expr="love"] .km-love, .kmascot[data-expr="dizzy"] .km-dizzy { opacity: 1; }
+.kmascot[data-expr="love"] .km-love path { animation: kmBeat 700ms ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.kmascot[data-expr="laugh"] .km-squash { animation: kmGiggle 240ms ease-in-out infinite alternate; }
+@keyframes kmSpin { to { transform: rotate(360deg); } }
+@keyframes kmBeat { 0%, 100% { transform: scale(1); } 40% { transform: scale(1.18); } }
+@keyframes kmGiggle { from { translate: 0 0; } to { translate: 0 -1.5px; } }
+
+/* More marks above the head */
+.kmascot[data-mark="question"] .km-question,
+.kmascot[data-mark="dots"]     .km-dots,
+.kmascot[data-mark="note"]     .km-note,
+.kmascot[data-mark="sweat"]    .km-sweat,
+.kmascot[data-mark="bulb"]     .km-bulb { opacity: 1; transform: scale(1); }
+.kmascot .km-dot { animation: kmDot 1.1s ease-in-out infinite; transform-box: fill-box; }
+.kmascot .km-note-a { animation: kmFloat 1.6s ease-in-out infinite; }
+.kmascot .km-note-b { animation: kmFloat 1.6s ease-in-out -0.8s infinite; }
+.kmascot[data-mark="sweat"] .km-sweat path { animation: kmDrip 1.8s ease-in infinite; }
+@keyframes kmDot { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-3px); } }
+@keyframes kmFloat { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(2px, -5px) rotate(8deg); } }
+@keyframes kmDrip { 0%, 30% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+
+/* ---- Mascot: props ---- */
+.kmascot .km-prop {
+  opacity: 0;
+  transform: translateY(8px) scale(0.6);
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transition: opacity 160ms ease, transform 340ms cubic-bezier(.3,1.7,.5,1);
+  pointer-events: none;
+}
+.kmascot .km-glasses rect { fill: rgba(255,255,255,0.16); stroke: #2B3140; stroke-width: 2.6; }
+.kmascot .km-cap, .kmascot .km-party { transform: translateY(-14px) scale(0.6); }
+.kmascot[data-prop~="glasses"]    .km-glasses,
+.kmascot[data-prop~="cap"]        .km-cap,
+.kmascot[data-prop~="party"]      .km-party,
+.kmascot[data-prop~="magnifier"]  .km-magnifier,
+.kmascot[data-prop~="headphones"] .km-headphones,
+.kmascot[data-prop~="chai"]       .km-chai,
+.kmascot[data-prop~="book"]       .km-book,
+.kmascot[data-prop~="camera"]     .km-camera,
+.kmascot[data-prop~="bat"]        .km-bat { opacity: 1; transform: none; }
+/* Each prop gets a little business */
+.kmascot[data-prop~="chai"] .km-chai { animation: kmSip 3.2s ease-in-out 400ms infinite; transform-origin: 80% 90%; }
+.kmascot[data-prop~="bat"] .km-bat { animation: kmSwing 2.4s cubic-bezier(.5,0,.3,1) 500ms infinite; transform-origin: 20% 90%; }
+.kmascot[data-prop~="headphones"] .km-headphones { animation: kmBob 520ms ease-in-out infinite alternate; }
+.kmascot[data-prop~="magnifier"] .km-magnifier { animation: kmPeer 3s ease-in-out infinite; }
+.kmascot[data-prop~="camera"] .km-camera { animation: kmSnap 3.4s ease-in-out 600ms infinite; }
+@keyframes kmSip   { 0%, 55%, 100% { transform: none; } 70%, 85% { transform: translate(10px, -14px) rotate(24deg); } }
+@keyframes kmSwing { 0%, 50%, 100% { transform: none; } 62% { transform: rotate(-70deg); } 74% { transform: rotate(18deg); } }
+@keyframes kmBob   { from { transform: translateY(0); } to { transform: translateY(-1.5px); } }
+@keyframes kmPeer  { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-3px, 2px); } }
+@keyframes kmSnap  { 0%, 88%, 100% { transform: none; filter: none; } 90% { transform: scale(1.06); filter: brightness(1.6); } }
+@media (prefers-reduced-motion: reduce) {
+  .kmascot .km-prop, .kmascot .km-spin, .kmascot .km-dot, .kmascot .km-note-a, .kmascot .km-note-b,
+  .kmascot .km-love path, .kmascot .km-squash, .kmascot .km-sweat path { animation: none !important; }
+}
+
 /* ====================================================
    REAL PAPER PIECES — scanned tape replaces the CSS tape
    ==================================================== */
@@ -3295,6 +3377,104 @@ a, button, [role="button"], .polaroid, .card { -webkit-tap-highlight-color: tran
    layers (fibre noise and blended creases/folds). */
 @media (max-width: 900px), (pointer: coarse) {
   .paper-creases, .paper-folds, .paper-fibers { display: none; }
+}
+
+/* Touch screens only. Laptops and desktops, touchscreen laptops
+   included (they report a fine pointer), never match this. */
+@media (hover: none) and (pointer: coarse) {
+  /* The grain layers are black (or white) noise with alpha, which comes
+     out identical under normal blending. Multiply/screen only made the
+     compositor re-blend them against the page on every scroll frame. */
+  .paper-grain, .card::before, .polaroid::after,
+  .skills-wrap::before, .contact::before { mix-blend-mode: normal; }
+
+  /* Keep the frosted nav, with a lighter blur that phones can afford. */
+  .nav, .about-nav {
+    background: rgba(246, 242, 231, 0.72);
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  }
+
+  /* Animated box-shadow repaints the polaroid every frame, forever. */
+  .polaroid { animation: none; will-change: auto; }
+  .reveal { will-change: auto; }
+  .split-done .hero-title .ch { will-change: auto; }
+}
+
+/* ====================================================
+   FROSTED GLASS (mouse and trackpad screens)
+   Only where something shows through it: the page grain
+   and pencil guides behind the hero chips, the contact
+   grain behind the form, the card art behind the links.
+   ==================================================== */
+@media (hover: hover) and (pointer: fine) {
+  /* "based in Hyderabad" becomes a glass chip opposite the status pill */
+  .hero-aside {
+    align-items: center;
+    padding: 6px 16px 7px;
+    border-radius: 9999px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.46), rgba(255,255,255,0.18));
+    border: 1px solid rgba(26,25,22,0.10);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.7),
+      0 8px 18px -14px rgba(30,25,15,0.45);
+    backdrop-filter: blur(10px) saturate(1.25);
+    -webkit-backdrop-filter: blur(10px) saturate(1.25);
+  }
+  .hero-aside .caveat { transform: none; }
+
+  /* Contact form sits on a pane of smoked glass. The white grain on the
+     dark section blurs out underneath it, which is what sells the frost. */
+  .contact-form {
+    padding: 30px 30px 26px;
+    border-radius: 20px;
+    background:
+      linear-gradient(155deg, rgba(238,233,221,0.11) 0%, rgba(238,233,221,0.035) 55%, rgba(238,233,221,0.065) 100%);
+    border: 1px solid rgba(238,233,221,0.16);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.14),
+      inset 0 -1px 0 rgba(0,0,0,0.25),
+      0 30px 60px -34px rgba(0,0,0,0.7);
+    backdrop-filter: blur(16px) saturate(1.3);
+    -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus { background: rgba(238,233,221,0.035); }
+  .copy-chip {
+    background: rgba(238,233,221,0.07);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  /* The ↗ links on the project cards: small glass lenses */
+  .card .links a {
+    border-radius: 50%;
+    background: rgba(246,242,231,0.5);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+    backdrop-filter: blur(6px) saturate(1.3);
+    -webkit-backdrop-filter: blur(6px) saturate(1.3);
+  }
+}
+
+/* ====================================================
+   MOBILE LAYOUT — grid tracks that can shrink
+   ==================================================== */
+/* A `1fr` track never shrinks below its widest content, so the
+   ExcelMCP printout's <pre> was stretching every project card past
+   the right edge of the screen. minmax(0, 1fr) lets them fit. */
+@media (max-width: 900px) {
+  .bento > *, .hero-project-grid > *, .stats-grid > *,
+  .writing-grid > *, .contact-grid > * { min-width: 0; }
+  .bento, .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-project-grid,
+  .excel-card .hero-project-grid,
+  .writing-grid,
+  .contact-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 540px) {
+  .bento { grid-template-columns: minmax(0, 1fr); }
+  .printout { margin-left: 4px; margin-right: 4px; }
+  .printout code { font-size: 10.5px; }
 }
 
 /* Lenis 1.3 recommended styles */

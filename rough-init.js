@@ -115,8 +115,13 @@
     document.querySelectorAll('[data-rough]').forEach(draw);
   }
 
-  let resizeTimer;
+  const touch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  let resizeTimer, lastW = window.innerWidth;
   function onResize() {
+    // Phones fire resize whenever the URL bar slides in or out mid-scroll.
+    // The sketches only depend on width, so skip those height-only ones.
+    if (touch && window.innerWidth === lastW) return;
+    lastW = window.innerWidth;
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(decorateAll, 120);
   }

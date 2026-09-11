@@ -1,0 +1,26 @@
+name = "karunya-chat"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+# Everything here can be changed in the Cloudflare dashboard too.
+# The Groq key is a secret, not a var:  npx wrangler secret put GROQ_API_KEY
+[vars]
+SITE_URL = "https://karunya-muddana.github.io/"
+PAGES = "index.html,about.html,resume.html"
+# Tried in order; a rate-limited or retired model falls through to the next.
+# llama-3.3-70b turned down every whole-site request on the free tier,
+# so it goes after the gpt-oss models instead of costing a round trip first.
+MODELS = "openai/gpt-oss-120b,openai/gpt-oss-20b,llama-3.3-70b-versatile,llama-3.1-8b-instant"
+ALLOWED_ORIGINS = "https://karunya-muddana.github.io,http://localhost:8000,http://localhost:5500,http://127.0.0.1:5500"
+# Seconds to keep the extracted site text before re-reading the pages.
+CONTEXT_TTL = "3600"
+
+# 6 messages per visitor per minute. Groq's free tier runs out long
+# before Cloudflare's does, so this mostly stops one person draining it.
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "1001"
+
+  [ratelimits.simple]
+  limit = 6
+  period = 60

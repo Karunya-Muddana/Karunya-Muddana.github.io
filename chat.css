@@ -13,15 +13,28 @@
 }
 
 .notebook {
+  /* Line height and where the pen sits in it: text baselines land on
+     the ruled lines instead of floating between them. */
+  --lh: 36px;
+  --rule-at: 27px;
+  --margin-x: 64px;
+  --pad-l: 80px;
+  --pad-r: 60px;
+  --page: #F5F1E6;
+  --rule: rgba(108,128,170,0.42);
+
   position: relative;
   width: 100%;
   max-width: 900px;
-  background: #F5F1E6;
+  background: var(--page);
   border-radius: 4px;
   box-shadow:
     0 30px 60px -30px rgba(40,30,15,0.45),
     0 12px 24px -12px rgba(40,30,15,0.20);
+  /* clip, not hidden: hidden would make the notebook a scroll box and
+     stop the composer from sticking to the bottom of the screen. */
   overflow: hidden;
+  overflow: clip;
 }
 
 /* Decorative left binding — punched holes + faint shadow */
@@ -60,29 +73,38 @@
 }
 
 /* Inner page area — ruled paper */
+/* Red margin line down the whole page */
+.notebook-page,
+.composer-wrap {
+  background-image: linear-gradient(
+    to right,
+    transparent calc(var(--margin-x) - 1px),
+    rgba(196,90,70,0.55) calc(var(--margin-x) - 1px),
+    rgba(196,90,70,0.55) var(--margin-x),
+    transparent var(--margin-x)
+  );
+  background-repeat: no-repeat;
+}
 .notebook-page {
   position: relative;
-  padding: 56px 60px 32px 80px;
-  /* Vertical red margin + horizontal ruled lines */
-  background-image:
-    /* red margin line at ~64px from left */
-    linear-gradient(
-      to right,
-      transparent 63px,
-      rgba(196,90,70,0.55) 64px,
-      rgba(196,90,70,0.55) 65px,
-      transparent 66px
-    ),
-    /* faint horizontal rules every 36px */
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 35px,
-      rgba(108,128,170,0.42) 35px,
-      rgba(108,128,170,0.42) 36px
-    );
-  background-position: 0 56px, 0 56px;
-  background-repeat: no-repeat, repeat;
+  padding: 56px var(--pad-r) 32px var(--pad-l);
+}
+
+/* Ruled area: the header sits in the blank band at the top of the page,
+   like a real notebook, and the rules start where the writing does.
+   Negative margins run the rules out to both edges of the page. */
+.lined {
+  margin: 0 calc(-1 * var(--pad-r)) 0 calc(-1 * var(--pad-l));
+  padding: 0 var(--pad-r) 0 var(--pad-l);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(var(--rule-at) - 1px),
+    var(--rule) calc(var(--rule-at) - 1px),
+    var(--rule) var(--rule-at),
+    transparent var(--rule-at),
+    transparent var(--lh)
+  );
 }
 
 /* Paper grain on the notebook */
@@ -137,15 +159,17 @@
 .messages {
   font-family: 'Caveat', 'Patrick Hand', cursive;
   font-size: 26px;
-  line-height: 36px;
+  line-height: var(--lh);
   color: #1a2240;
   letter-spacing: 0.005em;
-  min-height: 280px;
-  padding-top: 8px;
+  min-height: calc(var(--lh) * 8);
+  transition: opacity 320ms ease, transform 360ms cubic-bezier(.5,0,.75,0), filter 320ms ease;
 }
+/* "tear out this page": the writing lifts off before the page clears */
+.messages.tearing { opacity: 0; transform: translate(14px, -18px) rotate(1.4deg); filter: blur(1px); }
 
 .msg {
-  margin: 0 0 36px 0;
+  margin: 0 0 var(--lh) 0;
   padding: 0;
   overflow-wrap: break-word;
   hyphens: none;
@@ -154,6 +178,7 @@
   display: inline;
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
+  line-height: 1;   /* keep the small tag from stretching the ruled line */
   letter-spacing: 0.22em;
   text-transform: uppercase;
   margin-right: 10px;
@@ -179,10 +204,65 @@
 }
 .msg-error .content { color: #884330; }
 
+/* Markdown bits, in pen: bold presses harder, code is printed */
+.ink-word { display: inline-block; white-space: nowrap; }
+.ink-b { font-weight: 700; color: #0f1633; }
+.ink-i { font-style: italic; }
+.ink-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62em;
+  font-weight: 500;
+  line-height: 1;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: rgba(60,75,140,0.09);
+  vertical-align: 2px;
+}
+/* The code chip fades in with its first letter, not before it */
+.ink-code { animation: inkWriteLite 300ms both; }
+/* Underlines don't carry into inline-block words, so each letter carries
+   its own, and it inks in with the letter. */
+.msg-ai .content a { color: inherit; text-decoration: none; }
+.msg-ai .content a .diary-char {
+  text-decoration: underline;
+  text-decoration-color: rgba(60,75,140,0.45);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+.msg-ai .content a:hover .diary-char { text-decoration-color: currentColor; }
+
+.retry-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  vertical-align: 5px;
+  margin-left: 10px;
+  padding: 5px 10px;
+  color: #884330;
+  background: rgba(136,67,48,0.08);
+  border: 1px solid rgba(136,67,48,0.3);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.retry-btn:hover { background: rgba(136,67,48,0.14); }
+
+.chat-sr {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Time of writing — pencilled in the margin after the ink dries. */
 .msg .stamp {
   font-family: 'JetBrains Mono', monospace;
   font-size: 9px;
+  line-height: 1;
   letter-spacing: 0.12em;
   color: rgba(40, 30, 15, 0.34);
   margin-left: 10px;
@@ -270,41 +350,53 @@
 }
 
 /* Suggested prompts (empty state) */
+/* Each row of chips is exactly one ruled line tall */
 .suggested {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 0 0 36px 0;
+  gap: 0 10px;
+  margin: 0 0 var(--lh) 0;
   align-items: center;
 }
 .suggested .hint {
   width: 100%;
   font-family: 'Caveat', cursive;
   font-size: 22px;
+  line-height: var(--lh);
   color: rgba(40,30,15,0.55);
-  margin-bottom: 4px;
 }
 .suggest-btn {
+  height: calc(var(--lh) - 6px);
+  margin: 3px 0;
   font-family: 'Caveat', cursive;
   font-size: 19px;
+  line-height: 1;
   color: #1a2240;
-  background: rgba(255,250,235,0.5);
+  background: rgba(255,250,235,0.6);
   border: 1.5px solid rgba(40,30,15,0.18);
-  padding: 6px 16px;
+  padding: 0 14px;
   border-radius: 24px;
   cursor: pointer;
-  transition: background 180ms, transform 80ms, border-color 180ms;
+  transition: background 180ms, transform 160ms cubic-bezier(.3,1.5,.5,1), border-color 180ms;
 }
-.suggest-btn:hover { background: rgba(60,75,140,0.10); border-color: rgba(40,30,15,0.35); }
+.suggest-btn:hover { background: rgba(60,75,140,0.10); border-color: rgba(40,30,15,0.35); transform: rotate(-1deg) translateY(-1px); }
 .suggest-btn:active { transform: scale(0.97); }
 
-/* Composer (input) */
+/* Composer: a strip of the same page that stays at the bottom of the
+   screen once the conversation is longer than the window. */
+.composer-wrap {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+  margin: 0 calc(-1 * var(--pad-r)) -32px calc(-1 * var(--pad-l));
+  padding: 14px var(--pad-r) max(18px, env(safe-area-inset-bottom)) var(--pad-l);
+  background-color: var(--page);
+  box-shadow: 0 -14px 16px -12px var(--page);
+}
 .composer {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 16px;
-  padding-top: 12px;
   position: relative;
 }
 .composer::before {
@@ -319,15 +411,24 @@
 }
 .composer input {
   flex: 1;
-  background: transparent;
+  min-width: 0;
+  height: var(--lh);
   border: none;
   outline: none;
   font-family: 'Caveat', cursive;
   font-size: 26px;
-  line-height: 36px;
+  line-height: var(--lh);
   color: #1a2240;
   padding: 0;
   caret-color: #1a2240;
+  /* the line you write on, a shade darker than the page rules */
+  background: linear-gradient(
+    to bottom,
+    transparent calc(var(--rule-at) - 1px),
+    rgba(60,75,140,0.5) calc(var(--rule-at) - 1px),
+    rgba(60,75,140,0.5) calc(var(--rule-at) + 0.5px),
+    transparent calc(var(--rule-at) + 0.5px)
+  );
 }
 .composer input::placeholder {
   color: rgba(40,30,15,0.35);
@@ -347,43 +448,77 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background 180ms, transform 80ms;
+  flex: none;
+  transition: background 180ms, color 180ms, border-color 180ms, transform 220ms cubic-bezier(.3,1.6,.5,1);
 }
 .send-btn:hover { background: rgba(40,30,15,0.12); }
+/* Something to send: the button fills with ink */
+.send-btn.ready { background: #1a2240; border-color: #1a2240; color: var(--page); transform: rotate(-8deg); }
+.send-btn.ready:hover { background: #0f1633; }
 .send-btn:active { transform: scale(0.94); }
 .send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
 /* Bottom hint */
 .composer-hint {
-  margin-top: 10px;
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 16px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(40,30,15,0.45);
 }
+.fresh-btn {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: rgba(40,30,15,0.6);
+  background: none;
+  border: 0;
+  border-bottom: 1px dashed rgba(40,30,15,0.35);
+  padding: 0 0 1px;
+  cursor: pointer;
+}
+.fresh-btn:hover { color: #1a1a1a; border-bottom-style: solid; }
+.fresh-btn[hidden] { display: none; }
 
 /* Responsive */
 @media (max-width: 768px) {
   .chat-page { padding: 90px 12px 40px; }
-  .notebook-page { padding: 44px 24px 28px 56px; }
-  .notebook-page {
-    background-image:
-      linear-gradient(to right, transparent 43px, rgba(196,90,70,0.55) 44px, rgba(196,90,70,0.55) 45px, transparent 46px),
-      repeating-linear-gradient(to bottom, transparent 0, transparent 33px, rgba(108,128,170,0.42) 33px, rgba(108,128,170,0.42) 34px);
-    background-position: 0 44px, 0 44px;
-  }
+  .notebook { --lh: 34px; --rule-at: 25px; --margin-x: 44px; --pad-l: 56px; --pad-r: 24px; }
+  .notebook-page { padding-top: 44px; padding-bottom: 28px; }
+  .composer-wrap { margin-bottom: -28px; }
   .notebook .holes { left: 10px; top: 50px; bottom: 50px; }
   .notebook::before { width: 28px; }
   .notebook-head h1 { font-size: 38px; }
   .notebook-head .subhead { font-size: 18px; }
-  .messages, .composer input { font-size: 22px; line-height: 34px; }
+  .messages, .composer input { font-size: 22px; }
   .composer::before { left: -22px; font-size: 18px; }
-  .suggest-btn { font-size: 17px; padding: 5px 12px; }
+  .suggest-btn { font-size: 17px; padding: 0 12px; }
 }
 
 @media (max-width: 420px) {
-  .notebook-page { padding: 36px 16px 24px 46px; }
+  .notebook { --rule-at: 24px; --pad-l: 46px; --pad-r: 16px; --margin-x: 36px; }
+  .notebook-page { padding-top: 36px; padding-bottom: 24px; }
+  .composer-wrap { margin-bottom: -24px; }
   .notebook-head h1 { font-size: 32px; }
   .messages, .composer input { font-size: 20px; }
+}
+
+/* Phones: the blur-and-scale ink is a filter per letter, which is a lot of
+   paint for a long reply. Same timing, just opacity and a small drop. */
+@keyframes inkWriteLite {
+  from { opacity: 0; transform: translateY(3px) rotate(var(--r, 0deg)); }
+  to   { opacity: 1; transform: translateY(0) rotate(var(--r, 0deg)); }
+}
+@media (hover: none) and (pointer: coarse) {
+  .diary-char { animation-name: inkWriteLite; animation-duration: 360ms; }
+  .notebook-page::before { mix-blend-mode: normal; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .diary-char { animation: none; opacity: 1; }
+  .messages { transition: none; }
 }

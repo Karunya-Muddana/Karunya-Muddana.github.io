@@ -5,8 +5,6 @@
 (function() {
   'use strict';
 
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   function readColor(el) {
     return getComputedStyle(el).color || '#1A1916';
   }
@@ -66,50 +64,11 @@
       node = rc.rectangle(2, 2, Math.max(2, w - 4), Math.max(2, h - 4));
     }
     svg.appendChild(node);
-
-    // Hand-drawn ink: prime the strokes so they can be "drawn" on entry.
-    if (!reduceMotion) primeInk(el, svg);
   }
 
   function pillPath(w, h, r) {
     return `M ${r} 1 L ${w - r} 1 A ${r} ${r} 0 0 1 ${w - r} ${h - 1} L ${r} ${h - 1} A ${r} ${r} 0 0 1 ${r} 1 Z`;
   }
-
-  /* ------------------------------------------------------------
-     Ink-in: each rough.js stroke is dash-offset back to nothing,
-     then released when the element scrolls into view — so the
-     sketched borders draw themselves the way a pen would.
-     ------------------------------------------------------------ */
-  function primeInk(el, svg) {
-    const strokes = svg.querySelectorAll('path, line, ellipse, circle');
-    if (!strokes.length) return;
-    const alreadyInked = el.classList.contains('ink-in');
-
-    strokes.forEach((s, i) => {
-      let len;
-      try { len = s.getTotalLength ? s.getTotalLength() : 0; } catch (_) { len = 0; }
-      if (!len || !isFinite(len)) return;
-      s.style.strokeDasharray = len;
-      // rough.js draws each shape twice; offset the second pass so the
-      // sketch fills in rather than tracing one clean outline.
-      s.style.setProperty('--ink-delay', (i * 90) + 'ms');
-      s.style.strokeDashoffset = alreadyInked ? '0' : String(len);
-    });
-
-    svg.classList.add('ink');
-    if (alreadyInked) return;
-    inkObs.observe(el);
-  }
-
-  const inkObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      e.target.classList.add('ink-in');
-      e.target.querySelectorAll('.rough-overlay path, .rough-overlay line, .rough-overlay ellipse, .rough-overlay circle')
-        .forEach(s => { s.style.strokeDashoffset = '0'; });
-      inkObs.unobserve(e.target);
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
 
   function decorateAll() {
     document.querySelectorAll('[data-rough]').forEach(draw);

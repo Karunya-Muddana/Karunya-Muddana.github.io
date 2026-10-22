@@ -18,17 +18,19 @@ Built as a paper-and-ink scrapbook crossed with a code editor: rough.js sketched
 - Vanilla HTML / CSS / JS — **no build step**. Every library is vendored in `vendor/` and served from the same origin (no CDN round-trips); only three.js (for the footer meadow) is lazy-loaded from jsDelivr when the grass scrolls near.
 - [rough.js](https://roughjs.com/) for the hand-drawn borders, the git-graph pencil line, the scribbled diffs and the sketched bar chart.
 - [GSAP](https://gsap.com/) + SplitText for the hero headline write-in; [Lenis](https://lenis.darkroom.engineering/) for inertial scroll on mice.
-- [anime.js v4](https://animejs.com/) (`code-motion.js`) for the code-flavoured motion: scramble-decoding eyebrows, the typing hero prompt, the scroll-synced git graph, rubber-stamped PR cards, the engraph terminal, peel-off sticky notes and the stack ripple.
-- Fonts, self-hosted in `fonts/` (latin subsets, all SIL OFL): Fraunces (display), DM Sans (body), Victor Mono (code — its italic is cursive, so code comments and notes read as handwriting), Caveat (handwriting).
+- [anime.js v4](https://animejs.com/) (`code-motion.js`) for two things only: the pencil git graph in Experience, drawn once when it comes into view, and the sticky notes you can peel off the project cards.
+- Three font families, self-hosted in `fonts/` (latin subsets, all SIL OFL): Fraunces (display), DM Sans (body), Victor Mono (code). Victor Mono's italic is cursive, so it is also the handwriting on sticky notes and annotations.
 - AI chat hits a Cloudflare Worker — see `worker/README.md`.
 
-Everything animated respects `prefers-reduced-motion`: the page is complete as static HTML, and `code-motion.js` simply doesn't run.
+Motion is deliberately small: the hero headline writes itself in once, the git graph draws once, and everything else is just there. No scroll reveals, parallax or custom cursor. Everything respects `prefers-reduced-motion`.
+
+The design was checked against [Hallmark](https://github.com/nutlope/hallmark)'s anti-slop rules; the stamp at the top of `styles.css` and `.hallmark/log.json` record that pass.
 
 ### Vendored libraries
 
 | File | Source |
 | --- | --- |
-| `vendor/anime.min.js` | animejs@4.5.0, tree-shaken to the parts the site uses (≈29 KB gzipped instead of 41 KB) |
+| `vendor/anime.min.js` | animejs@4.5.0, tree-shaken to the parts the site uses (≈20 KB gzipped instead of 41 KB) |
 | `vendor/gsap.min.js`, `vendor/SplitText.min.js` | gsap@3.15.0 `dist/` |
 | `vendor/lenis.min.js` | lenis@1.3.26 `dist/` |
 | `vendor/rough.min.js` | roughjs@4.6.6 `bundled/rough.js`, minified |
@@ -40,12 +42,8 @@ To rebuild the anime.js subset (e.g. to use another export), in an empty folder:
 npm i animejs@4.5.0 esbuild
 cat > entry.js <<'JS'
 export { animate } from 'animejs/animation';
-export { createTimeline } from 'animejs/timeline';
 export { createDraggable } from 'animejs/draggable';
-export { onScroll } from 'animejs/events';
 export { createDrawable } from 'animejs/svg';
-export { scrambleText } from 'animejs/text';
-export { stagger } from 'animejs/utils';
 export { spring } from 'animejs/easings/spring';
 JS
 npx esbuild entry.js --bundle --format=esm --minify --target=es2019 --legal-comments=none --outfile=anime.min.js
@@ -97,7 +95,7 @@ If Formspree is unset or fails for any reason, the form falls back to `mailto:`,
 
 - Hand-drawn pencil paper plane: original sketch.
 - Language icons: [devicon](https://devicon.dev/), MIT.
-- Fonts: Fraunces, DM Sans, Victor Mono, Caveat, Patrick Hand — SIL Open Font License.
+- Fonts: Fraunces, DM Sans, Victor Mono — SIL Open Font License.
 - Doodles (used sparingly as decoration): [dddoodle pack](https://fffuel.co/) by Seb, CC-BY.
 - Open Peeps illustration on the about page: by [Pablo Stanley](https://www.openpeeps.com/), CC0.
 

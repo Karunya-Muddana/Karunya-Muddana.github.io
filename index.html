@@ -89,12 +89,10 @@
       overflow:hidden;
     }
     .stack-head{
-      text-align:center;
-      margin-bottom:64px;
+      margin-bottom:56px;
     }
-    .stack-head .eyebrow{justify-content:center;}
     .stack-head .sub{
-      font-family:var(--font-hand);
+      font-family:var(--font-hand);font-style:italic;font-size-adjust:0.4;
       font-size:1.25rem;
       color:#8a7f6b;
       margin-top:10px;
@@ -102,10 +100,8 @@
     .stack-grid{
       display:flex;
       flex-wrap:wrap;
-      justify-content:center;
       gap:34px 30px;
       max-width:900px;
-      margin:0 auto;
     }
     .stack-card{
       --r:0deg;
@@ -116,12 +112,9 @@
       text-align:center;
       transform:rotate(var(--r));
       box-shadow:0 6px 18px rgba(43,38,32,.10);
-      transition:transform .18s ease-out, box-shadow .18s ease-out;
+      transition:translate 220ms var(--ease-out);
     }
-    .stack-card:hover{
-      transform:rotate(0deg) translateY(-6px);
-      box-shadow:0 12px 26px rgba(43,38,32,.16);
-    }
+    @media (hover:hover){ .stack-card:hover{ translate:0 -3px; } }
     .stack-card:nth-child(1){--r:-2.4deg;}
     .stack-card:nth-child(2){--r:1.8deg;}
     .stack-card:nth-child(3){--r:-1.2deg;}
@@ -155,7 +148,7 @@
       letter-spacing:.02em;
     }
     .stack-note{
-      font-family:var(--font-hand);
+      font-family:var(--font-hand);font-style:italic;font-size-adjust:0.4;
       font-size:1.05rem;
       color:#8a7f6b;
       margin-top:2px;
@@ -250,9 +243,6 @@
 
 <div class="scroll-progress" aria-hidden="true"></div>
 
-<div class="cursor-ring"></div>
-<div class="cursor-dot"></div>
-
 <!-- Mobile overlay nav -->
 <div class="mobile-overlay" aria-hidden="true">
   <a href="#work">Work</a>
@@ -274,7 +264,6 @@
     <a href="about.html">About</a>
     <a href="resume.html">Resume</a>
     <a href="chat.html">Chat</a>
-    <a href="#contact">Contact</a>
   </div>
   <a class="nav-email" href="mailto:Karunya.muddana@outlook.com">Say hello</a>
   <button class="hamburger" aria-label="Open menu" aria-expanded="false">
@@ -319,11 +308,7 @@
           <span class="ln"><span class="rough-underline"><span class="sp">ship</span><svg viewBox="0 0 240 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 6 5 C 40 2, 80 9, 120 4 C 160 1, 200 9, 234 4" /><path class="thin" d="M 4 11 C 50 8, 100 12, 150 9 C 190 5, 220 11, 236 8" /></svg></span><span class="sp">.</span><span class="hero-cuts" aria-hidden="true"><img class="cut cut-square" src="assets/paper/cut-square-peach.webp" alt="" /><img class="cut cut-circle" src="assets/paper/cut-circle-sage.webp" alt="" /><img class="cut cut-rect" src="assets/paper/cut-rect-lilac.webp" alt="" /><img class="cut cut-tape" src="assets/paper/tape-short-3.webp" alt="" /></span></span>
         </h1>
         <p class="hero-sub">
-          AI tools people actually use. Document review, data assistants, agent memory &mdash; and fixes merged into IPython and git-cola.
-        </p>
-        <p class="hero-term">
-          <span class="term-prompt" aria-hidden="true">~/karunya <b>$</b></span>
-          <span class="term-out"><span class="term-cmd">cat now.txt</span> <span class="term-note"># AI engineer on a healthcare certification project, Germany</span></span><span class="term-caret" aria-hidden="true"></span>
+          Document review for a healthcare certifier in Germany. A data assistant for a chemical plant in Hyderabad. Fixes merged into IPython and git-cola.
         </p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#work">See the work</a>
@@ -375,38 +360,15 @@
         <span class="dot-sep"></span>
         <span>Builder · OSS contributor</span>
       </div>
-      <div class="scroll-cue">
-        <span>Scroll</span>
-        <span class="line"></span>
-      </div>
     </div>
 
   </div>
 </header>
 
-<!-- ============ MARQUEE STRIP ============ -->
-<div class="work-strip" aria-hidden="true">
-  <div class="work-strip-track">
-    <span>Document AI</span>
-    <span>Open source</span>
-    <span>MCP servers</span>
-    <span>Agent memory</span>
-    <span>LLM evaluation</span>
-    <span>RAG &amp; OCR</span>
-    <span>Document AI</span>
-    <span>Open source</span>
-    <span>MCP servers</span>
-    <span>Agent memory</span>
-    <span>LLM evaluation</span>
-    <span>RAG &amp; OCR</span>
-  </div>
-</div>
-
 <!-- ============ ABOUT SNAPSHOT ============ -->
 <section class="about-snap">
-  <div class="container reveal">
+  <div class="container">
     <div class="left">
-      <div class="eyebrow"><span class="bar"></span>About</div>
       <h2>A short version,<br/>in case you don&rsquo;t<br/>have time for the long one.</h2>
       <div class="hand-note" data-perch="0.8" data-say="about">↳ ten seconds, promise.</div>
     </div>
@@ -415,7 +377,7 @@
         I picked up Python the year my school exams ended &mdash; mostly out of curiosity, partly because nobody was telling me what to do next.
       </p>
       <p>
-        A year later, the small projects had turned into things real people use: a CBSE result analyzer running in two schools, and an AI assistant a Hyderabad chemical manufacturer&rsquo;s staff used every day to ask questions of their Excel data &mdash; whose engine I later open-sourced as ExcelMCP.
+        A year later, the small projects had turned into things real people use: a CBSE result analyzer running in two schools, and an AI assistant a Hyderabad chemical manufacturer&rsquo;s staff used every day to ask questions of their Excel data. I later open-sourced its engine as ExcelMCP.
       </p>
       <p>
         Now I&rsquo;m building a document-review system for a healthcare certifier in Germany, and sending fixes to libraries I use. Two have been merged so far, into IPython and git-cola.
@@ -427,7 +389,7 @@
 
 <!-- ============ STATS STRIP ============ -->
 <section class="stats-strip">
-  <div class="container reveal">
+  <div class="container">
     <div class="label-row">
       <h3 data-perch="0.9" data-say="stats">By the numbers, so far.</h3>
       <span class="caveat">~ small wins ~</span>
@@ -463,9 +425,6 @@
         <div class="label">Countries with clients</div>
         <div class="desc">India &middot; Germany</div>
       </div>
-      <div class="stat-card stat-tail">
-        <div class="tail-caveat">&hellip;and counting.</div>
-      </div>
     </div>
   </div>
 </section>
@@ -473,8 +432,7 @@
 <!-- ============ EXPERIENCE (a git log, drawn by hand) ============ -->
 <section id="experience" class="section-pad xp">
   <div class="container">
-    <div class="xp-head reveal">
-      <div class="eyebrow"><span class="bar"></span>Experience</div>
+    <div class="xp-head">
       <h2 class="section-title">Where the code <em>runs</em>.</h2>
       <p class="code-comment" aria-hidden="true">$ git log --graph --author=karunya</p>
     </div>
@@ -490,9 +448,9 @@
         <p class="xp-org">Healthcare certification project &middot; Germany</p>
         <ul class="xp-diff">
           <li data-op="+">Building an AI system that reviews certification applications by checking the uploaded documents against what applicants typed into their forms.</li>
-          <li data-op="~">Caught a bug where valid certificates scanned with phone apps were read as <em>expired</em> &mdash; good applications would have been sent back.</li>
+          <li data-op="~">Caught a bug where valid certificates scanned with phone apps were read as <em>expired</em>. Good applications would have been sent back.</li>
           <li data-op="~">Changed a rule that rejected a whole application over one missing file. Now that file is requested instead.</li>
-          <li data-op="+">Added a second, independent reading of every document that flags disagreements for a human, and built a <strong>33-case</strong> test set &mdash; tampered files included.</li>
+          <li data-op="+">Added a second, independent reading of every document that flags disagreements for a human, and built a <strong>33-case</strong> test set that includes tampered files.</li>
         </ul>
         <p class="xp-scrawl" aria-hidden="true">two readers, one human referee</p>
       </li>
@@ -522,7 +480,7 @@
         <ul class="xp-diff">
           <li data-op="+">Designed the spreadsheet system the operations team ran their day-to-day work on.</li>
           <li data-op="+">Built an AI assistant that let staff ask questions about their Excel data in plain English and see the exact cell behind each answer. Used daily until the company moved to an ERP.</li>
-          <li data-op="+">Open-sourced the engine behind it as <strong>ExcelMCP</strong>, an MCP server for live Excel access &mdash; then built the company&rsquo;s website, chatbot included.</li>
+          <li data-op="+">Open-sourced the engine behind it as <strong>ExcelMCP</strong>, an MCP server for live Excel access. Later built the company&rsquo;s website and its chatbot.</li>
         </ul>
       </li>
 
@@ -542,9 +500,8 @@
 <!-- ============ PROJECTS ============ -->
 <section id="work" class="section-pad">
   <div class="container">
-    <div class="projects-head reveal">
+    <div class="projects-head">
       <div>
-        <div class="eyebrow"><span class="bar"></span>Selected work</div>
         <h2 class="section-title">Things that <em>shipped</em>.</h2>
       </div>
       <a class="btn btn-sketched" data-rough="pill" data-seed="91" data-roughness="2" href="https://github.com/Karunya-Muddana?tab=repositories" target="_blank" rel="noopener">View all</a>
@@ -555,7 +512,7 @@
       <img src="assets/doodles/arrows/arrow-14.svg" alt="" />
     </div>
 
-    <div class="bento reveal">
+    <div class="bento">
 
       <article class="card span-6 hero-project featured" data-perch="0.9" data-say="native" data-rough="box" data-seed="2" data-roughness="2" data-bowing="1.5" data-stroke-width="1.6">
         <span class="card-tape"></span>
@@ -648,16 +605,13 @@
         </div>
       </article>
 
-      <article class="card span-3 term-card" data-perch="0.8" data-say="engraph" data-rough="box" data-seed="18" data-roughness="2" data-stroke-width="1.4">
+      <article class="card span-3" data-perch="0.8" data-say="engraph" data-rough="box" data-seed="18" data-roughness="2" data-stroke-width="1.4">
         <div class="cat">Python package &middot; PyPI &middot; Aug 2026</div>
         <h3>engraph</h3>
         <p>Long-term memory for AI coding assistants. It gives Claude Code a memory that lasts between sessions, so the next session doesn&rsquo;t start from zero.</p>
-        <div class="term" aria-label="Install command: pip install engraph">
-          <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><span>zsh</span></div>
-          <div class="term-body">
-            <div class="term-row"><span class="term-ps" aria-hidden="true">$</span> <code class="term-type" data-type="pip install engraph">pip install engraph</code><button class="copy-chip term-copy" type="button" data-copy="pip install engraph" aria-label="Copy the install command">copy</button></div>
-            <div class="term-row term-dim" aria-hidden="true"># session 2 remembers session 1</div>
-          </div>
+        <div class="install">
+          <span class="install-label"># one line to install</span>
+          <div class="install-row"><code>pip install engraph</code><button class="copy-chip" type="button" data-copy="pip install engraph" aria-label="Copy the install command">copy</button></div>
         </div>
         <div class="pills">
           <span class="pill">Python</span>
@@ -670,14 +624,10 @@
         </div>
       </article>
 
-      <article class="card span-3 chart-card" data-rough="box" data-seed="23" data-roughness="2" data-stroke-width="1.4">
+      <article class="card span-3" data-rough="box" data-seed="23" data-roughness="2" data-stroke-width="1.4">
         <div class="cat">ML pipeline &middot; 2025</div>
         <h3>House Price Prediction</h3>
-        <p>Benchmarked eleven models on the same split, then tuned the best one until it priced most houses within a tenth of what they actually sold for.</p>
-        <figure class="sketch-chart" aria-hidden="true">
-          <svg viewBox="0 0 330 112" preserveAspectRatio="none"></svg>
-          <figcaption>11 models &rarr; 1 tuned</figcaption>
-        </figure>
+        <p>Benchmarked eleven models on the same split, then tuned the best one until it priced most houses within a tenth of their sale price.</p>
         <div class="impact"><span class="num">79%</span> of houses within 10%</div>
         <div class="pills">
           <span class="pill">scikit-learn</span>
@@ -742,8 +692,7 @@
     <img src="assets/doodles/circles/circle-12.svg" alt="" />
   </div>
   <div class="container">
-    <div class="oss-head reveal">
-      <div class="eyebrow"><span class="bar"></span>Open source</div>
+    <div class="oss-head">
       <h2 class="section-title">Fixes in other people&rsquo;s <em>code</em>.</h2>
       <p class="oss-sub">Read a big codebase until the bug makes sense, then send the smallest change that fixes it. <span class="oss-hand">two merged inside two weeks &#x2193;</span></p>
     </div>
@@ -753,7 +702,6 @@
         <div class="pr-repo"><span class="pr-glyph" aria-hidden="true">&#x2713;</span>ipython/ipython</div>
         <h3>IPython</h3>
         <p>A fix to how images are displayed, in the interactive shell underneath Jupyter.</p>
-        <div class="pr-scribble" aria-hidden="true"><svg viewBox="0 0 220 64" preserveAspectRatio="none"></svg></div>
         <a class="pr-link" href="https://github.com/ipython/ipython/pulls?q=is%3Apr+author%3AKarunya-Muddana" target="_blank" rel="noopener">see the merged PR &#8599;</a>
         <span class="stamp" aria-label="Status: merged">merged</span>
       </article>
@@ -761,8 +709,7 @@
       <article class="pr-card is-merged" data-rough="box" data-seed="82" data-roughness="2.1" data-stroke-width="1.3">
         <div class="pr-repo"><span class="pr-glyph" aria-hidden="true">&#x2713;</span>git-cola/git-cola</div>
         <h3>git-cola</h3>
-        <p>Better error reporting in the Git GUI, so a failed command says what actually went wrong.</p>
-        <div class="pr-scribble" aria-hidden="true"><svg viewBox="0 0 220 64" preserveAspectRatio="none"></svg></div>
+        <p>Better error reporting in the Git GUI, so a failed command says what went wrong.</p>
         <a class="pr-link" href="https://github.com/git-cola/git-cola/pulls?q=is%3Apr+author%3AKarunya-Muddana" target="_blank" rel="noopener">see the merged PR &#8599;</a>
         <span class="stamp" aria-label="Status: merged">merged</span>
       </article>
@@ -771,7 +718,6 @@
         <div class="pr-repo"><span class="pr-glyph" aria-hidden="true">&#x25CB;</span>collective/icalendar</div>
         <h3>icalendar</h3>
         <p>A fix in review at the library Python projects use to read and write calendar files.</p>
-        <div class="pr-scribble" aria-hidden="true"><svg viewBox="0 0 220 64" preserveAspectRatio="none"></svg></div>
         <a class="pr-link" href="https://github.com/collective/icalendar/pulls?q=is%3Apr+author%3AKarunya-Muddana" target="_blank" rel="noopener">see the open PR &#8599;</a>
         <span class="stamp" aria-label="Status: in review">in review</span>
       </article>
@@ -780,7 +726,6 @@
         <div class="pr-repo"><span class="pr-glyph" aria-hidden="true">&#x25CB;</span>scikit-learn/scikit-learn</div>
         <h3>scikit-learn</h3>
         <p>A fix in review at Python&rsquo;s best-known machine-learning library.</p>
-        <div class="pr-scribble" aria-hidden="true"><svg viewBox="0 0 220 64" preserveAspectRatio="none"></svg></div>
         <a class="pr-link" href="https://github.com/scikit-learn/scikit-learn/pulls?q=is%3Apr+author%3AKarunya-Muddana" target="_blank" rel="noopener">see the open PR &#8599;</a>
         <span class="stamp" aria-label="Status: in review">in review</span>
       </article>
@@ -791,7 +736,7 @@
 <!-- ============ MAIN STACK ============ -->
 <section class="stack-wrap">
   <!-- doodle decorations -->
-  <div class="doodle" style="top:16%; left:6%; width:120px; opacity:0.22; transform:rotate(-20deg);" aria-hidden="true">
+  <div class="doodle" style="top:12%; right:9%; width:120px; opacity:0.22; transform:rotate(-20deg);" aria-hidden="true">
     <img src="assets/doodles/circles/circle-9.svg" alt="" />
   </div>
   <div class="doodle" style="bottom:12%; right:6%; width:140px; opacity:0.22; transform:rotate(18deg);" aria-hidden="true">
@@ -799,9 +744,8 @@
   </div>
 
   <div class="container">
-    <div class="stack-head reveal">
-      <div class="eyebrow"><span class="bar"></span>The stack</div>
-      <h2 class="section-title">What I actually <em>write</em>.</h2>
+    <div class="stack-head">
+      <h2 class="section-title">What I <em>write</em>.</h2>
       <div class="sub">~ five languages, no padding ~</div>
     </div>
 
@@ -842,7 +786,7 @@
       </div>
     </div>
 
-    <figure class="toolkit reveal" aria-label="Everything else in daily rotation">
+    <figure class="toolkit" aria-label="Everything else in daily rotation">
       <img class="printout-tape" src="assets/paper/tape-short-1.webp" alt="" />
       <div class="printout-paper">
         <div class="printout-head">toolkit.py <span class="toolkit-note" aria-hidden="true">also in daily rotation</span></div>
@@ -864,11 +808,10 @@
 <!-- ============ WRITING ============ -->
 <section id="writing" class="section-pad">
   <div class="container">
-    <div class="writing-head reveal">
-      <div class="eyebrow"><span class="bar"></span>Field notes</div>
+    <div class="writing-head">
       <h2 class="section-title">A few things I&rsquo;ve written.</h2>
     </div>
-    <div class="writing-grid reveal">
+    <div class="writing-grid">
       <article class="post-card" data-perch="0.82" data-say="writing" data-rough="box" data-seed="52" data-roughness="2.2" data-stroke-width="1.3">
         <div class="cat">Tooling · Mar 2026</div>
         <h3>&ldquo;A weekend tool, 600 students.&rdquo;</h3>

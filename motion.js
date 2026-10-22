@@ -38,7 +38,7 @@
       rotate: () => gsap.utils.random(-14, 10),
       scale: 0.86,
       duration: 0.55,
-      ease: 'back.out(2.2)',
+      ease: 'expo.out',
       stagger: 0.045
     });
 
@@ -48,7 +48,7 @@
       y: -46,
       rotate: (i) => [18, -30, -20, 30][i] || 0,
       duration: 0.5,
-      ease: 'back.out(1.8)',
+      ease: 'expo.out',
       stagger: 0.11,
       clearProps: 'opacity'
     }, '-=0.15');

@@ -155,8 +155,11 @@
       line-height:1.1;
     }
     @media (max-width:640px){
-      .stack-grid{gap:26px 18px;}
-      .stack-card{width:132px;padding:26px 12px 16px;}
+      /* Phones: two columns that fill the width instead of fixed cards
+         hugging the left edge */
+      .stack-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 18px;}
+      .stack-card{width:auto;padding:26px 12px 16px;}
+      .stack-card:last-child:nth-child(odd){grid-column:1 / -1;justify-self:center;width:calc(50% - 9px);}
       .stack-card img{width:48px;height:48px;}
     }
     @media (prefers-reduced-motion:reduce){

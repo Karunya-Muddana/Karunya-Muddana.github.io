@@ -2702,7 +2702,7 @@ html.lenis-on, html.lenis-on body { height: auto; }
 }
 .printout.in .circled path { stroke-dashoffset: 0; }
 
-.writing-grid { grid-template-columns: repeat(2, 1fr); max-width: 900px; }
+.writing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 @media (max-width: 900px) {
   .excel-card .hero-project-grid { grid-template-columns: 1fr; }
@@ -3420,7 +3420,6 @@ html.lenis, html.lenis body { height: auto; }
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 26px;
-  max-width: 1000px;
 }
 .pr-card {
   position: relative;
@@ -3554,6 +3553,19 @@ html.lenis, html.lenis body { height: auto; }
 .tk-s { color: var(--ink-str); }
 .tk-v { color: var(--pencil); }
 .toolkit .printout-tape { top: -13px; }
+
+/* Stack on wide screens: language cards left, toolkit printout right,
+   so the section uses the page width instead of hugging the left edge */
+@media (min-width: 1100px) {
+  .stack-body {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 64px;
+    align-items: center;
+  }
+  .stack-body .stack-grid { display: grid; grid-template-columns: repeat(3, 152px); gap: 34px 26px; }
+  .stack-body .toolkit { margin-top: 0; max-width: none; }
+}
 
 /* Sticky notes are <p>s, so `.card p` used to shrink their handwriting */
 .card .sticky { font-size: 20px; line-height: 1.02; color: var(--ink); margin: 0; }

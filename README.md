@@ -87,6 +87,7 @@ If Formspree is unset or fails for any reason, the form falls back to `mailto:`,
 ## Customising
 
 - **Photo**: replace `assets/karunya.png` (PNG with transparent background works best — used in the polaroid).
+- **Favicon**: a single Fraunces "K" (outlined, so it doesn't need the font) in cream on graphite. `assets/icon.svg` is the scalable one and flips for dark tab bars; `favicon.ico` (16/32/48) covers older browsers; `assets/apple-touch-icon.png` and the `assets/icon-*.png` files in `manifest.webmanifest` are full-bleed for iOS and Android, which round or mask them themselves. The maskable icon keeps the K inside the 80% safe zone.
 - **Plane illustration**: `assets/plane.png` — a hand-drawn pencil sketch, used as the paper plane on the about page.
 - **Resume content**: edit `resume.html` directly. The print stylesheet in `styles.css` converts the stacked cards into a clean single-column resume when the user hits Print.
 - **AI chat endpoint**: change `API_BASE` at the top of `chat.js`.

@@ -70,8 +70,10 @@
   />
 
   <!-- FAVICON -->
-  <link rel="icon" type="image/png" href="assets/favicon-64.png" />
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
 
   <!-- FONTS -->
   <link rel="preload" href="fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin />
@@ -752,47 +754,48 @@
       <div class="sub">~ five languages, no padding ~</div>
     </div>
 
-    <div class="stack-grid">
-      <div class="stack-card" data-rough="box" data-seed="61" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
-        <span class="stack-tape"></span>
-        <img src="assets/icons/python.svg" alt="Python" width="58" height="58" loading="lazy" />
-        <div class="stack-name">Python</div>
-        <div class="stack-note">the first love</div>
+    <div class="stack-body">
+      <div class="stack-grid">
+        <div class="stack-card" data-rough="box" data-seed="61" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
+          <span class="stack-tape"></span>
+          <img src="assets/icons/python.svg" alt="Python" width="58" height="58" loading="lazy" />
+          <div class="stack-name">Python</div>
+          <div class="stack-note">the first love</div>
+        </div>
+
+        <div class="stack-card" data-rough="box" data-seed="62" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
+          <span class="stack-tape"></span>
+          <img src="assets/icons/typescript.svg" alt="TypeScript" width="58" height="58" loading="lazy" />
+          <div class="stack-name">TypeScript</div>
+          <div class="stack-note">for the web bits</div>
+        </div>
+
+        <div class="stack-card" data-perch="0.5" data-say="stack" data-rough="box" data-seed="63" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
+          <span class="stack-tape"></span>
+          <img src="assets/icons/postgresql.svg" alt="SQL" width="58" height="58" loading="lazy" />
+          <div class="stack-name">SQL</div>
+          <div class="stack-note">37 tables deep</div>
+        </div>
+
+        <div class="stack-card" data-rough="box" data-seed="64" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
+          <span class="stack-tape"></span>
+          <img src="assets/icons/cplusplus.svg" alt="C++" width="58" height="58" loading="lazy" />
+          <div class="stack-name">C++</div>
+          <div class="stack-note">DSA territory</div>
+        </div>
+
+        <div class="stack-card" data-rough="box" data-seed="65" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
+          <span class="stack-tape"></span>
+          <img src="assets/icons/java.svg" alt="Java" width="58" height="58" loading="lazy" />
+          <div class="stack-name">Java</div>
+          <div class="stack-note">OOP, done properly</div>
+        </div>
       </div>
 
-      <div class="stack-card" data-rough="box" data-seed="62" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
-        <span class="stack-tape"></span>
-        <img src="assets/icons/typescript.svg" alt="TypeScript" width="58" height="58" loading="lazy" />
-        <div class="stack-name">TypeScript</div>
-        <div class="stack-note">for the web bits</div>
-      </div>
-
-      <div class="stack-card" data-perch="0.5" data-say="stack" data-rough="box" data-seed="63" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
-        <span class="stack-tape"></span>
-        <img src="assets/icons/postgresql.svg" alt="SQL" width="58" height="58" loading="lazy" />
-        <div class="stack-name">SQL</div>
-        <div class="stack-note">37 tables deep</div>
-      </div>
-
-      <div class="stack-card" data-rough="box" data-seed="64" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
-        <span class="stack-tape"></span>
-        <img src="assets/icons/cplusplus.svg" alt="C++" width="58" height="58" loading="lazy" />
-        <div class="stack-name">C++</div>
-        <div class="stack-note">DSA territory</div>
-      </div>
-
-      <div class="stack-card" data-rough="box" data-seed="65" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
-        <span class="stack-tape"></span>
-        <img src="assets/icons/java.svg" alt="Java" width="58" height="58" loading="lazy" />
-        <div class="stack-name">Java</div>
-        <div class="stack-note">OOP, done properly</div>
-      </div>
-    </div>
-
-    <figure class="toolkit" aria-label="Everything else in daily rotation">
-      <img class="printout-tape" src="assets/paper/tape-short-1.webp" alt="" />
-      <div class="printout-paper">
-        <div class="printout-head">toolkit.py <span class="toolkit-note" aria-hidden="true">also in daily rotation</span></div>
+      <figure class="toolkit" aria-label="Everything else in daily rotation">
+        <img class="printout-tape" src="assets/paper/tape-short-1.webp" alt="" />
+        <div class="printout-paper">
+          <div class="printout-head">toolkit.py <span class="toolkit-note" aria-hidden="true">also in daily rotation</span></div>
 <pre><code><span class="tk-k">toolkit</span> = {
     <span class="tk-s">"ai"</span>:    <span class="tk-list">[<span class="tk-v">"LLM agents"</span>, <span class="tk-v">"RAG"</span>, <span class="tk-v">"embeddings"</span>, <span class="tk-v">"vector search"</span>,
               <span class="tk-v">"OCR"</span>, <span class="tk-v">"prompt engineering"</span>, <span class="tk-v">"LLM evaluation"</span>,
@@ -803,8 +806,9 @@
               <span class="tk-v">"Docker"</span>, <span class="tk-v">"Git"</span>, <span class="tk-v">"GitHub Actions"</span>, <span class="tk-v">"pytest"</span>,
               <span class="tk-v">"Google Cloud"</span>],</span>
 }</code></pre>
-      </div>
-    </figure>
+        </div>
+      </figure>
+    </div>
   </div>
 </section>
 

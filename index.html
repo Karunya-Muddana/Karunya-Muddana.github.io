@@ -7,16 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
   <!-- PRIMARY SEO -->
-  <title>Karunya Muddana | AI/ML Engineer, Full-Stack Developer & MLOps</title>
+  <title>Karunya Muddana | AI Engineer &amp; Open-Source Contributor</title>
 
   <meta
     name="description"
-    content="Karunya Muddana is an AI/ML engineer and full-stack developer building agent runtimes, MCP servers, and production-grade software with Python, FastAPI, and the Anthropic API."
+    content="Karunya Muddana is a CS (AI &amp; ML) student at GITAM who builds AI tools people actually use: document review for a German healthcare certifier, a data assistant for a chemical manufacturer, and fixes merged into IPython and git-cola."
   />
 
   <meta
     name="keywords"
-    content="Karunya Muddana, AI Engineer, MLOps, Full Stack Developer, MCP, RAG, FastAPI, Python Developer, Hyderabad, AI Portfolio, Machine Learning Engineer"
+    content="Karunya Muddana, AI Engineer, Open Source, IPython, git-cola, scikit-learn, icalendar, MCP, RAG, LLM evaluation, OCR, LangGraph, Python, Hyderabad, GITAM"
   />
 
   <meta name="author" content="Karunya Muddana" />
@@ -34,12 +34,12 @@
 
   <meta
     property="og:title"
-    content="Karunya Muddana | AI/ML Engineer & Full-Stack Developer"
+    content="Karunya Muddana | AI Engineer &amp; Open-Source Contributor"
   />
 
   <meta
     property="og:description"
-    content="Building agent runtimes, MCP servers, and production-grade AI applications."
+    content="AI tools people actually use: document review for a German healthcare certifier, a data assistant for a chemical manufacturer, and fixes merged into IPython and git-cola."
   />
 
   <meta
@@ -56,12 +56,12 @@
 
   <meta
     name="twitter:title"
-    content="Karunya Muddana | AI/ML Engineer"
+    content="Karunya Muddana | AI Engineer"
   />
 
   <meta
     name="twitter:description"
-    content="AI/ML, MLOps, agent runtimes, MCP servers, and full-stack engineering."
+    content="Document AI, agent memory, MCP servers, and fixes merged into IPython and git-cola."
   />
 
   <meta
@@ -74,13 +74,9 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 
   <!-- FONTS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,700;1,9..144,800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link rel="preload" href="fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/victor-mono.woff2" as="font" type="font/woff2" crossorigin />
 
   <!-- MAIN CSS -->
   <link rel="stylesheet" href="styles.css" />
@@ -98,7 +94,7 @@
     }
     .stack-head .eyebrow{justify-content:center;}
     .stack-head .sub{
-      font-family:'Caveat',cursive;
+      font-family:var(--font-hand);
       font-size:1.25rem;
       color:#8a7f6b;
       margin-top:10px;
@@ -108,7 +104,7 @@
       flex-wrap:wrap;
       justify-content:center;
       gap:34px 30px;
-      max-width:860px;
+      max-width:900px;
       margin:0 auto;
     }
     .stack-card{
@@ -151,7 +147,7 @@
       filter:drop-shadow(0 2px 3px rgba(43,38,32,.12));
     }
     .stack-name{
-      font-family:'JetBrains Mono',monospace;
+      font-family:var(--font-mono);
       font-size:.92rem;
       font-weight:500;
       color:#2b2620;
@@ -159,33 +155,11 @@
       letter-spacing:.02em;
     }
     .stack-note{
-      font-family:'Caveat',cursive;
+      font-family:var(--font-hand);
       font-size:1.05rem;
       color:#8a7f6b;
       margin-top:2px;
       line-height:1.1;
-    }
-    .stack-secondary{
-      max-width:720px;
-      margin:56px auto 0;
-      text-align:center;
-    }
-    .stack-secondary .lbl{
-      font-family:'Caveat',cursive;
-      font-size:1.3rem;
-      color:#8a7f6b;
-      display:block;
-      margin-bottom:12px;
-    }
-    .stack-secondary .items{
-      font-family:'JetBrains Mono',monospace;
-      font-size:.85rem;
-      line-height:2.1;
-      color:#4a4438;
-    }
-    .stack-secondary .items .sep{
-      color:#b7ab92;
-      margin:0 .45em;
     }
     @media (max-width:640px){
       .stack-grid{gap:26px 18px;}
@@ -204,8 +178,8 @@
     "@type": "Person",
     "name": "Karunya Muddana",
     "url": "https://karunya-muddana.github.io/",
-    "image": "https://karunya-muddana.github.io/assets/karunya.png",
-    "jobTitle": "AI/ML Engineer & Full-Stack Developer",
+    "image": "https://karunya-muddana.github.io/assets/karunya.webp",
+    "jobTitle": "AI Engineer",
     "sameAs": [
       "https://github.com/Karunya-Muddana",
       "https://www.linkedin.com/in/karunya-muddana/"
@@ -217,16 +191,15 @@
     "knowsAbout": [
       "Artificial Intelligence",
       "Machine Learning",
-      "MLOps",
+      "LLM agents",
+      "LLM evaluation",
       "Model Context Protocol",
       "RAG",
-      "FastAPI",
+      "OCR",
       "Python",
-      "Java",
-      "C",
-      "C++",
+      "TypeScript",
       "SQL",
-      "Agentic AI"
+      "Open source"
     ],
     "address": {
       "@type": "PostalAddress",
@@ -243,7 +216,7 @@
     "@type": "WebSite",
     "name": "Karunya Muddana",
     "url": "https://karunya-muddana.github.io/",
-    "description": "Portfolio of Karunya Muddana — AI/ML engineer and full-stack developer building agent runtimes, MCP servers, and production-grade software.",
+    "description": "Portfolio of Karunya Muddana — AI engineer and open-source contributor building document AI, agent memory and MCP servers.",
     "author": {
       "@type": "Person",
       "name": "Karunya Muddana",
@@ -252,8 +225,7 @@
   }
   </script>
 
-  <!-- ROUGH JS -->
-  <script defer src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.min.js"></script>
+    <script defer src="vendor/rough.min.js"></script>
 
   <!-- Hold the headline hidden until motion.js splits it (max 2.5s) -->
   <script>
@@ -284,10 +256,11 @@
 <!-- Mobile overlay nav -->
 <div class="mobile-overlay" aria-hidden="true">
   <a href="#work">Work</a>
+  <a href="#experience">Experience</a>
+  <a href="#oss">Open source</a>
   <a href="about.html">About</a>
   <a href="resume.html">Resume</a>
   <a href="chat.html">Chat</a>
-  <a href="#writing">Writing</a>
   <a href="#contact">Contact</a>
 </div>
 
@@ -296,10 +269,11 @@
   <a href="#top" class="logo">Karunya Muddana</a>
   <div class="nav-links">
     <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#oss">Open source</a>
     <a href="about.html">About</a>
     <a href="resume.html">Resume</a>
     <a href="chat.html">Chat</a>
-    <a href="#writing">Writing</a>
     <a href="#contact">Contact</a>
   </div>
   <a class="nav-email" href="mailto:Karunya.muddana@outlook.com">Say hello</a>
@@ -338,21 +312,25 @@
       <div class="hero-grid">
 
       <div class="hero-text">
-        <p class="hero-eyebrow">Karunya Muddana · CS @ GITAM</p>
+        <p class="hero-eyebrow">Karunya Muddana · CS (AI &amp; ML) @ GITAM</p>
         <h1 class="hero-title">
           <span class="ln"><span class="sp">Builds</span></span>
           <span class="ln"><span class="sp">things</span> <em class="sp">that</em></span>
           <span class="ln"><span class="rough-underline"><span class="sp">ship</span><svg viewBox="0 0 240 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 6 5 C 40 2, 80 9, 120 4 C 160 1, 200 9, 234 4" /><path class="thin" d="M 4 11 C 50 8, 100 12, 150 9 C 190 5, 220 11, 236 8" /></svg></span><span class="sp">.</span><span class="hero-cuts" aria-hidden="true"><img class="cut cut-square" src="assets/paper/cut-square-peach.webp" alt="" /><img class="cut cut-circle" src="assets/paper/cut-circle-sage.webp" alt="" /><img class="cut cut-rect" src="assets/paper/cut-rect-lilac.webp" alt="" /><img class="cut cut-tape" src="assets/paper/tape-short-3.webp" alt="" /></span></span>
         </h1>
         <p class="hero-sub">
-          Agent runtimes. MCP servers. Small tools that get used after they ship.
+          AI tools people actually use. Document review, data assistants, agent memory &mdash; and fixes merged into IPython and git-cola.
+        </p>
+        <p class="hero-term">
+          <span class="term-prompt" aria-hidden="true">~/karunya <b>$</b></span>
+          <span class="term-out"><span class="term-cmd">cat now.txt</span> <span class="term-note"># AI engineer on a healthcare certification project, Germany</span></span><span class="term-caret" aria-hidden="true"></span>
         </p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#work">See the work</a>
           <a class="btn btn-sketched" data-rough="pill" data-seed="33" data-roughness="2" href="about.html">My story</a>
         </div>
         <div class="hero-hand">
-          <span>freelancing for a Hyderabad manufacturer</span>
+          <span>now: AI for a healthcare certifier in Germany</span>
           <svg class="hero-hand-arrow" viewBox="0 0 100 64" aria-hidden="true"><path d="M4 58C20 58 34 50 36 40C38 30 28 26 24 33C20 41 34 46 48 40C64 33 78 20 88 8"/><path d="M76 9 88 8 86 20"/></svg>
         </div>
       </div>
@@ -391,11 +369,11 @@
 
     <div class="hero-bottom-strip">
       <div class="hero-meta-row">
-        <span>Second-year CS</span>
+        <span>Second-year CS (AI &amp; ML)</span>
         <span class="dot-sep"></span>
         <span>GITAM</span>
         <span class="dot-sep"></span>
-        <span>Builder · Researcher</span>
+        <span>Builder · OSS contributor</span>
       </div>
       <div class="scroll-cue">
         <span>Scroll</span>
@@ -409,18 +387,18 @@
 <!-- ============ MARQUEE STRIP ============ -->
 <div class="work-strip" aria-hidden="true">
   <div class="work-strip-track">
-    <span>Agent runtimes</span>
+    <span>Document AI</span>
+    <span>Open source</span>
     <span>MCP servers</span>
-    <span>RAG &amp; memory</span>
-    <span>Multi-agent pipelines</span>
-    <span>Data tooling</span>
-    <span>Full-stack</span>
-    <span>Agent runtimes</span>
+    <span>Agent memory</span>
+    <span>LLM evaluation</span>
+    <span>RAG &amp; OCR</span>
+    <span>Document AI</span>
+    <span>Open source</span>
     <span>MCP servers</span>
-    <span>RAG &amp; memory</span>
-    <span>Multi-agent pipelines</span>
-    <span>Data tooling</span>
-    <span>Full-stack</span>
+    <span>Agent memory</span>
+    <span>LLM evaluation</span>
+    <span>RAG &amp; OCR</span>
   </div>
 </div>
 
@@ -437,7 +415,10 @@
         I picked up Python the year my school exams ended &mdash; mostly out of curiosity, partly because nobody was telling me what to do next.
       </p>
       <p>
-        A year later, the small projects had turned into things real people use: a CBSE result analyzer running in two schools, an open-source MCP server that puts live Excel workbooks in front of AI agents, and a website with a chatbot in it for a Hyderabad manufacturer &mdash; the same client whose agent I&rsquo;d built on that server a few months earlier.
+        A year later, the small projects had turned into things real people use: a CBSE result analyzer running in two schools, and an AI assistant a Hyderabad chemical manufacturer&rsquo;s staff used every day to ask questions of their Excel data &mdash; whose engine I later open-sourced as ExcelMCP.
+      </p>
+      <p>
+        Now I&rsquo;m building a document-review system for a healthcare certifier in Germany, and sending fixes to libraries I use. Two have been merged so far, into IPython and git-cola.
       </p>
       <a class="read-more" href="about.html">Read the longer story</a>
     </div>
@@ -453,24 +434,24 @@
     </div>
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="num">9.2<small>/10</small></div>
+        <div class="num">9.15<small>/10</small></div>
         <div class="label">CGPA</div>
-        <div class="desc">BTech CS &middot; GITAM</div>
+        <div class="desc">B.Tech CS (AI &amp; ML) &middot; GITAM</div>
       </div>
       <div class="stat-card">
-        <div class="num">432<small>+</small></div>
-        <div class="label">Commits</div>
-        <div class="desc">one keystroke at a time</div>
+        <div class="num">2</div>
+        <div class="label">Fixes merged upstream</div>
+        <div class="desc">IPython &middot; git-cola</div>
       </div>
       <div class="stat-card">
-        <div class="num">25<small>+</small></div>
-        <div class="label">Repositories</div>
-        <div class="desc">agents, ERPs, ML</div>
+        <div class="num">4</div>
+        <div class="label">Open-source projects</div>
+        <div class="desc">2 merged, 2 in review</div>
       </div>
       <div class="stat-card">
-        <div class="num">1</div>
-        <div class="label">MCP server shipped</div>
-        <div class="desc">ExcelMCP &middot; live Excel</div>
+        <div class="num">33</div>
+        <div class="label">Test cases</div>
+        <div class="desc">some of them forged on purpose</div>
       </div>
       <div class="stat-card">
         <div class="num">600<small>+</small></div>
@@ -479,13 +460,82 @@
       </div>
       <div class="stat-card">
         <div class="num">2</div>
-        <div class="label">Shipped for a client</div>
-        <div class="desc">an agent, then their site</div>
+        <div class="label">Countries with clients</div>
+        <div class="desc">India &middot; Germany</div>
       </div>
       <div class="stat-card stat-tail">
         <div class="tail-caveat">&hellip;and counting.</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE (a git log, drawn by hand) ============ -->
+<section id="experience" class="section-pad xp">
+  <div class="container">
+    <div class="xp-head reveal">
+      <div class="eyebrow"><span class="bar"></span>Experience</div>
+      <h2 class="section-title">Where the code <em>runs</em>.</h2>
+      <p class="code-comment" aria-hidden="true">$ git log --graph --author=karunya</p>
+    </div>
+
+    <ol class="xp-log">
+      <li class="xp-commit is-head" data-perch="0.86" data-say="xp">
+        <span class="xp-node" aria-hidden="true"></span>
+        <div class="xp-meta">
+          <span class="xp-ref">HEAD &rarr; now</span>
+          <span class="xp-when">Oct 2026 &ndash; present</span>
+        </div>
+        <h3>AI Engineer <span class="xp-kind">contract &middot; remote</span></h3>
+        <p class="xp-org">Healthcare certification project &middot; Germany</p>
+        <ul class="xp-diff">
+          <li data-op="+">Building an AI system that reviews certification applications by checking the uploaded documents against what applicants typed into their forms.</li>
+          <li data-op="~">Caught a bug where valid certificates scanned with phone apps were read as <em>expired</em> &mdash; good applications would have been sent back.</li>
+          <li data-op="~">Changed a rule that rejected a whole application over one missing file. Now that file is requested instead.</li>
+          <li data-op="+">Added a second, independent reading of every document that flags disagreements for a human, and built a <strong>33-case</strong> test set &mdash; tampered files included.</li>
+        </ul>
+        <p class="xp-scrawl" aria-hidden="true">two readers, one human referee</p>
+      </li>
+
+      <li class="xp-commit">
+        <span class="xp-node" aria-hidden="true"></span>
+        <div class="xp-meta">
+          <span class="xp-ref xp-ref-alt">upstream</span>
+          <span class="xp-when">Oct 2026 &ndash; present</span>
+        </div>
+        <h3>Open-source contributor</h3>
+        <p class="xp-org">IPython &middot; git-cola &middot; icalendar &middot; scikit-learn</p>
+        <ul class="xp-diff">
+          <li data-op="+">Got fixes merged into <strong>IPython</strong> (image display) and <strong>git-cola</strong> (error reporting) within two weeks.</li>
+          <li data-op="&bull;">Further fixes in review at <strong>icalendar</strong> and <strong>scikit-learn</strong>, two widely used Python libraries. <a class="xp-jump" href="#oss">see the PRs &darr;</a></li>
+        </ul>
+      </li>
+
+      <li class="xp-commit">
+        <span class="xp-node" aria-hidden="true"></span>
+        <div class="xp-meta">
+          <span class="xp-ref xp-ref-alt">freelance</span>
+          <span class="xp-when">2024 &ndash; present</span>
+        </div>
+        <h3>Freelance AI Engineer</h3>
+        <p class="xp-org">Chemical manufacturer &middot; Hyderabad</p>
+        <ul class="xp-diff">
+          <li data-op="+">Designed the spreadsheet system the operations team ran their day-to-day work on.</li>
+          <li data-op="+">Built an AI assistant that let staff ask questions about their Excel data in plain English and see the exact cell behind each answer. Used daily until the company moved to an ERP.</li>
+          <li data-op="+">Open-sourced the engine behind it as <strong>ExcelMCP</strong>, an MCP server for live Excel access &mdash; then built the company&rsquo;s website, chatbot included.</li>
+        </ul>
+      </li>
+
+      <li class="xp-commit xp-root">
+        <span class="xp-node" aria-hidden="true"></span>
+        <div class="xp-meta">
+          <span class="xp-ref xp-ref-alt">init</span>
+          <span class="xp-when">expected 2029</span>
+        </div>
+        <h3>B.Tech, Computer Science (AI &amp; ML)</h3>
+        <p class="xp-org">GITAM University, Hyderabad &middot; CGPA 9.15 / 10</p>
+      </li>
+    </ol>
   </div>
 </section>
 
@@ -514,7 +564,7 @@
             <div class="hero-project-title">
               <img class="hero-project-mark" src="assets/projects/native-mark.svg" alt="" aria-hidden="true" />
               <div>
-                <div class="cat">Agent runtime &middot; Open source &middot; Apache 2.0</div>
+                <div class="cat">Agent workbench &middot; Smart India Hackathon 2026 &middot; Apache 2.0</div>
                 <h3>Native</h3>
               </div>
             </div>
@@ -598,6 +648,44 @@
         </div>
       </article>
 
+      <article class="card span-3 term-card" data-perch="0.8" data-say="engraph" data-rough="box" data-seed="18" data-roughness="2" data-stroke-width="1.4">
+        <div class="cat">Python package &middot; PyPI &middot; Aug 2026</div>
+        <h3>engraph</h3>
+        <p>Long-term memory for AI coding assistants. It gives Claude Code a memory that lasts between sessions, so the next session doesn&rsquo;t start from zero.</p>
+        <div class="term" aria-label="Install command: pip install engraph">
+          <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><span>zsh</span></div>
+          <div class="term-body">
+            <div class="term-row"><span class="term-ps" aria-hidden="true">$</span> <code class="term-type" data-type="pip install engraph">pip install engraph</code><button class="copy-chip term-copy" type="button" data-copy="pip install engraph" aria-label="Copy the install command">copy</button></div>
+            <div class="term-row term-dim" aria-hidden="true"># session 2 remembers session 1</div>
+          </div>
+        </div>
+        <div class="pills">
+          <span class="pill">Python</span>
+          <span class="pill">PyPI</span>
+          <span class="pill">Claude Code</span>
+          <span class="pill">Agent memory</span>
+        </div>
+        <div class="links">
+          <a href="https://pypi.org/project/engraph/" target="_blank" rel="noopener" data-rough="circle" data-seed="73" data-roughness="2.2" aria-label="engraph on PyPI">&#8599;</a>
+        </div>
+      </article>
+
+      <article class="card span-3 chart-card" data-rough="box" data-seed="23" data-roughness="2" data-stroke-width="1.4">
+        <div class="cat">ML pipeline &middot; 2025</div>
+        <h3>House Price Prediction</h3>
+        <p>Benchmarked eleven models on the same split, then tuned the best one until it priced most houses within a tenth of what they actually sold for.</p>
+        <figure class="sketch-chart" aria-hidden="true">
+          <svg viewBox="0 0 330 112" preserveAspectRatio="none"></svg>
+          <figcaption>11 models &rarr; 1 tuned</figcaption>
+        </figure>
+        <div class="impact"><span class="num">79%</span> of houses within 10%</div>
+        <div class="pills">
+          <span class="pill">scikit-learn</span>
+          <span class="pill">XGBoost</span>
+          <span class="pill">LightGBM</span>
+          <span class="pill">Pandas</span>
+        </div>
+      </article>
 
       <article class="card span-2 small" data-perch="0.78" data-say="side" data-rough="box" data-seed="27" data-roughness="2.2" data-stroke-width="1.3">
         <p class="sticky sm" style="--r:4deg"><img class="sticky-pin" src="assets/paper/pin.webp" alt="" />a weekend favour</p>
@@ -648,6 +736,58 @@
   </div>
 </section>
 
+<!-- ============ OPEN SOURCE ============ -->
+<section id="oss" class="section-pad oss">
+  <div class="doodle" style="top:10%; right:7%; width:110px; opacity:0.22; transform:rotate(14deg);" aria-hidden="true">
+    <img src="assets/doodles/circles/circle-12.svg" alt="" />
+  </div>
+  <div class="container">
+    <div class="oss-head reveal">
+      <div class="eyebrow"><span class="bar"></span>Open source</div>
+      <h2 class="section-title">Fixes in other people&rsquo;s <em>code</em>.</h2>
+      <p class="oss-sub">Read a big codebase until the bug makes sense, then send the smallest change that fixes it. <span class="oss-hand">two merged inside two weeks &#x2193;</span></p>
+    </div>
+
+    <div class="pr-grid">
+      <article class="pr-card is-merged" data-perch="0.84" data-say="oss" data-rough="box" data-seed="81" data-roughness="2.1" data-stroke-width="1.3">
+        <div class="pr-repo"><span class="pr-glyph" aria-hidden="true">&#x2713;</span>ipython/ipython</div>
+        <h3>IPython</h3>
+        <p>A fix to how images are displayed, in the interactive shell underneath Jupyter.</p>
+        <div class="pr-scribble" aria-hidden="true"><svg viewBox="0 0 220 64" preserveAspectRatio="none"></svg></div>
+        <a class="pr-link" href="https://github.com/ipython/ipython/pulls?q=is%3Apr+author%3AKarunya-Muddana" target="_blank" rel="noopener">see the merged PR &#8599;</a>
+        <span class="stamp" aria-label="Status: merged">merged</span>
+      </article>
+
+      <article class="pr-card is-merged" data-rough="box" data-seed="82" data-roughness="2.1" data-stroke-width="1.3">
+        <div class="pr-repo"><span class="pr-glyph" aria-hidden="true">&#x2713;</span>git-cola/git-cola</div>
+        <h3>git-cola</h3>
+        <p>Better error reporting in the Git GUI, so a failed command says what actually went wrong.</p>
+        <div class="pr-scribble" aria-hidden="true"><svg viewBox="0 0 220 64" preserveAspectRatio="none"></svg></div>
+        <a class="pr-link" href="https://github.com/git-cola/git-cola/pulls?q=is%3Apr+author%3AKarunya-Muddana" target="_blank" rel="noopener">see the merged PR &#8599;</a>
+        <span class="stamp" aria-label="Status: merged">merged</span>
+      </article>
+
+      <article class="pr-card is-open" data-rough="box" data-seed="83" data-roughness="2.1" data-stroke-width="1.3">
+        <div class="pr-repo"><span class="pr-glyph" aria-hidden="true">&#x25CB;</span>collective/icalendar</div>
+        <h3>icalendar</h3>
+        <p>A fix in review at the library Python projects use to read and write calendar files.</p>
+        <div class="pr-scribble" aria-hidden="true"><svg viewBox="0 0 220 64" preserveAspectRatio="none"></svg></div>
+        <a class="pr-link" href="https://github.com/collective/icalendar/pulls?q=is%3Apr+author%3AKarunya-Muddana" target="_blank" rel="noopener">see the open PR &#8599;</a>
+        <span class="stamp" aria-label="Status: in review">in review</span>
+      </article>
+
+      <article class="pr-card is-open" data-rough="box" data-seed="84" data-roughness="2.1" data-stroke-width="1.3">
+        <div class="pr-repo"><span class="pr-glyph" aria-hidden="true">&#x25CB;</span>scikit-learn/scikit-learn</div>
+        <h3>scikit-learn</h3>
+        <p>A fix in review at Python&rsquo;s best-known machine-learning library.</p>
+        <div class="pr-scribble" aria-hidden="true"><svg viewBox="0 0 220 64" preserveAspectRatio="none"></svg></div>
+        <a class="pr-link" href="https://github.com/scikit-learn/scikit-learn/pulls?q=is%3Apr+author%3AKarunya-Muddana" target="_blank" rel="noopener">see the open PR &#8599;</a>
+        <span class="stamp" aria-label="Status: in review">in review</span>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ============ MAIN STACK ============ -->
 <section class="stack-wrap">
   <!-- doodle decorations -->
@@ -665,51 +805,59 @@
       <div class="sub">~ five languages, no padding ~</div>
     </div>
 
-    <div class="stack-grid reveal">
-
+    <div class="stack-grid">
       <div class="stack-card" data-rough="box" data-seed="61" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
         <span class="stack-tape"></span>
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" loading="lazy" />
+        <img src="assets/icons/python.svg" alt="Python" width="58" height="58" loading="lazy" />
         <div class="stack-name">Python</div>
         <div class="stack-note">the first love</div>
       </div>
 
       <div class="stack-card" data-rough="box" data-seed="62" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
         <span class="stack-tape"></span>
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" loading="lazy" />
-        <div class="stack-name">Java</div>
-        <div class="stack-note">OOP, done properly</div>
+        <img src="assets/icons/typescript.svg" alt="TypeScript" width="58" height="58" loading="lazy" />
+        <div class="stack-name">TypeScript</div>
+        <div class="stack-note">for the web bits</div>
       </div>
 
       <div class="stack-card" data-perch="0.5" data-say="stack" data-rough="box" data-seed="63" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
         <span class="stack-tape"></span>
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C" loading="lazy" />
-        <div class="stack-name">C</div>
-        <div class="stack-note">pointers &amp; patience</div>
+        <img src="assets/icons/postgresql.svg" alt="SQL" width="58" height="58" loading="lazy" />
+        <div class="stack-name">SQL</div>
+        <div class="stack-note">37 tables deep</div>
       </div>
 
       <div class="stack-card" data-rough="box" data-seed="64" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
         <span class="stack-tape"></span>
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" loading="lazy" />
+        <img src="assets/icons/cplusplus.svg" alt="C++" width="58" height="58" loading="lazy" />
         <div class="stack-name">C++</div>
         <div class="stack-note">DSA territory</div>
       </div>
 
       <div class="stack-card" data-rough="box" data-seed="65" data-roughness="2.2" data-bowing="1.4" data-stroke-width="1.4">
         <span class="stack-tape"></span>
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="SQL" loading="lazy" />
-        <div class="stack-name">SQL</div>
-        <div class="stack-note">37 tables deep</div>
-      </div>
-
-    </div>
-
-    <div class="stack-secondary reveal">
-      <span class="lbl">also in daily rotation ↓</span>
-      <div class="items">
-        FastAPI <span class="sep">·</span> Supabase <span class="sep">·</span> PostgreSQL <span class="sep">·</span> FastMCP <span class="sep">·</span> Anthropic API <span class="sep">·</span> Ollama <span class="sep">·</span> Pandas <span class="sep">·</span> NumPy <span class="sep">·</span> Numba (CUDA) <span class="sep">·</span> Playwright <span class="sep">·</span> Git <span class="sep">·</span> Docker <span class="sep">·</span> Linux / WSL2
+        <img src="assets/icons/java.svg" alt="Java" width="58" height="58" loading="lazy" />
+        <div class="stack-name">Java</div>
+        <div class="stack-note">OOP, done properly</div>
       </div>
     </div>
+
+    <figure class="toolkit reveal" aria-label="Everything else in daily rotation">
+      <img class="printout-tape" src="assets/paper/tape-short-1.webp" alt="" />
+      <div class="printout-paper">
+        <div class="printout-head">toolkit.py <span class="toolkit-note" aria-hidden="true">also in daily rotation</span></div>
+<pre><code><span class="tk-k">toolkit</span> = {
+    <span class="tk-s">"ai"</span>:    <span class="tk-list">[<span class="tk-v">"LLM agents"</span>, <span class="tk-v">"RAG"</span>, <span class="tk-v">"embeddings"</span>, <span class="tk-v">"vector search"</span>,
+              <span class="tk-v">"OCR"</span>, <span class="tk-v">"prompt engineering"</span>, <span class="tk-v">"LLM evaluation"</span>,
+              <span class="tk-v">"MCP"</span>, <span class="tk-v">"LangGraph"</span>],</span>
+    <span class="tk-s">"ml"</span>:    <span class="tk-list">[<span class="tk-v">"scikit-learn"</span>, <span class="tk-v">"XGBoost"</span>, <span class="tk-v">"LightGBM"</span>, <span class="tk-v">"PyTorch"</span>,
+              <span class="tk-v">"Pandas"</span>, <span class="tk-v">"NumPy"</span>],</span>
+    <span class="tk-s">"tools"</span>: <span class="tk-list">[<span class="tk-v">"FastAPI"</span>, <span class="tk-v">"Node.js"</span>, <span class="tk-v">"PostgreSQL"</span>, <span class="tk-v">"Supabase"</span>,
+              <span class="tk-v">"Docker"</span>, <span class="tk-v">"Git"</span>, <span class="tk-v">"GitHub Actions"</span>, <span class="tk-v">"pytest"</span>,
+              <span class="tk-v">"Google Cloud"</span>],</span>
+}</code></pre>
+      </div>
+    </figure>
   </div>
 </section>
 
@@ -786,15 +934,17 @@
 </footer>
 
 <script defer src="rough-init.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script defer src="vendor/gsap.min.js"></script>
+<script defer src="vendor/SplitText.min.js"></script>
 <script defer src="motion.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script defer src="vendor/lenis.min.js"></script>
 <script defer src="portfolio.js"></script>
 <script src="mascot.js" defer></script>
 <script src="resume-sheet.js" defer></script>
 <script src="grass.js" defer></script>
 <script type="module" src="grass3d.js"></script>
+<link rel="modulepreload" href="vendor/anime.min.js" />
+<script type="module" src="code-motion.js"></script>
 <script src="game.js" defer></script>
 </body>
 </html>

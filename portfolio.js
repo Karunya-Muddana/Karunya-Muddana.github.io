@@ -258,7 +258,7 @@
     const target = parseFloat(cleanNum);
     if (isNaN(target)) return;
     const suffix = match[2];
-    const isDecimal = cleanNum.includes('.');
+    const decimals = (cleanNum.split('.')[1] || '').length;
     const duration = 1300;
     const start = performance.now();
 
@@ -266,14 +266,14 @@
       const t = Math.min(1, (now - start) / duration);
       const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
       const current = target * eased;
-      const numText = isDecimal
-        ? current.toFixed(1)
+      const numText = decimals
+        ? current.toFixed(decimals)
         : Math.floor(current).toString();
       textNode.nodeValue = numText + suffix;
       if (t < 1) requestAnimationFrame(tick);
       else textNode.nodeValue = original;
     }
-    textNode.nodeValue = (isDecimal ? '0.0' : '0') + suffix;
+    textNode.nodeValue = (0).toFixed(decimals) + suffix;
     requestAnimationFrame(tick);
   }
 

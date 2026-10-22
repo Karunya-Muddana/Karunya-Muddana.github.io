@@ -127,7 +127,7 @@
   padding-bottom: 8px;
 }
 .notebook-head .chapter {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -135,7 +135,7 @@
   margin-bottom: 14px;
 }
 .notebook-head h1 {
-  font-family: 'Caveat', cursive;
+  font-family: var(--font-hand);
   font-weight: 700;
   font-size: clamp(40px, 6vw, 64px);
   line-height: 1;
@@ -149,7 +149,7 @@
   font-weight: 700;
 }
 .notebook-head .subhead {
-  font-family: 'Caveat', cursive;
+  font-family: var(--font-hand);
   font-size: 22px;
   color: rgba(40,30,15,0.6);
   line-height: 1.3;
@@ -176,7 +176,7 @@
 }
 .msg .speaker {
   display: inline;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   line-height: 1;   /* keep the small tag from stretching the ruled line */
   letter-spacing: 0.22em;
@@ -209,7 +209,7 @@
 .ink-b { font-weight: 700; color: #0f1633; }
 .ink-i { font-style: italic; }
 .ink-code {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.62em;
   font-weight: 500;
   line-height: 1;
@@ -232,7 +232,7 @@
 .msg-ai .content a:hover .diary-char { text-decoration-color: currentColor; }
 
 .retry-btn {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   line-height: 1;
   letter-spacing: 0.1em;
@@ -260,7 +260,7 @@
 
 /* Time of writing — pencilled in the margin after the ink dries. */
 .msg .stamp {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 9px;
   line-height: 1;
   letter-spacing: 0.12em;
@@ -360,7 +360,7 @@
 }
 .suggested .hint {
   width: 100%;
-  font-family: 'Caveat', cursive;
+  font-family: var(--font-hand);
   font-size: 22px;
   line-height: var(--lh);
   color: rgba(40,30,15,0.55);
@@ -368,7 +368,7 @@
 .suggest-btn {
   height: calc(var(--lh) - 6px);
   margin: 3px 0;
-  font-family: 'Caveat', cursive;
+  font-family: var(--font-hand);
   font-size: 19px;
   line-height: 1;
   color: #1a2240;
@@ -415,7 +415,7 @@
   height: var(--lh);
   border: none;
   outline: none;
-  font-family: 'Caveat', cursive;
+  font-family: var(--font-hand);
   font-size: 26px;
   line-height: var(--lh);
   color: #1a2240;
@@ -437,7 +437,7 @@
 .composer input:disabled { opacity: 0.5; }
 
 .send-btn {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 18px;
   background: rgba(40,30,15,0.06);
   border: 1.5px solid rgba(40,30,15,0.20);
@@ -465,7 +465,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 6px 16px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;

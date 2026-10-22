@@ -3,6 +3,19 @@
    B&W pencil · crumpled paper · sketchy hand-drawn energy
    ============================================================ */
 
+/* ---- Fonts: self-hosted latin subsets (all SIL OFL) ----
+   Victor Mono is the code face. Its italic is cursive, so code sits
+   upright and comments, notes and asides come out handwritten, the
+   way an editor shows them. Same advance width either way, so a line
+   can switch to cursive without reflowing. */
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 500 800; font-display: swap; src: url(fonts/fraunces.woff2) format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 700 800; font-display: swap; src: url(fonts/fraunces-italic.woff2) format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 400 700; font-display: swap; src: url(fonts/dm-sans.woff2) format('woff2'); }
+@font-face { font-family: 'Caveat'; font-style: normal; font-weight: 500 700; font-display: swap; src: url(fonts/caveat.woff2) format('woff2'); }
+@font-face { font-family: 'Victor Mono'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(fonts/victor-mono.woff2) format('woff2'); }
+@font-face { font-family: 'Victor Mono'; font-style: italic; font-weight: 400 600; font-display: swap; src: url(fonts/victor-mono-italic.woff2) format('woff2'); }
+@font-face { font-family: 'Patrick Hand'; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/patrick-hand.woff2) format('woff2'); }
+
 :root {
   /* Palette — pure pencil */
   --paper:        #EEE9DD;       /* warm cream paper */
@@ -21,7 +34,7 @@
 
   --font-display: 'Fraunces', 'Playfair Display', Georgia, serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
-  --font-mono:    'JetBrains Mono', 'DM Mono', ui-monospace, monospace;
+  --font-mono:    'Victor Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   --font-hand:    'Caveat', cursive;
 
   --max-w:       1280px;
@@ -3484,3 +3497,399 @@ html.lenis, html.lenis body { height: auto; }
 
 /* iPhone home bar */
 .footer { padding-bottom: max(28px, calc(env(safe-area-inset-bottom) + 18px)); }
+
+/* ====================================================
+   CODE × HAND
+   Code is upright Victor Mono; comments, notes and asides
+   are its cursive italic, so they read as handwriting.
+   code-motion.js (anime.js) animates it.
+   ==================================================== */
+:root {
+  --ink-add:   #4E6B3A;   /* moss: an added line, a merged stamp */
+  --ink-fix:   #B4532A;   /* red pencil: a fix */
+  --ink-str:   #7A5631;   /* brown pencil: strings */
+}
+.casual, .term-note, .toolkit-note, .term-dim { font-style: italic; }
+
+/* Comment-style line under a section title */
+.code-comment {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--pencil-soft);
+  letter-spacing: 0.01em;
+}
+
+/* ---- Hero terminal line ---- */
+.hero-term {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 8px;
+  max-width: 520px;
+  margin: -6px 0 26px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--pencil);
+  opacity: 0;
+  animation: fadeIn 700ms ease 1200ms forwards;
+}
+.term-prompt { color: var(--pencil-soft); white-space: nowrap; }
+.term-prompt b { color: var(--ink); font-weight: 400; }
+.term-cmd { color: var(--ink); }
+.term-note { color: var(--pencil-soft); }
+.term-caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 2px;
+  translate: 0 0.18em;
+  background: var(--ink);
+  opacity: 0.8;
+  animation: caret 1.05s steps(1) infinite;
+}
+@keyframes caret { 50% { opacity: 0; } }
+
+/* ---- Experience: git log --graph ---- */
+.xp-head { margin-bottom: 52px; }
+.xp-head .eyebrow { margin-bottom: 14px; }
+.xp-log {
+  position: relative;
+  list-style: none;
+  max-width: 860px;
+  padding-left: 64px;
+}
+.xp-branch {
+  position: absolute;
+  left: 0; top: 0;
+  width: 48px; height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.xp-branch path { fill: none; stroke: var(--ink); stroke-linecap: round; stroke-linejoin: round; }
+.xp-commit {
+  position: relative;
+  padding-bottom: 54px;
+}
+.xp-commit:last-child { padding-bottom: 0; }
+.xp-node {
+  position: absolute;
+  left: -51px; top: 3px;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 0 0 0 5px var(--paper);
+}
+.xp-commit.is-head .xp-node { background: var(--ink); }
+.xp-commit.is-head .xp-node::after {
+  content: '';
+  position: absolute; inset: -9px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--pencil-soft);
+  animation: spin 14s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.xp-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.xp-ref {
+  padding: 2px 9px 3px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper-light);
+  letter-spacing: 0.02em;
+}
+.xp-ref-alt { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.3px var(--ink); }
+.xp-when { font-family: var(--font-hand); font-weight: 600; font-size: 20px; color: var(--pencil-soft); line-height: 1; }
+.xp-commit h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+.xp-kind {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--pencil-soft);
+  vertical-align: 0.35em;
+  margin-left: 6px;
+  white-space: nowrap;
+}
+.xp-org { margin: 4px 0 16px; color: var(--pencil-soft); font-size: 15px; }
+.xp-diff { list-style: none; display: grid; gap: 10px; }
+.xp-diff li {
+  position: relative;
+  padding-left: 26px;
+  font-size: 15.5px;
+  line-height: 1.62;
+  color: var(--pencil);
+}
+.xp-diff li::before {
+  content: attr(data-op);
+  position: absolute;
+  left: 0; top: 0.08em;
+  width: 18px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--ink-add);
+}
+.xp-diff li[data-op="~"]::before { color: var(--ink-fix); }
+.xp-diff li[data-op="•"]::before { color: var(--pencil-soft); }
+.xp-diff strong { color: var(--ink); font-weight: 700; }
+.xp-diff em { font-style: normal; text-decoration: line-through; text-decoration-color: var(--ink-fix); text-decoration-thickness: 2px; }
+.xp-jump {
+  font-family: var(--font-hand);
+  font-weight: 600;
+  font-size: 19px;
+  color: var(--ink);
+  border-bottom: 1.4px solid currentColor;
+  white-space: nowrap;
+  margin-left: 4px;
+}
+.xp-scrawl {
+  position: absolute;
+  right: -40px; top: 30px;
+  max-width: 150px;
+  font-family: var(--font-hand);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.05;
+  color: var(--ink-fix);
+  transform: rotate(5deg);
+  text-align: center;
+}
+.xp-root h3 { font-size: clamp(19px, 2.2vw, 22px); }
+.xp-root .xp-org { margin-bottom: 0; }
+
+/* ---- Open source: PR cards with rubber stamps ---- */
+.oss-head { margin-bottom: 46px; }
+.oss-head .eyebrow { margin-bottom: 14px; }
+.oss-sub { margin-top: 16px; max-width: 560px; color: var(--pencil); font-size: 16px; line-height: 1.6; }
+.oss-hand {
+  display: inline-block;
+  font-family: var(--font-hand);
+  font-weight: 600;
+  font-size: 23px;
+  color: var(--ink-add);
+  transform: rotate(-2deg);
+  white-space: nowrap;
+}
+.pr-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+  max-width: 1000px;
+}
+.pr-card {
+  position: relative;
+  padding: 26px 26px 22px;
+  background: var(--paper-light);
+  display: flex;
+  flex-direction: column;
+  transition: transform 280ms cubic-bezier(.2,.7,.2,1), box-shadow 280ms ease;
+}
+.pr-card:nth-child(4n+1) { transform: rotate(-0.6deg); }
+.pr-card:nth-child(4n+2) { transform: rotate(0.5deg); }
+.pr-card:nth-child(4n+3) { transform: rotate(0.3deg); }
+.pr-card:nth-child(4n)   { transform: rotate(-0.4deg); }
+.pr-card:hover { transform: translateY(-4px) rotate(0deg); box-shadow: 0 22px 44px -28px rgba(30,25,15,0.42); }
+.pr-repo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--pencil-soft);
+  margin-bottom: 10px;
+}
+.pr-card .pr-repo { padding-right: 112px; }
+.pr-glyph {
+  display: inline-grid;
+  place-items: center;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  font-size: 11px;
+  color: var(--paper-light);
+  background: var(--ink-add);
+}
+.is-open .pr-glyph { background: none; color: var(--pencil-soft); box-shadow: inset 0 0 0 1.4px currentColor; }
+.pr-card h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.pr-card p { font-size: 14.5px; line-height: 1.6; color: var(--pencil); max-width: 34ch; }
+.pr-scribble { margin: 18px 0 16px; height: 64px; }
+.pr-scribble svg { width: 100%; height: 100%; overflow: visible; display: block; }
+.pr-scribble path { fill: none; stroke-linecap: round; }
+.pr-link {
+  margin-top: auto;
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+  transition: border-color 200ms;
+}
+.pr-link:hover { border-bottom-color: var(--ink); font-style: italic; }
+
+/* Rubber stamp. The noise mask lets paper show through the ink. */
+.stamp {
+  position: absolute;
+  top: 20px; right: 18px;
+  padding: 5px 12px 4px;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-add);
+  border: 3px double currentColor;
+  border-radius: 6px;
+  transform: rotate(-11deg);
+  opacity: 0.88;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='60'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.5 1.55'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='60'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.5 1.55'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  pointer-events: none;
+}
+.is-open .stamp { color: var(--pencil-soft); border-style: dashed; border-width: 2px; transform: rotate(7deg); letter-spacing: 0.1em; }
+
+/* ---- engraph: a little terminal ---- */
+.term {
+  margin: 4px 0 20px;
+  border-radius: 8px;
+  background: #1F1D1A;
+  color: #EDE6D4;
+  box-shadow: 0 14px 26px -18px rgba(20,16,10,0.7), inset 0 0 0 1px rgba(255,255,255,0.04);
+  transform: rotate(-0.6deg);
+  overflow: hidden;
+}
+.term-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 12px;
+  border-bottom: 1px dashed rgba(237,230,212,0.16);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(237,230,212,0.45);
+}
+.term-bar i { width: 9px; height: 9px; border-radius: 50%; border: 1.4px solid rgba(237,230,212,0.5); }
+.term-bar span { margin-left: auto; }
+.term-body { padding: 14px 14px 12px; font-family: var(--font-mono); font-size: 14px; line-height: 1.7; }
+.term-row { display: flex; align-items: baseline; gap: 8px; min-height: 1.7em; }
+.term-ps { color: #A9C38A; }
+.term-type { font-family: inherit; font-size: inherit; background: none; padding: 0; white-space: pre; color: #F6F2E7; }
+.term-dim { color: rgba(237,230,212,0.48); }
+.term-copy.copy-chip {
+  margin-left: auto;
+  color: rgba(237,230,212,0.7);
+  border-color: rgba(237,230,212,0.25);
+  background: transparent;
+}
+.term-copy.copy-chip:hover { color: #F6F2E7; border-color: rgba(237,230,212,0.6); }
+.term-copy.copy-chip.done { color: #A9C38A; border-color: #A9C38A; }
+
+/* ---- House price: sketched bar chart ---- */
+.sketch-chart { position: relative; margin: 0 0 6px; }
+.sketch-chart svg { width: 100%; height: 112px; display: block; overflow: visible; }
+.sketch-chart figcaption {
+  position: absolute;
+  left: 4px; top: -10px;
+  font-family: var(--font-hand);
+  font-weight: 600;
+  font-size: 19px;
+  color: var(--pencil-soft);
+  transform: rotate(3deg);
+}
+.chart-card .impact .num { font-size: 32px; }
+
+/* ---- Stack: toolkit printout ---- */
+.toolkit {
+  position: relative;
+  max-width: 720px;
+  margin: 64px auto 0;
+  transform: rotate(-0.7deg);
+  filter: drop-shadow(0 10px 14px rgba(40,28,14,0.14)) drop-shadow(0 2px 2px rgba(40,28,14,0.12));
+}
+.toolkit .printout-paper { padding: 8px 16px 10px; }
+.toolkit .printout-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.toolkit-note { font-family: var(--font-mono); font-size: 12px; color: var(--pencil-soft); }
+.toolkit pre { margin: 0; overflow-x: auto; }
+.toolkit code {
+  display: block;
+  white-space: pre;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--pencil);
+}
+/* Hover the printout and the code turns into handwriting */
+.toolkit:hover code { font-style: italic; }
+.tk-k { color: var(--ink); }
+.tk-s { color: var(--ink-str); }
+.tk-v { color: var(--pencil); }
+.toolkit .printout-tape { top: -13px; }
+
+/* Sticky notes are <p>s, so `.card p` used to shrink their handwriting */
+.card .sticky { font-size: 20px; line-height: 1.02; color: var(--ink); margin: 0; }
+.card .sticky.sm { font-size: 17px; }
+@media (max-width: 900px) {
+  .card .sticky { font-size: 17px; }
+  .card .sticky.sm { font-size: 15px; }
+}
+
+/* Sticky notes you can peel off and move around (code-motion.js) */
+.sticky.is-draggable { pointer-events: auto; cursor: grab; touch-action: none; }
+.sticky.is-draggable:active { cursor: grabbing; }
+
+/* Eyebrows decode while code-motion.js runs; keep their width steady */
+.eyebrow [data-decode] { white-space: pre; }
+
+@media (max-width: 900px) {
+  .xp-log { padding-left: 48px; }
+  .xp-branch { width: 36px; }
+  .xp-node { left: -41px; width: 20px; height: 20px; }
+  .xp-scrawl { position: static; display: block; margin: 12px 0 0 auto; transform: rotate(-3deg); }
+  .pr-grid { grid-template-columns: 1fr; }
+  /* Too narrow for the aligned dict: each list drops under its key */
+  .toolkit code { font-size: 12px; }
+  .tk-list { display: block; white-space: normal; padding-left: 8ch; text-indent: -1ch; }
+  .tk-list .tk-v { white-space: nowrap; }
+}
+@media (max-width: 540px) {
+  .hero-term { font-size: 12px; }
+  .xp-diff li { font-size: 15px; }
+  .stamp { font-size: 12px; top: 14px; right: 12px; }
+  .pr-card h3 { font-size: 23px; }
+  .toolkit { margin-top: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .term-caret, .xp-commit.is-head .xp-node::after { animation: none; }
+  .hero-term { opacity: 1; animation: none; }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
